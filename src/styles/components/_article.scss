@@ -1,0 +1,25 @@
+article {
+  display: grid;
+  justify-content: center;
+  margin-top: 1em;
+
+  p {
+    background-color: $blue-lighter;
+    border-radius: 5px;
+    margin-top: .5em;
+  }
+
+  code {
+    display: block;
+    white-space: pre-wrap;
+    text-align: left;
+    font-family: 'Nanum Pen Script', cursive;
+    font-size: 1.3em;
+    font-weight: 600;
+    background-color: $blue-darkest;
+    color: $orange-light;
+    padding: 1em;
+    margin: 1em;
+    border-radius: 10px;
+  }
+}

@@ -1,0 +1,41 @@
+section {
+
+  .section-heading {
+    margin: 1em;
+  }
+
+  img {
+    height: 50px;
+  }
+
+  h3 {
+    font-size: 1em;
+  }
+
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: left;
+    list-style-type: none;
+    margin: .5em;
+
+    li {
+      flex-shrink: 0;
+      display: inline-block;
+      
+      background-color: $orange-main;
+      color: $blue-darkest;
+      border: 2px solid $blue-dark;
+      border-radius: 5px;
+      margin: .2em;
+      padding: 0 .2em;
+      cursor: pointer;
+    }
+
+    li:hover {
+      background-color: $orange-light;
+      color: $blue-darker;
+    }
+  }
+}

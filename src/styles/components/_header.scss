@@ -1,0 +1,119 @@
+@media(max-width: 500px) {
+  nav {
+    padding: .5em;
+  
+    .nav-card {
+      width: 5em;
+      padding: .2em;
+
+      img {
+        height: 30px;
+      }
+
+      h3 {
+        font-size: .8em;
+      }
+    }
+  }
+}
+
+header {
+  grid-column: span 2;
+  background: $blue-darkest;
+  display: grid;
+  grid-template-columns: minmax(auto, 5em) 1fr;
+  align-items: center;
+  -webkit-box-shadow: 0px 2px 3px 0px rgba(42, 100, 177,0.75);
+  -moz-box-shadow: 0px 2px 3px 0px rgba(42, 100, 177,0.75);
+  box-shadow: 0px 2px 3px 0px rgba(42, 100, 177,0.75);
+
+  h1 {
+    text-transform: uppercase ;
+    text-shadow: 0 0 3px $orange-main, 0 0 5px $orange-light;
+    color: $blue-light;
+    margin-left: .2em;
+    cursor: pointer;
+  }
+
+  nav {
+    display: flex;
+    justify-self: center;
+    padding: 1em;
+
+    .nav-card {
+      position: relative;
+      width: 8em;
+      padding: 1em;
+      margin-left: -1em;
+      //border: 1px solid $blue-darkest;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all .2s ease-in-out;
+      -webkit-box-shadow: -5px 5px 3px 0px rgba(0,0,0,0.75);
+      -moz-box-shadow: -5px 5px 3px 0px rgba(0,0,0,0.75);
+      box-shadow: -5px 5px 3px 0px rgba(0,0,0,0.75);
+    }
+
+    .nav-card:hover {
+      background-image: linear-gradient($blue-main, $blue-main);
+      //background-image: radial-gradient($blue-main, $blue-dark);
+      color: $blue-darkest;
+      transform: rotate(0) scale(1);
+      z-index: 2;
+
+      img {
+        transform: rotate(0deg) scale(1);
+      }
+
+      h3 {
+        transform: rotate(0deg) scale(1);
+      }
+    }
+
+    img {
+      height: 50px;
+      transform: rotate(-3deg) scale(1);
+    }
+
+    h3 {
+      font-size: 1.5em;
+      transform: rotate(-3deg) scale(1);
+    }
+  
+    a {
+      font-weight: bold;
+      color: $blue-darkest;
+  
+      &.router-link-exact-active {
+        color: $orange-main;
+      }
+    }
+
+    a:hover {
+      color: $orange-light;
+    }
+  }
+}
+
+.sel-tech {
+  //background-image: linear-gradient($blue-main, $blue-main);
+  background-image: radial-gradient($blue-main, $blue-dark);
+  color: $blue-darkest;
+  transform: rotate(0) scale(1);
+  z-index: 1;
+  img {
+    transform: rotate(0deg) scale(1);
+  }
+
+  h3 {
+    transform: rotate(0deg) scale(1);
+  }
+}
+
+.all-tech {
+  background-image: linear-gradient(to right,$blue-darker 60%, $blue-darkest);
+  color: $blue-lightest;
+  transform: rotate(3deg) scale(.9);
+  z-index: 0;
+}
+

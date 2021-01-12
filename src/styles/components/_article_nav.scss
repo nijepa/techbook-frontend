@@ -1,0 +1,38 @@
+.article-nav {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  justify-content: space-between;
+  align-items: center;
+  background-color: $orange-main;
+  border-radius: 10px;
+  padding: .5em;
+  margin: .3em;
+
+  .article-actions {
+    display: flex;
+  }
+
+  a {
+    display: flex;
+    align-items: center;
+    background-image: linear-gradient(to left, $orange-lighter 20%, $orange-main);
+    border: 2px solid $orange-main;
+    border-radius: 10px;
+    padding: .5em;
+    margin: 0 .3em;
+    cursor: pointer;
+    //transform: rotate(-3deg);
+    transition: all .3s ease-in-out;
+  }
+
+  a:hover {
+    border: 2px solid $orange-lighter;
+    background-image: linear-gradient($orange-lightest, $orange-lightest);
+    //transform: scale(1.2);
+  }
+
+  img {
+    height: 30px;
+    width: 30px;
+  }
+}

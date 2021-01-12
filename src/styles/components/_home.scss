@@ -1,0 +1,7 @@
+.home {
+  display: grid;
+  grid-template-columns: minmax(auto, 10em) 1fr;
+  grid-template-areas: "header header"
+                        "sidenav main"
+
+}
