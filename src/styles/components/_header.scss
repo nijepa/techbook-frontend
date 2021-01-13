@@ -1,20 +1,26 @@
 @media(max-width: 500px) {
-  nav {
-    padding: .5em;
-  
-    .nav-card {
-      width: 5em;
-      padding: .2em;
+  header {
+    h1 {
+      font-size: 1em;
+    }
+    nav {
+      padding: .5em;
+    
+      .nav-card {
+        width: 4em;
+        padding: .2em;
 
-      img {
-        height: 30px;
-      }
+        img {
+          height: 30px;
+        }
 
-      h3 {
-        font-size: .8em;
+        h3 {
+          font-size: .8em;
+        }
       }
     }
   }
+  
 }
 
 header {

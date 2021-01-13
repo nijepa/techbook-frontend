@@ -1,11 +1,11 @@
 <template>
   <section>
     <div class="section-heading" v-if="getOneLanguage">
-      <img :src="getSvgUrl(getOneLanguage.logo)" alt="">
+      <!-- <img :src="getSvgUrl(getOneLanguage.logo)" alt=""> -->
       <h1> {{ getOneLanguage.name }}</h1>
     </div>
     
-    <article-nav />
+    <!--  <article-nav />-->
 
     <ul v-if="!getOneArticle.id">
       <li v-for="article in getAllArticles" 
@@ -25,13 +25,13 @@
 <script>
 import { mapGetters, mapActions } from 'vuex';
 import Article from '@/components/Article.vue';
-import ArticleNav from '@/components/Article_nav.vue';
+//import ArticleNav from '@/components/Article_nav.vue';
 
 export default {
   name: 'Language',
 
   components: {
-    Article, ArticleNav
+    Article, //ArticleNav
   },
 
   computed: {

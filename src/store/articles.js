@@ -21,6 +21,10 @@ const  mutations = {
 
   setArticle: (state, article) => (state.article = article),
 
+  clearArticles(state) {
+    state.articles = [];
+  },
+
   clearArticle(state) {
     state.article = {};
   },
@@ -120,6 +124,10 @@ const actions = {
         }
       })
   }, */
+
+  articlesClear({commit}) {
+    commit('clearArticles');
+  },
 
   async articleClear({commit}) {
     commit('clearArticle');

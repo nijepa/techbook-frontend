@@ -2,15 +2,13 @@
   <header>
     <h1 @click="clearTech()">techbook</h1>
     <nav>
-      <div class="nav-cards" 
+      <div class="nav-card" 
             v-for="tech in getTechs" 
-            :key="tech.id">
-        <div class="nav-card" 
-              :class="tech.id === getTech.id ? 'sel-tech' : 'all-tech'" 
-              @click="selectTech(tech)">
-          <img :src="getSvgUrl(tech.img)" alt="">
-          <h3>{{ tech.name }}</h3>
-        </div>
+            :key="tech.id"
+            :class="tech.id === getTech.id ? 'sel-tech' : 'all-tech'" 
+            @click="selectTech(tech)">
+        <img :src="getSvgUrl(tech.img)" alt="">
+        <h3>{{ tech.name }}</h3>
       </div>
 <!--  <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link> -->
@@ -33,15 +31,18 @@
                       'fetchTech',
                       'techClear',
                       'languageClear',
+                      'articlesClear',
                       'articleClear' ]),
 
       selectTech(tech) {
+        this.clearTech();
         this.fetchTech(tech);
       },
 
       clearTech() {
-        //this.articleClear();
-        //this.languageClear();
+        this.articleClear();
+        this.articlesClear();
+        this.languageClear();
         this.techClear();
       },
 

@@ -101,7 +101,8 @@ const actions = {
     //const response = await axios.get(URL + "languages/" + languageData._id, languageData);
     //commit('setExpense', response.data);
     //console.log(languageData)
-    commit('setLanguage', languageData);
+    const response = languageData
+    await commit('setLanguage', response);
   },
 
   /* async languageAdd({commit},languageData) {

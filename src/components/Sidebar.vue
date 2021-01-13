@@ -1,8 +1,8 @@
 <template>
   <aside id="sidenav">
     <ul>
-      <li :class="[(getTech.id !== language.tech_id || getTech == {} ? 'selected-tech' : ''), 
-                  (getOneLanguage && language.id === getOneLanguage.id ? 'selected-lang' : '')]" 
+      <li :class="[(isEmpty(getTech) || (getTech.id == language.tech_id)  ? 'selected-tech' : ''), 
+                  ((getOneLanguage && (language.id === getOneLanguage.id)) ? 'selected-lang' : '')]" 
           v-for="language in getAllLanguages" 
           :key="language.id" 
           @click="selectLanguage(language)">
@@ -38,14 +38,18 @@ export default {
     ...mapActions([ 'fetchLanguages', 
                     'fetchLanguage',
                     'fetchArticles',
+                    'articlesClear',
                     'articleClear',
                     'fetchTech' ]),
     
     selectLanguage(language) {
       this.fetchLanguage(language);
+      this.articlesClear();
       this.fetchArticles(language.id);
-      if (!this.getAllArticles.length) this.articleClear();
+      this.articleClear();
     },
+
+    isEmpty(obj) { return Object.keys(obj).length === 0; },
 
     getSvgUrl(pic) {
       return require('../assets/logos/' + pic + '.svg');
