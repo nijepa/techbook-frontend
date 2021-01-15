@@ -31,12 +31,6 @@
       ...mapGetters([ 'getOneLanguage' ]),
     },
 
-    data() {
-      return {
-        lang: false
-      }
-    },
-
     methods: {
       isEmpty(obj) { return Object.keys(obj).length === 0; },
 
@@ -44,11 +38,5 @@
         return require('../assets/images/' + pic + '.svg');
       },
     },
-
-    watch: {
-      lang : {
-        //this.lang = this.getOneLanguage
-      }
-    }
   }
 </script>

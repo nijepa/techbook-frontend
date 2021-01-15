@@ -1,7 +1,7 @@
 <template>
   <section>
     <div class="section-heading" v-if="getOneLanguage">
-      <!-- <img :src="getSvgUrl(getOneLanguage.logo)" alt=""> -->
+      <img :src="getSvgUrl(getOneLanguage.logo)" alt="">
       <h1> {{ getOneLanguage.name }}</h1>
     </div>
     

@@ -1,31 +1,55 @@
 form {
-  width: 320px;
-  float: left;
+  max-width: 600px;
+  //float: left;
   margin: 20px;
+
   > div {
     position: relative;
-    overflow: hidden;
+    //overflow: hidden;
+  }
+  .coding {
+    //background-color: $blue-darkest;
+    color: $orange-main;
+    font-family: $font-code;
+    font-size: 1.3em;
+  }
+  .coding:focus {
+    background-color: $blue-darkest;
+    color: $orange-main;
   }
   input, textarea {
+    font-family: $font-stack;
+    font-size: 1em;
     width: 100%;
-    border: 2px solid gray; 
+    background-color: $light-color;
+    border: 2px solid $blue-light; 
+    border-radius: 5px;
     background: none;
     position: relative;
     top: 0;
     left: 0;
     z-index: 1;
     padding: 8px 12px;
+    margin: .5em 0;
     outline: 0;
+    -webkit-box-shadow: 0px 0px 5px 3px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 5px 3px rgba(0,0,0,0.75);
+    box-shadow: inset 0px 0px 3px 1px rgba(159, 196, 245,0.75);
+    &:hover {
+      //background-color: white;
+    }
     &:valid {
       // Hides the label
-      background: white; 
+      background:$blue-lightest; 
     }
     &:focus {
-      border-color: #f06d06;
+      border-color: $blue-main;
+      background-color: white;
+      box-shadow: 0px 0px 3px 1px rgba(159, 196, 245,0.75);
     }
     &:focus + label {
-      background: #f06d06;
-      color: white;
+      background: $blue-main;
+      color:$light-color;
       font-size: 70%;
       padding: 1px 6px;
       z-index: 2;
@@ -41,12 +65,17 @@ form {
       right 0.2s,
       left 0.2s;
     position: absolute;
-    color: #999;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    color:$blue-light;
     padding: 7px 6px;
   }
   textarea {
     display: block;
     resize: vertical;
+  }
+  input {
+    font-weight: 600;
   }
 }
 
@@ -66,5 +95,22 @@ form.go-bottom {
   input:focus + label, textarea:focus + label {
     top: 100%;
     margin-top: -16px;
+  }
+  button {
+    font-size: 1em;
+    font-weight: 600;
+    background-color: $blue-lightest;
+    color: $blue-darker;
+    border: 2px solid $blue-light;
+    margin: .5em 0;
+    padding: .7em;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all .3s ease-in-out;
+  }
+  button:hover {
+    background-color: $blue-main;
+    color: $blue-darkest;
+    border-color: $blue-main;
   }
 }
