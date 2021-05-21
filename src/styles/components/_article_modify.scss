@@ -40,7 +40,7 @@ form {
     }
     &:valid {
       // Hides the label
-      background:$blue-lightest; 
+      //background:$blue-lightest; 
     }
     &:focus {
       border-color: $blue-main;
@@ -81,7 +81,7 @@ form {
 
 form.go-bottom {
   input, textarea {
-    padding: 12px 12px 12px 12px; 
+    padding: 20px 12px 12px 12px; 
   }
   label {
     top: 0;

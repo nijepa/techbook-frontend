@@ -24,7 +24,7 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
-import Article from '@/components/Article.vue';
+import Article from './Article.vue';
 //import ArticleNav from '@/components/Article_nav.vue';
 
 export default {

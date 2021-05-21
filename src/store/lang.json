@@ -1,0 +1,16 @@
+{
+"l1":{"language_name": "HTML", "language_logo": "HTML5", "technology": "front-end"},
+"l2":{"language_name": "CSS", "language_logo": "CSS3", "technology": "front-end"},
+"l3":{"language_name": "JavaScript", "language_logo": "JavaScript", "technology": "front-end"},
+"l4":{"language_name": "Vue.js", "language_logo": "Vue.js", "technology": "front-end"},
+"l5":{"language_name": "Node.js", "language_logo": "Node.js", "technology": "back-end"},
+"l6":{"language_name": "PHP", "language_logo": "PHP", "technology": "back-end"},
+"l7":{"language_name": "Laravel", "language_logo": "Laravel", "technology": "back-end"},
+"l8":{"language_name": "MongoDB", "language_logo": "Mongodb", "technology": "databases"},
+"l9":{"language_name": "Git", "language_logo": "Git", "technology": "utils"},
+"l10":{"language_name": "Npm", "language_logo": "Npm", "technology": "utils"},
+"l11":{"language_name": "MySQL", "language_logo": "mysql", "technology": "databases"},
+"l12":{"language_name": "Firebase", "language_logo": "Firebase", "technology": "databases"},
+"l13":{"language_name": "Algorithms", "language_logo": "Algorithms", "technology": "utils"},
+"l14":{"language_name": "Data Structures", "language_logo": "Tree-data-structure", "technology": "utils"}
+}

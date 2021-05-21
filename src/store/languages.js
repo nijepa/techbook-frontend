@@ -1,10 +1,10 @@
-//import axios from 'axios';
-//const URL = process.env.VUE_APP_BACKEND_URL;
+import axios from 'axios';
+const URL = process.env.VUE_APP_BACKEND_URL_LOCAL;
 // import apiClient from './api_client';
 //import router from '../router';
 
 
-const  state = {
+const state = {
   language: {},
   languages: [],
   techs: [],
@@ -20,7 +20,7 @@ const getters = {
 };
 
 /* -------------------------------------- MUTATIONS -------------------------------------- */
-const  mutations = {
+const mutations = {
   setTechs: (state, techs) => (state.techs = techs),
 
   setTech: (state, tech) => (state.tech = tech),
@@ -59,13 +59,13 @@ const  mutations = {
 /* -------------------------------------- ACTIONS -------------------------------------- */
 const actions = {
   async fetchTechs ({ commit }) {
-    //const response = await axios.get(URL + "languages");
-    const response = [
+    const response = await axios.get(URL + "api/v1/techs");
+/*     const response = [
       {id: 1, name: 'Front End', img: 'front-end'},
       {id: 2, name: 'Back End', img: 'back-end'},
       {id: 3, name: 'Databases', img: 'databases'},
       {id: 4, name: 'Utilities', img: 'utilities'},
-    ]
+    ] */
     commit('setTechs', response);
     //commit('setExpenses', response.data);
   },
@@ -75,8 +75,8 @@ const actions = {
     commit('setTech', techData);
   },
   async fetchLanguages ({ commit }) {
-    //const response = await axios.get(URL + "languages");
-    const response = [
+    const response = await axios.get(URL + "api/v1/langs");
+/*     const response = [
       {id: 1, name: 'HTML', logo: 'HTML5', tech_id: 1},
       {id: 2, name: 'CSS', logo: 'CSS3', tech_id: 1},
       {id: 3, name: 'Sass', logo: 'Sass', tech_id: 1},
@@ -92,17 +92,16 @@ const actions = {
       {id: 13, name: 'MySQL', logo: 'mysql', tech_id: 3},
       {id: 14, name: 'Firebase', logo: 'Firebase', tech_id: 3},
       {id: 15, name: 'Data Structures', logo: 'Tree-data-structure', tech_id: 4},
-    ]
+    ] */
     commit('setLanguages', response);
     //commit('setExpenses', response.data);
   },
 
-  async fetchLanguage ({ commit }, languageData) {
+  fetchLanguage ({ commit }, languageData) {
     //const response = await axios.get(URL + "languages/" + languageData._id, languageData);
     //commit('setExpense', response.data);
-    //console.log(languageData)
     const response = languageData
-    await commit('setLanguage', response);
+    commit('setLanguage', response);
   },
 
   /* async languageAdd({commit},languageData) {

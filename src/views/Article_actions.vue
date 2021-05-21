@@ -1,5 +1,5 @@
 <template>
-  <div class="">
+  <main class="">
     <h1>New</h1>
     <form class="go-bottom" action="">
       <div>
@@ -16,7 +16,7 @@
       </div>
       <button type="submit">Save</button>
     </form>
-  </div>
+  </main>
   
 </template>
 

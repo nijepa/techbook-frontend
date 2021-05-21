@@ -1,14 +1,14 @@
 <template>
   <header>
-    <h1 @click="clearTech()">techbook</h1>
+    <h1 @click="clearTech()">tech book</h1>
     <nav>
       <div class="nav-card" 
-            v-for="tech in getTechs" 
+            v-for="tech in getTechs.data" 
             :key="tech.id"
             :class="tech.id === getTech.id ? 'sel-tech' : 'all-tech'" 
             @click="selectTech(tech)">
         <img :src="getSvgUrl(tech.img)" alt="">
-        <h3>{{ tech.name }}</h3>
+        <h3>{{ tech.title }}</h3>
       </div>
 <!--  <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link> -->
@@ -44,6 +44,7 @@
         this.articlesClear();
         this.languageClear();
         this.techClear();
+        this.$router.push('/');
       },
 
       getSvgUrl(pic) {

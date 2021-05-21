@@ -4,8 +4,8 @@
     <div class="article-actions">
       <router-link to="/article"><img :src="getSvgUrl('add')" alt=""> Add</router-link>
       <!-- <a class="article-link" @click="articleClear()"><img :src="getSvgUrl('add')" alt=""> Add</a> -->
-      <a class="article-link" @click="articleClear()"><img :src="getSvgUrl('edit')" alt=""> Edit</a>
-      <a class="article-link" @click="articleClear()"><img :src="getSvgUrl('delete')" alt=""> Delete</a>
+      <!-- <a class="article-link" @click="articleClear()"><img :src="getSvgUrl('edit')" alt=""> Edit</a>
+      <a class="article-link" @click="articleClear()"><img :src="getSvgUrl('delete')" alt=""> Delete</a> -->
     </div>
     
   </div>

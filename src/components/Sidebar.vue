@@ -3,11 +3,11 @@
     <ul>
       <li :class="[(isEmpty(getTech) || (getTech.id == language.tech_id)  ? 'selected-tech' : ''), 
                   ((getOneLanguage && (language.id === getOneLanguage.id)) ? 'selected-lang' : '')]" 
-          v-for="language in getAllLanguages" 
+          v-for="language in languages" 
           :key="language.id" 
-          @click="selectLanguage(language)">
-        <img :src="getSvgUrl(language.logo)" alt="">
-        <a >{{ language.name }}</a>
+          >
+        <img :src="getSvgUrl(language.img)" alt="">
+        <a @click="selectLanguage(language)" >{{ language.name }}</a>
       </li>
     </ul>
   </aside>
@@ -22,6 +22,7 @@ export default {
   data() {
     return {
       tech: {},
+      languages: []
     }
   },
 
@@ -40,24 +41,29 @@ export default {
                     'fetchArticles',
                     'articlesClear',
                     'articleClear',
+                    'fetchTechs',
                     'fetchTech' ]),
     
-    selectLanguage(language) {
-      this.fetchLanguage(language);
+    async selectLanguage(language) {
+      console.log(language)
+      await this.fetchLanguage(language);
       this.articlesClear();
-      this.fetchArticles(language.id);
+      await this.fetchArticles(language.id);
       this.articleClear();
     },
 
     isEmpty(obj) { return Object.keys(obj).length === 0; },
 
     getSvgUrl(pic) {
-      return require('../assets/logos/' + pic + '.svg');
+      //console.log(pic)
+      return require('@/assets/logos/' + pic + '.svg');
     },
   },
 
   async created()  {
+    await this.fetchTechs();
     await this.fetchLanguages();
+    this.languages = this.getAllLanguages.data;
   }
 }
 </script>
