@@ -70,9 +70,9 @@ const actions = {
     //commit('setExpenses', response.data);
   },
   async fetchTech ({ commit }, techData) {
-    //const response = await axios.get(URL + "languages/" + languageData._id, languageData);
+    const response = await axios.get(URL + "api/v1/techs/" + techData._id, techData);
     //commit('setExpense', response.data);
-    commit('setTech', techData);
+    commit('setTech', response.data);
   },
   async fetchLanguages ({ commit }) {
     const response = await axios.get(URL + "api/v1/langs");
@@ -97,11 +97,12 @@ const actions = {
     //commit('setExpenses', response.data);
   },
 
-  fetchLanguage ({ commit }, languageData) {
-    //const response = await axios.get(URL + "languages/" + languageData._id, languageData);
+  async fetchLanguage ({ commit }, languageData) {
+    console.log('zzz', languageData._id)
+    const response = await axios.get(URL + "api/v1/langs/" + languageData._id, languageData);
     //commit('setExpense', response.data);
-    const response = languageData
-    commit('setLanguage', response);
+    //const response = languageData
+    commit('setLanguage', response.data);
   },
 
   /* async languageAdd({commit},languageData) {

@@ -1,15 +1,15 @@
 <template>
   <section>
     <div class="section-heading" v-if="getOneLanguage">
-      <img :src="getSvgUrl(getOneLanguage.logo)" alt="">
-      <h1> {{ getOneLanguage.name }}</h1>
+      <img :src="getSvgUrl(getOneLanguage.img)" alt="">
+      <h1> {{ getOneLanguage.title }}</h1>
     </div>
     
     <!--  <article-nav />-->
 
-    <ul v-if="!getOneArticle.id">
+    <ul v-if="!getOneArticle._id">
       <li v-for="article in getAllArticles" 
-          :key="article.id"
+          :key="article._id"
           @click="selectArticle(article)">
         <h3>{{ article.title }}</h3>
       </li>
@@ -48,8 +48,8 @@ export default {
                     'fetchArticle',
                     'articleClear' ]),
 
-    selectArticle(article) {
-      this.fetchArticle(article);
+    async selectArticle(article) {
+      await this.fetchArticle(article);
     },
 
     getSvgUrl(pic) {

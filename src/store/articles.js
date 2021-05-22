@@ -1,5 +1,5 @@
-//import axios from 'axios';
-//const URL = process.env.VUE_APP_BACKEND_URL;
+import axios from 'axios';
+const URL = process.env.VUE_APP_BACKEND_URL_LOCAL;
 // import apiClient from './api_client';
 //import router from '../router';
 
@@ -50,9 +50,9 @@ const  mutations = {
 
 /* -------------------------------------- ACTIONS -------------------------------------- */
 const actions = {
-  async fetchArticles ({ commit }, langId) {
-    //const response = await axios.get(URL + "articles");
-    const res = [
+  async fetchArticles ({ commit }, language) {
+    const response = await axios.get(URL + "api/v1/articles");
+/*     const res = [
       {id: 1, title: 'Page structure', content: 'asfafa', code: '<head>Header</head>', image: 'html5-cheat-sheet.png', lang: 1},
       {id: 2, title: 'Head tags', content: 'asfafa', code: 'CSS3', image: 'CSS-CHEAT-SHEET-p1-2019-update.png', lang: 1},
       {id: 3, title: 'Redial gradient', content: 'asfafa', code: 'CSS3', image: 'CSS-CHEAT-SHEET-p1-2019-update.png', lang: 2},
@@ -68,17 +68,17 @@ const actions = {
       {id: 13, title: 'Map', content: 'Map', code: "const ageMap = ages\n  .map(age => Math.sqrt(age))\n  .map(age => age * 2);", image: 'CSS-CHEAT-SHEET-p1-2019-update.png', lang: 3},
       {id: 14, title: 'Sort', content: 'Sort', code: 'const sortAges = ages.sort((a, b) => a -b);', image: 'CSS-CHEAT-SHEET-p1-2019-update.png', lang: 3},
       {id: 15, title: 'Reduce', content: 'reduce', code: 'const ageSum = ages.reduce((total, age) => total + age, 0);', image: 'CSS-CHEAT-SHEET-p1-2019-update.png', lang: 3},
-    ]
-    const response = res.filter(a => a.lang === langId)
-    commit('setArticles', response);
+    ]*/
+    //const response = res.filter(a => a.lang === langId) 
+    const articles = response.data.filter(a => a.lang._id === language)
+    commit('setArticles', articles);
     //commit('setExpenses', response.data);
   },
 
   async fetchArticle ({ commit }, articleData) {
-    //const response = await axios.get(URL + "articles/" + articleData._id, articleData);
+    const response = await axios.get(URL + "api/v1/articles/" + articleData._id, articleData);
     //commit('setExpense', response.data);
-    //console.log(articleData)
-    commit('setArticle', articleData);
+    commit('setArticle', response.data);
   },
 
   /* async articleAdd({commit},articleData) {

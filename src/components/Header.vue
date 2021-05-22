@@ -4,8 +4,8 @@
     <nav>
       <div class="nav-card" 
             v-for="tech in getTechs.data" 
-            :key="tech.id"
-            :class="tech.id === getTech.id ? 'sel-tech' : 'all-tech'" 
+            :key="tech._id"
+            :class="tech._id === getTech._id ? 'sel-tech' : 'all-tech'" 
             @click="selectTech(tech)">
         <img :src="getSvgUrl(tech.img)" alt="">
         <h3>{{ tech.title }}</h3>
@@ -34,9 +34,9 @@
                       'articlesClear',
                       'articleClear' ]),
 
-      selectTech(tech) {
+      async selectTech(tech) {
         this.clearTech();
-        this.fetchTech(tech);
+        await this.fetchTech(tech);
       },
 
       clearTech() {

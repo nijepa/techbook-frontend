@@ -4,7 +4,7 @@
       {{ getOneArticle.title }}
     </h3>
     <p>
-      {{ getOneArticle.content }}
+      {{ getOneArticle.description }}
     </p>
     <code>
       {{ getOneArticle.code }}

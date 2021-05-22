@@ -1,13 +1,13 @@
 <template>
   <aside id="sidenav">
     <ul>
-      <li :class="[(isEmpty(getTech) || (getTech.id == language.tech_id)  ? 'selected-tech' : ''), 
-                  ((getOneLanguage && (language.id === getOneLanguage.id)) ? 'selected-lang' : '')]" 
+      <li :class="[(isEmpty(getTech) || (getTech._id === language.tech._id)  ? 'selected-tech' : ''), 
+                  ((getOneLanguage && (language._id === getOneLanguage._id)) ? 'selected-lang' : '')]" 
           v-for="language in languages" 
-          :key="language.id" 
+          :key="language._id" 
           >
         <img :src="getSvgUrl(language.img)" alt="">
-        <a @click="selectLanguage(language)" >{{ language.name }}</a>
+        <a @click="selectLanguage(language)" >{{ language.title }}</a>
       </li>
     </ul>
   </aside>
@@ -45,17 +45,15 @@ export default {
                     'fetchTech' ]),
     
     async selectLanguage(language) {
-      console.log(language)
       await this.fetchLanguage(language);
       this.articlesClear();
-      await this.fetchArticles(language.id);
+      await this.fetchArticles(language._id);
       this.articleClear();
     },
 
     isEmpty(obj) { return Object.keys(obj).length === 0; },
 
     getSvgUrl(pic) {
-      //console.log(pic)
       return require('@/assets/logos/' + pic + '.svg');
     },
   },
