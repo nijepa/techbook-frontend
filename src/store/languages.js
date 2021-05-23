@@ -37,8 +37,8 @@ const mutations = {
     state.language = {};
   },
 
-/*   addLanguage(state, text) {
-    state.languages = [text, ...state.expenses]
+  addLanguage(state, text) {
+    state.languages = [text, ...state.languages]
   },
 
   updateLanguage(state, language) {
@@ -53,7 +53,7 @@ const mutations = {
     state.languages = [
       ...state.languages.filter((item) => item._id !== id)
     ];
-  }, */
+  }, 
 };
 
 /* -------------------------------------- ACTIONS -------------------------------------- */
@@ -98,17 +98,16 @@ const actions = {
   },
 
   async fetchLanguage ({ commit }, languageData) {
-    console.log('zzz', languageData._id)
     const response = await axios.get(URL + "api/v1/langs/" + languageData._id, languageData);
     //commit('setExpense', response.data);
     //const response = languageData
     commit('setLanguage', response.data);
   },
 
-  /* async languageAdd({commit},languageData) {
-    await axios.post(URL + 'expenses', expenseData)
+  async languageAdd({commit}, languageData) {
+    await axios.post(URL + 'api/v1/langs', languageData)
       .then((response) => {
-        commit('addExpense', response.data.expense);
+        commit('addLanguage', response.data);
         //router.push("/dashboard")
       })
       .catch((error) => {
@@ -120,10 +119,10 @@ const actions = {
       })
   },
 
-  async expenseUpdate({commit}, expenseData) {
-    await axios.put(URL + 'expenses/' + expenseData._id, expenseData)
+  async languageUpdate({commit}, languageData) {
+    await axios.put(URL + 'api/v1/langs/' + languageData._id, languageData)
       .then((response) => {
-        commit('updateExpense', response.data);
+        commit('updateLanguage', response.data);
         //router.push("/dashboard");
       })
       .catch((error) => {
@@ -135,10 +134,10 @@ const actions = {
       })
   },
 
-  async expenseDelete({commit}, expenseData) {
-    await axios.delete(URL + 'expenses/' + expenseData._id, expenseData)
+  async languageDelete({commit}, languageData) {
+    await axios.delete(URL + 'api/v1/langs/' + languageData._id, languageData)
       .then((response) => {
-        commit('deleteExpense', response.data._id)
+        commit('deleteLanguage', response.data._id)
       })
       .catch((error) => {
         if (error.response) {
@@ -147,7 +146,7 @@ const actions = {
           commit('setErrors', error);
         }
       })
-  }, */
+  },
 
   async languageClear({commit}) {
     commit('clearLanguage');
