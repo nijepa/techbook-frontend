@@ -1,18 +1,17 @@
-import axios from 'axios';
+import axios from "axios";
 const URL = process.env.VUE_APP_BACKEND_URL_LOCAL;
 // import apiClient from './api_client';
 //import router from '../router';
 
-
 const state = {
   techs: [],
-  tech: {}
+  tech: {},
 };
 
 /* -------------------------------------- GETTERS -------------------------------------- */
 const getters = {
-  getTechs: state => state.techs,
-  getTech: state => state.tech
+  getTechs: (state) => state.techs,
+  getTech: (state) => state.tech,
 };
 
 /* -------------------------------------- MUTATIONS -------------------------------------- */
@@ -26,82 +25,86 @@ const mutations = {
   },
 
   addTech(state, text) {
-    state.techs = [text, ...state.techs]
+    state.techs = [text, ...state.techs];
   },
 
   updateTech(state, tech) {
     state.techs = [
-      ...state.techs.map(item => 
-          item._id !== tech._id ? item : {...item, ...tech}
-      )
-    ] 
+      ...state.techs.map((item) =>
+        item._id !== tech._id ? item : { ...item, ...tech }
+      ),
+    ];
   },
 
-  deleteTech (state, id) {
-    state.techs = [
-      ...state.techs.filter((item) => item._id !== id)
-    ];
-  }, 
+  deleteTech(state, id) {
+    state.techs = [...state.techs.filter((item) => item._id !== id)];
+  },
 };
 
 /* -------------------------------------- ACTIONS -------------------------------------- */
 const actions = {
-  async fetchTechs ({ commit }) {
+  async fetchTechs({ commit }) {
     const response = await axios.get(URL + "api/v1/techs");
-    commit('setTechs', response);
+    commit("setTechs", response);
   },
 
-  async fetchTech ({ commit }, techData) {
-    const response = await axios.get(URL + "api/v1/techs/" + techData._id, techData);
-    commit('setTech', response.data);
+  async fetchTech({ commit }, techData) {
+    const response = await axios.get(
+      URL + "api/v1/techs/" + techData._id,
+      techData
+    );
+    commit("setTech", response.data);
   },
 
-  async techAdd({commit}, techData) {
-    await axios.post(URL + 'api/v1/techs', techData)
+  async techAdd({ commit }, techData) {
+    await axios
+      .post(URL + "api/v1/techs", techData)
       .then((response) => {
-        commit('addTech', response.data);
+        commit("addTech", response.data);
         //router.push("/dashboard")
       })
       .catch((error) => {
         if (error.response) {
-          commit('setErrors', error.response.data.error);
+          commit("setErrors", error.response.data.error);
         } else {
-          commit('setErrors', error);
+          commit("setErrors", error);
         }
-      })
+      });
   },
 
-  async techUpdate({commit}, techData) {
-    await axios.put(URL + 'api/v1/techs/' + techData._id, techData)
+  async techUpdate({ commit }, techData) {
+    await axios
+      .put(URL + "api/v1/techs/" + techData._id, techData)
       .then((response) => {
-        commit('updateTech', response.data);
+        commit("updateTech", response.data);
         //router.push("/dashboard");
       })
       .catch((error) => {
         if (error.response) {
-          commit('setErrors', error.response.data.error);
+          commit("setErrors", error.response.data.error);
         } else {
-          commit('setErrors', error);
+          commit("setErrors", error);
         }
-      })
+      });
   },
 
-  async techDelete({commit}, techData) {
-    await axios.delete(URL + 'api/v1/techs/' + techData._id, techData)
+  async techDelete({ commit }, techData) {
+    await axios
+      .delete(URL + "api/v1/techs/" + techData._id, techData)
       .then((response) => {
-        commit('deleteTech', response.data._id)
+        commit("deleteTech", response.data._id);
       })
       .catch((error) => {
         if (error.response) {
-          commit('setErrors', error.response.data.error);
+          commit("setErrors", error.response.data.error);
         } else {
-          commit('setErrors', error);
+          commit("setErrors", error);
         }
-      })
+      });
   },
 
-  async techClear({commit}) {
-    commit('clearTech');
+  async techClear({ commit }) {
+    commit("clearTech");
   },
 };
 
@@ -109,5 +112,5 @@ export default {
   state,
   getters,
   actions,
-  mutations
+  mutations,
 };

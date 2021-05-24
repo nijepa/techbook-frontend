@@ -1,9 +1,12 @@
-import { createStore } from 'vuex';
-import languagesModule from './languages';
-import articlesModule from './articles';
+import { createStore } from "vuex";
+import techsModule from "./techs";
+import languagesModule from "./languages";
+import articlesModule from "./articles";
 
 export default createStore({
   modules: {
-    languagesModule, articlesModule
-  }
-})
+    techsModule,
+    languagesModule,
+    articlesModule,
+  },
+});
