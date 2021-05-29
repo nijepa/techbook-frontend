@@ -39,11 +39,11 @@
         await this.fetchTech(tech);
       },
 
-      clearTech() {
-        this.articleClear();
-        this.articlesClear();
-        this.languageClear();
-        this.techClear();
+      async clearTech() {
+        await this.articleClear();
+        await this.articlesClear();
+        await this.languageClear();
+        await this.techClear();
         this.$router.push('/');
       },
 

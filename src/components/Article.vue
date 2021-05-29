@@ -6,9 +6,14 @@
     <p>
       {{ getOneArticle.description }}
     </p>
-    <code>
+    <code v-if="getOneArticle.code">
       {{ getOneArticle.code }}
     </code>
+    <ul v-if="getOneArticle.links.length">
+      <li v-for="link in getOneArticle.links" :key="link">
+        {{ link }}
+      </li>
+    </ul>
   </article>
 </template>
 

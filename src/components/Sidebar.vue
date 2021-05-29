@@ -1,71 +1,83 @@
 <template>
   <aside id="sidenav">
     <ul>
-      <li :class="[(isEmpty(getTech) || (getTech._id === language.tech._id)  ? 'selected-tech' : ''), 
-                  ((getOneLanguage && (language._id === getOneLanguage._id)) ? 'selected-lang' : '')]" 
-          v-for="language in languages" 
-          :key="language._id" 
-          >
-        <img :src="getSvgUrl(language.img)" alt="">
-        <a @click="selectLanguage(language)" >{{ language.title }}</a>
+      <li
+        :class="[
+          isEmpty(getTech) || getTech._id === language.tech._id
+            ? 'selected-tech'
+            : '',
+          getOneLanguage && language._id === getOneLanguage._id
+            ? 'selected-lang'
+            : '',
+        ]"
+        v-for="language in languages"
+        :key="language._id"
+        @click="selectLanguage(language)"
+      >
+        <img :src="getSvgUrl(language.img)" alt="" />
+        <a>{{ language.title }}</a>
       </li>
     </ul>
   </aside>
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex';
+import { mapGetters, mapActions } from "vuex";
 
 export default {
-  name: 'Sidebar',
+  name: "Sidebar",
 
   data() {
     return {
       tech: {},
-      languages: []
-    }
+      languages: [],
+    };
   },
 
   computed: {
-    ...mapGetters([ 'getAllLanguages',
-                    'getOneLanguage',
-                    'getTech',
-                    'getAllArticles' ]),
+    ...mapGetters([
+      "getAllLanguages",
+      "getOneLanguage",
+      "getTech",
+      "getAllArticles",
+    ]),
     checkTech() {
-      return this.getTech
-    }
+      return this.getTech;
+    },
   },
   methods: {
-    ...mapActions([ 'fetchLanguages', 
-                    'fetchLanguage',
-                    'fetchArticles',
-                    'articlesClear',
-                    'articleClear',
-                    'fetchTechs',
-                    'fetchTech' ]),
-    
+    ...mapActions([
+      "fetchLanguages",
+      "fetchLanguage",
+      "fetchArticles",
+      "articlesClear",
+      "articleClear",
+      "fetchTechs",
+      "fetchTech",
+    ]),
+
     async selectLanguage(language) {
       await this.fetchLanguage(language);
-      this.articlesClear();
+      await this.articlesClear();
+      await this.articleClear();
       await this.fetchArticles(language._id);
-      this.articleClear();
     },
 
-    isEmpty(obj) { return Object.keys(obj).length === 0; },
+    isEmpty(obj) {
+      return Object.keys(obj).length === 0;
+    },
 
     getSvgUrl(pic) {
-      return require('@/assets/logos/' + pic + '.svg');
+      return require("@/assets/logos/" + pic + ".svg");
     },
   },
 
-  async created()  {
+  async created() {
     await this.fetchTechs();
     await this.fetchLanguages();
     this.languages = this.getAllLanguages.data;
-  }
-}
+  },
+};
 </script>
 
-<style>
-
-</style>
+<style></style>
