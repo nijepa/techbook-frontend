@@ -3,15 +3,32 @@
     <h1>New</h1>
     <form class="go-bottom" action="">
       <div>
-        <input v-model="article.title" id="name" name="name" type="text" required />
+        <input
+          v-model="article.title"
+          id="name"
+          name="name"
+          type="text"
+          required
+        />
         <label for="name">Title</label>
       </div>
       <div>
-        <textarea v-model="article.description" id="desc" name="desc" rows="10"></textarea>
+        <textarea
+          v-model="article.description"
+          id="desc"
+          name="desc"
+          rows="10"
+        ></textarea>
         <label for="desc">Description</label>
       </div>
       <div>
-        <textarea v-model="article.code" class="coding" id="code" name="code" rows="15"></textarea>
+        <textarea
+          v-model="article.code"
+          class="coding"
+          id="code"
+          name="code"
+          rows="15"
+        ></textarea>
         <label for="code">Code</label>
       </div>
       <button type="submit" @click="saveArticle()">Save</button>
@@ -30,7 +47,7 @@ export default {
         title: "",
         description: "",
         code: "",
-        lang: ""
+        lang: "",
       },
     };
   },

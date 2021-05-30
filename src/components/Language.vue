@@ -58,8 +58,8 @@ export default {
   },
 
   created()  {
-    this.fetchLanguage();
-    this.fetchArticles();
+    //this.fetchLanguage();
+    //this.fetchArticles();
   }
 }
 </script>

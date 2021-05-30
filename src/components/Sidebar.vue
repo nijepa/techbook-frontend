@@ -57,7 +57,8 @@ export default {
     ]),
 
     async selectLanguage(language) {
-      await this.fetchLanguage(language);
+      console.log('000')
+      if (language._id) await this.fetchLanguage(language);
       await this.articlesClear();
       await this.articleClear();
       await this.fetchArticles(language._id);
