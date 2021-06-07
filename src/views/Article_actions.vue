@@ -32,13 +32,9 @@
         <label for="code">Code</label>
       </div>
       <ul v-if="article.links.length">
-        <li
-          v-for="linki in article.links"
-          :key="linki"
-          @click="updateLink(linki)"
-        >
-          {{ linki }}
-          <button @click="removeLink(linki)">Remove</button>
+        <li v-for="link in article.links" :key="link" @click="updateLink(link)">
+          {{ link }}
+          <button @click="removeLink(link)">Remove</button>
         </li>
       </ul>
       <div class="links">
@@ -46,8 +42,8 @@
           <input v-model="link" id="link" name="link" type="text" required />
           <label for="link">Link</label>
         </div>
-        <button @click="saveLink(link)">Save link</button>
       </div>
+      <button @click.prevent="saveLink(link)">Save link</button>
       <button type="submit" @click="saveArticle()">Save</button>
       <button type="submit" @click="cancelSave()">Cancel</button>
     </form>
@@ -55,11 +51,61 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from "vuex";
+import { ref, computed } from "@vue/reactivity";
+import { useRouter } from "vue-router";
+import { useStore } from "vuex";
 export default {
   name: "ArticleActions",
 
-  data() {
+  setup() {
+    const article = ref({
+      title: "",
+      description: "",
+      code: "",
+      langId: "",
+      links: [],
+    });
+    const link = ref(null);
+    const router = useRouter();
+    const store = useStore();
+
+    const langId = computed(() => store.getters.getOneLanguage);
+
+    const cancelSave = () => {
+      router.push("/");
+    };
+
+    const saveArticle = () => {
+      article.value.langId = langId.value._id;
+      store.dispatch("articleAdd", article.value);
+      router.push("/");
+    };
+
+    const saveLink = (linko) => {
+      article.value.links.push(linko);
+      link.value = null;
+    };
+
+    const updateLink = (link) => {
+      link.value = link;
+    };
+
+    const removeLink = (link) => {
+      article.value.links = article.value.links.filter((a) => a !== link);
+    };
+
+    return {
+      article,
+      link,
+      saveLink,
+      cancelSave,
+      updateLink,
+      removeLink,
+      saveArticle,
+    };
+  },
+
+  /*   data() {
     return {
       article: {
         title: "",
@@ -70,37 +116,33 @@ export default {
       },
       link: "",
     };
-  },
+  }, */
 
   computed: {
-    ...mapGetters(["getAllArticles", "getOneArticle", "getOneLanguage"]),
+    //...mapGetters(["getAllArticles", "getOneArticle", "getOneLanguage"]),
   },
 
   methods: {
-    ...mapActions(["fetchArticles", "fetchArticle", "addArticle"]),
-
-    saveArticle() {
+    //...mapActions(["fetchArticles", "fetchArticle", "articleAdd"]),
+    /* saveArticle() {
       this.article.lang = this.getOneLanguage._id;
-      this.addArticle(this.article);
-    },
-
-    cancelSave() {
+      this.articleAdd(this.article);
+    }, */
+    /* cancelSave() {
       this.$router.push("/");
-    },
-
-    saveLink(link) {
+    }, */
+    /*     saveLink(link) {
       console.log('rrr')
       this.article.links.push(link);
       this.link = "";
-    },
-
-    updateLink(link) {
+    }, */
+    /* updateLink(link) {
       this.link = link;
     },
 
     removeLink(link) {
       this.article.links = this.article.links.filter((a) => a !== link);
-    },
+    }, */
   },
 };
 </script>

@@ -90,9 +90,9 @@ const actions = {
       })
       .catch((error) => {
         if (error.response) {
-          commit("setErrors", error.response.data.error);
+          //commit("setErrors", error.response.data.error);
         } else {
-          commit("setErrors", error);
+          //commit("setErrors", error);
         }
       });
   },
