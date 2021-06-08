@@ -1,48 +1,57 @@
 <template>
   <article>
     <h3>
-      {{ getOneArticle.title }}
+      {{ article.title }}
     </h3>
     <p>
-      {{ getOneArticle.description }}
+      {{ article.description }}
     </p>
-    <code v-if="getOneArticle.code">
-      {{ getOneArticle.code }}
+    <code v-if="article.code">
+      {{ article.code }}
     </code>
-    <ul v-if="getOneArticle.links.length">
-      <li v-for="link in getOneArticle.links" :key="link">
+    <ul v-if="article.links.length">
+      <li v-for="link in article.links" :key="link">
         {{ link }}
       </li>
     </ul>
+    <router-link to="/article">Edit</router-link>
+    <button @click.prevent="deleteArticle">Delete</button>
   </article>
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex';
+import { useStore } from "vuex";
+import { computed } from "@vue/reactivity";
 
 export default {
-  name: 'Article',
+  name: "Article",
 
-  computed: {
-    ...mapGetters([ 'getAllArticles',
-                    'getOneArticle' ]),
+  setup() {
+    const store = useStore();
+    const article = computed(() => store.getters.getOneArticle);
+
+    const deleteArticle = () => {
+      store.dispatch("articleDelete", article.value);
+      store.dispatch("articleClear");
+    };
+
+    return { article, deleteArticle };
   },
 
+  /*   computed: {
+    ...mapGetters([ 'getAllArticles',
+                    'getOneArticle' ]),
+  },*/
+
   methods: {
-    ...mapActions([ 'fetchArticles',
-                    'fetchArticle' ]),
+    /*...mapActions([ 'fetchArticles',
+                    'fetchArticle' ]), */
 
     selectArticle(article) {
       this.fetchArticle(article);
     },
   },
-
-  created()  {
-    //this.fetchArticle();
-  }
-}
+};
 </script>
 
-<style>
-
-</style>
+<style></style>

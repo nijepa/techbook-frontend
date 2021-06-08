@@ -68,21 +68,37 @@ export default {
     const link = ref(null);
     const router = useRouter();
     const store = useStore();
+    let edited = false;
 
-    const langId = computed(() => store.getters.getOneLanguage);
+    const lang = computed(() => store.getters.getOneLanguage);
+
+    function isEmpty(obj) {
+      return Object.keys(obj).length === 0;
+    }
+
+    const art = computed(() => store.getters.getOneArticle);
+
+    if (!isEmpty(art.value)) {
+      article.value = art.value;
+      edited = true
+    }
 
     const cancelSave = () => {
       router.push("/");
     };
 
     const saveArticle = () => {
-      article.value.langId = langId.value._id;
-      store.dispatch("articleAdd", article.value);
+      article.value.langId = lang.value._id;
+      if (!edited) {
+        store.dispatch("articleAdd", article.value);
+      } else {
+        store.dispatch("articleUpdate", article.value);
+      }
       router.push("/");
     };
 
-    const saveLink = (linko) => {
-      article.value.links.push(linko);
+    const saveLink = (link) => {
+      article.value.links.push(link);
       link.value = null;
     };
 

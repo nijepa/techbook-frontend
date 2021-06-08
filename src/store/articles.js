@@ -99,16 +99,16 @@ const actions = {
 
   async articleUpdate({ commit }, articleData) {
     await axios
-      .put(URL + "api/v1/articles/" + articleData._id, articleData)
+      .patch(URL + "api/v1/articles/" + articleData._id, articleData)
       .then((response) => {
         commit("updateArticle", response.data);
         //router.push("/dashboard");
       })
       .catch((error) => {
         if (error.response) {
-          commit("setErrors", error.response.data.error);
+          //commit("setErrors", error.response.data.error);
         } else {
-          commit("setErrors", error);
+          //commit("setErrors", error);
         }
       });
   },
@@ -121,9 +121,9 @@ const actions = {
       })
       .catch((error) => {
         if (error.response) {
-          commit("setErrors", error.response.data.error);
+          //commit("setErrors", error.response.data.error);
         } else {
-          commit("setErrors", error);
+          //commit("setErrors", error);
         }
       });
   },
