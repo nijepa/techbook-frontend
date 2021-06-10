@@ -1,42 +1,41 @@
 <template>
   <main>
-    <div class="" v-if="!isEmpty(getOneLanguage)">
+    <div class="" v-if="!isEmpty(lang)">
       <article-nav />
       <Language />
     </div>
     <div class="main-title" v-else>
       <h1>{{ msg }}</h1>
-      <img :src="getSvgUrl('coding')" alt="">
+      <img :src="getUrl('coding')" alt="" />
     </div>
   </main>
 </template>
 
 <script>
-  import Language from '@/components/Language.vue';
-  import ArticleNav from '@/components/Article_nav.vue';
-  import { mapGetters } from 'vuex';
+import Language from "@/components/Language.vue";
+import ArticleNav from "@/components/Article_nav.vue";
+import { useStore } from "vuex";
+import { computed } from "@vue/reactivity";
+import { isEmpty } from "@/helpers/isEmptyObject";
+import { getUrl } from "@/helpers/getUrl";
 
-  export default {
-    name: 'Main',
+export default {
+  name: "Main",
 
-    props: {
-      msg: String
-    },
-    
-    components: {
-      Language, ArticleNav
-    },
+  setup() {
+    const store = useStore();
+    const lang = computed(() => store.getters.getOneLanguage);
 
-    computed: {
-      ...mapGetters([ 'getOneLanguage' ]),
-    },
+    return { lang, isEmpty, getUrl };
+  },
 
-    methods: {
-      isEmpty(obj) { return Object.keys(obj).length === 0; },
+  props: {
+    msg: String,
+  },
 
-      getSvgUrl(pic) {
-        return require('../assets/images/' + pic + '.svg');
-      },
-    },
-  }
+  components: {
+    Language,
+    ArticleNav,
+  },
+};
 </script>

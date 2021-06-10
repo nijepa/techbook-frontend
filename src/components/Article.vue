@@ -14,8 +14,6 @@
         {{ link }}
       </li>
     </ul>
-    <router-link to="/article">Edit</router-link>
-    <button @click.prevent="deleteArticle">Delete</button>
   </article>
 </template>
 
@@ -30,26 +28,7 @@ export default {
     const store = useStore();
     const article = computed(() => store.getters.getOneArticle);
 
-    const deleteArticle = () => {
-      store.dispatch("articleDelete", article.value);
-      store.dispatch("articleClear");
-    };
-
-    return { article, deleteArticle };
-  },
-
-  /*   computed: {
-    ...mapGetters([ 'getAllArticles',
-                    'getOneArticle' ]),
-  },*/
-
-  methods: {
-    /*...mapActions([ 'fetchArticles',
-                    'fetchArticle' ]), */
-
-    selectArticle(article) {
-      this.fetchArticle(article);
-    },
+    return { article };
   },
 };
 </script>

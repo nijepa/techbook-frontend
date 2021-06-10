@@ -2,27 +2,57 @@
   <header>
     <h1 @click="clearTech()">tech book</h1>
     <nav>
-      <div class="nav-card" 
-            v-for="tech in getTechs.data" 
-            :key="tech._id"
-            :class="tech._id === getTech._id ? 'sel-tech' : 'all-tech'" 
-            @click="selectTech(tech)">
-        <img :src="getSvgUrl(tech.img)" alt="">
+      <div
+        class="nav-card"
+        v-for="tech in techs.data"
+        :key="tech._id"
+        :class="tech._id === techSingle._id ? 'sel-tech' : 'all-tech'"
+        @click="selectTech(tech)"
+      >
+        <img :src="getUrl(tech.img)" alt="" />
         <h3>{{ tech.title }}</h3>
       </div>
-<!--  <router-link to="/">Home</router-link> |
+      <!--  <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link> -->
     </nav>
   </header>
 </template>
 
 <script>
-  import { mapGetters, mapActions } from 'vuex';
+import { computed } from "@vue/reactivity";
+import { useRouter } from "vue-router";
+import { useStore } from "vuex";
+import { getUrl } from "@/helpers/getUrl";
 
-  export default {
-    name: 'Header',
+export default {
+  name: "Header",
 
-    computed: {
+  setup() {
+    const store = useStore();
+    const router = useRouter();
+
+    const techs = computed(() => store.getters.getTechs);
+    const techSingle = computed(() => store.getters.getTech);
+
+    const selectTech = async (tech) => {
+      clearTech();
+      await store.dispatch("fetchTech", tech);
+    };
+
+    const clearTech = async () => {
+      await store.dispatch("articleClear");
+      await store.dispatch("articlesClear");
+      await store.dispatch("languageClear");
+      await store.dispatch("techClear");
+      router.push("/");
+    };
+
+    store.dispatch("fetchTechs");
+
+    return { techs, techSingle, selectTech, clearTech, getUrl };
+  },
+
+  /*     computed: {
       ...mapGetters([ 'getTechs',
                       'getTech', ]),
     },
@@ -32,9 +62,9 @@
                       'techClear',
                       'languageClear',
                       'articlesClear',
-                      'articleClear' ]),
+                      'articleClear' ]), */
 
-      async selectTech(tech) {
+  /* async selectTech(tech) {
         this.clearTech();
         await this.fetchTech(tech);
       },
@@ -45,19 +75,17 @@
         await this.languageClear();
         await this.techClear();
         this.$router.push('/');
-      },
+      }, */
 
-      getSvgUrl(pic) {
+  /*       getSvgUrl(pic) {
         return require('../assets/images/' + pic + '.svg');
       },
-    },
+    }, */
 
-    async created()  {
+  /*     async created()  {
       await this.fetchTechs();
-    }
-  }
+    } */
+};
 </script>
 
-<style>
-
-</style>
+<style></style>

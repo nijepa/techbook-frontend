@@ -3,10 +3,10 @@
     <ul>
       <li
         :class="[
-          isEmpty(getTech) || getTech._id === language.tech._id
+          isEmpty(tech) || tech._id === language.tech._id
             ? 'selected-tech'
             : '',
-          getOneLanguage && language._id === getOneLanguage._id
+          lang && language._id === lang._id
             ? 'selected-lang'
             : '',
         ]"
@@ -14,7 +14,7 @@
         :key="language._id"
         @click="selectLanguage(language)"
       >
-        <img :src="getSvgUrl(language.img)" alt="" />
+        <img :src="getUrl(language.img_url, 'logos')" alt="" />
         <a>{{ language.title }}</a>
       </li>
     </ul>
@@ -22,19 +22,45 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from "vuex";
+import { computed } from "@vue/reactivity";
+import { useRouter } from "vue-router";
+import { useStore } from "vuex";
+import { isEmpty } from '../helpers/isEmptyObject'
+import { getUrl } from '../helpers/getUrl'
 
 export default {
   name: "Sidebar",
 
-  data() {
+  setup() {
+    const router = useRouter();
+    const store = useStore();
+
+    store.dispatch("fetchTechs");
+    store.dispatch("fetchLanguages");
+
+    const tech = computed(() => store.getters.getTech);
+    const languages = computed(() => store.getters.getAllLanguages.data);
+    const lang = computed(() => store.getters.getOneLanguage);
+
+    const selectLanguage = async (language) => {
+      if (language._id) await store.dispatch("fetchLanguage", language)
+      await store.dispatch("articlesClear")
+      await store.dispatch("articleClear")
+      await store.dispatch("fetchArticles", language._id)
+      router.push("/");
+    }
+
+    return { getUrl, isEmpty, selectLanguage, tech, languages, lang }
+  },
+
+/*   data() {
     return {
       tech: {},
       languages: [],
     };
-  },
+  }, */
 
-  computed: {
+/*   computed: {
     ...mapGetters([
       "getAllLanguages",
       "getOneLanguage",
@@ -44,9 +70,9 @@ export default {
     checkTech() {
       return this.getTech;
     },
-  },
+  }, */
   methods: {
-    ...mapActions([
+/*     ...mapActions([
       "fetchLanguages",
       "fetchLanguage",
       "fetchArticles",
@@ -54,30 +80,30 @@ export default {
       "articleClear",
       "fetchTechs",
       "fetchTech",
-    ]),
+    ]), */
 
-    async selectLanguage(language) {
-      console.log('000')
+    /* async selectLanguage(language) {
       if (language._id) await this.fetchLanguage(language);
       await this.articlesClear();
       await this.articleClear();
       await this.fetchArticles(language._id);
-    },
+      this.$router.push("/");
+    }, */
 
-    isEmpty(obj) {
+/*     isEmpty(obj) {
       return Object.keys(obj).length === 0;
-    },
+    }, */
 
-    getSvgUrl(pic) {
+/*     getSvgUrl(pic) {
       return require("@/assets/logos/" + pic + ".svg");
-    },
+    }, */
   },
 
-  async created() {
+/*   async created() {
     await this.fetchTechs();
     await this.fetchLanguages();
     this.languages = this.getAllLanguages.data;
-  },
+  }, */
 };
 </script>
 

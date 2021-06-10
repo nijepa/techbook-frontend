@@ -54,6 +54,8 @@
 import { ref, computed } from "@vue/reactivity";
 import { useRouter } from "vue-router";
 import { useStore } from "vuex";
+import { isEmpty } from '../helpers/isEmptyObject'
+
 export default {
   name: "ArticleActions",
 
@@ -63,6 +65,7 @@ export default {
       description: "",
       code: "",
       langId: "",
+      user: '609fa93aa271831c12d7f8d0',
       links: [],
     });
     const link = ref(null);
@@ -72,9 +75,9 @@ export default {
 
     const lang = computed(() => store.getters.getOneLanguage);
 
-    function isEmpty(obj) {
+/*     function isEmpty(obj) {
       return Object.keys(obj).length === 0;
-    }
+    } */
 
     const art = computed(() => store.getters.getOneArticle);
 
@@ -119,46 +122,6 @@ export default {
       removeLink,
       saveArticle,
     };
-  },
-
-  /*   data() {
-    return {
-      article: {
-        title: "",
-        description: "",
-        code: "",
-        lang: "",
-        links: [],
-      },
-      link: "",
-    };
-  }, */
-
-  computed: {
-    //...mapGetters(["getAllArticles", "getOneArticle", "getOneLanguage"]),
-  },
-
-  methods: {
-    //...mapActions(["fetchArticles", "fetchArticle", "articleAdd"]),
-    /* saveArticle() {
-      this.article.lang = this.getOneLanguage._id;
-      this.articleAdd(this.article);
-    }, */
-    /* cancelSave() {
-      this.$router.push("/");
-    }, */
-    /*     saveLink(link) {
-      console.log('rrr')
-      this.article.links.push(link);
-      this.link = "";
-    }, */
-    /* updateLink(link) {
-      this.link = link;
-    },
-
-    removeLink(link) {
-      this.article.links = this.article.links.filter((a) => a !== link);
-    }, */
   },
 };
 </script>
