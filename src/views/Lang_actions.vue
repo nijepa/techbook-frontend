@@ -57,7 +57,7 @@ import { useStore } from "vuex";
 import { isEmpty } from '../helpers/isEmptyObject'
 
 export default {
-  name: "ArticleActions",
+  name: "LangActions",
 
   setup() {
     const article = ref({

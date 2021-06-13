@@ -60,17 +60,18 @@ export default {
   name: "ArticleActions",
 
   setup() {
+    const router = useRouter();
+    const store = useStore();
     const article = ref({
       title: "",
       description: "",
       code: "",
       langId: "",
       user: '609fa93aa271831c12d7f8d0',
+      img_url: "",
       links: [],
     });
-    const link = ref(null);
-    const router = useRouter();
-    const store = useStore();
+    let link = ref(null);
     let edited = false;
 
     const lang = computed(() => store.getters.getOneLanguage);
@@ -100,13 +101,14 @@ export default {
       router.push("/");
     };
 
-    const saveLink = (link) => {
-      article.value.links.push(link);
+    const saveLink = (links) => {
+      article.value.links.push(links);
+      console.log(link)
       link.value = null;
     };
 
-    const updateLink = (link) => {
-      link.value = link;
+    const updateLink = (links) => {
+      link.value = links;
     };
 
     const removeLink = (link) => {
