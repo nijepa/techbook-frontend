@@ -2,11 +2,15 @@ article {
   display: grid;
   justify-content: center;
   margin-top: 1em;
+  padding: 1em;
 
   p {
     background-color: $blue-lighter;
     border-radius: 5px;
-    margin-top: .5em;
+    display: flex;
+    text-align: left;
+    padding: 1em;
+    margin-top: 1em;
   }
 
   code {
@@ -19,7 +23,25 @@ article {
     background-color: $blue-darkest;
     color: $orange-light;
     padding: 1em;
-    margin: 1em;
-    border-radius: 10px;
+    border-radius: 5px;
+    margin-top: 1em;
+  }
+
+  ul {
+    li {
+      background-color: transparent;
+      border: transparent;
+
+      a {
+        color: $blue-darkest;
+        font-weight: 500;
+      }
+    }
+    li:hover {
+      background-color: $blue-darkest;
+      a {
+        color: $orange-lighter;
+      }
+    }
   }
 }

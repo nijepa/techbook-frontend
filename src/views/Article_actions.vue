@@ -17,7 +17,7 @@
           v-model="article.description"
           id="desc"
           name="desc"
-          rows="10"
+          rows="15"
         ></textarea>
         <label for="desc">Description</label>
       </div>
@@ -31,10 +31,12 @@
         ></textarea>
         <label for="code">Code</label>
       </div>
-      <ul v-if="article.links.length">
-        <li v-for="link in article.links" :key="link" @click="updateLink(link)">
-          {{ link }}
-          <button @click="removeLink(link)">Remove</button>
+      <ul v-if="article.links.length" class="links__article">
+        <li v-for="link in article.links" :key="link">
+          <a href="" @click.prevent="updateLink(link)">{{ link }}</a> 
+          <a @click="removeLink(link)"
+            ><img :src="getUrl('delete')" alt="" class="links__article-remove"
+          /></a>
         </li>
       </ul>
       <div class="links">
@@ -54,7 +56,8 @@
 import { ref, computed } from "@vue/reactivity";
 import { useRouter } from "vue-router";
 import { useStore } from "vuex";
-import { isEmpty } from '../helpers/isEmptyObject'
+import { isEmpty } from "../helpers/isEmptyObject";
+import { getUrl } from "../helpers/getUrl";
 
 export default {
   name: "ArticleActions",
@@ -67,7 +70,7 @@ export default {
       description: "",
       code: "",
       langId: "",
-      user: '609fa93aa271831c12d7f8d0',
+      user: "609fa93aa271831c12d7f8d0",
       img_url: "",
       links: [],
     });
@@ -76,7 +79,7 @@ export default {
 
     const lang = computed(() => store.getters.getOneLanguage);
 
-/*     function isEmpty(obj) {
+    /*     function isEmpty(obj) {
       return Object.keys(obj).length === 0;
     } */
 
@@ -84,7 +87,7 @@ export default {
 
     if (!isEmpty(art.value)) {
       article.value = art.value;
-      edited = true
+      edited = true;
     }
 
     const cancelSave = () => {
@@ -101,18 +104,26 @@ export default {
       router.push("/");
     };
 
+    let linkIdx = null;
+
     const saveLink = (links) => {
-      article.value.links.push(links);
-      console.log(link)
+      if (!links) return;
+      if (linkIdx || linkIdx === 0) {
+        article.value.links[linkIdx] = link.value;
+      } else {
+        article.value.links.push(links);
+      }
       link.value = null;
+      linkIdx = null;
     };
 
     const updateLink = (links) => {
       link.value = links;
+      linkIdx = article.value.links.indexOf(links);
     };
 
-    const removeLink = (link) => {
-      article.value.links = article.value.links.filter((a) => a !== link);
+    const removeLink = (links) => {
+      article.value.links = article.value.links.filter((a) => a !== links);
     };
 
     return {
@@ -123,12 +134,24 @@ export default {
       updateLink,
       removeLink,
       saveArticle,
+      getUrl,
     };
   },
 };
 </script>
 
 <style>
+.links__article {
+  list-style: none;
+}
+.links__article li {
+  cursor: pointer;
+  justify-content: center;
+}
+.links__article-remove {
+  width: 2em;
+  height: 2em;
+}
 .links {
   display: grid;
   grid-template-columns: 1fr auto;

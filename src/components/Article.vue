@@ -11,7 +11,7 @@
     </code>
     <ul v-if="article.links.length">
       <li v-for="link in article.links" :key="link">
-        {{ link }}
+        <a :href="link" target="_blank">{{ link.replace(/(^\w+:|^)\/\//, '') }}</a> 
       </li>
     </ul>
   </article>
