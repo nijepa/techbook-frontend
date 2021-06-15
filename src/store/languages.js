@@ -45,25 +45,7 @@ const mutations = {
 const actions = {
   async fetchLanguages({ commit }) {
     const response = await axios.get(URL + "api/v1/langs");
-    /*     const response = [
-      {id: 1, name: 'HTML', logo: 'HTML5', tech_id: 1},
-      {id: 2, name: 'CSS', logo: 'CSS3', tech_id: 1},
-      {id: 3, name: 'Sass', logo: 'Sass', tech_id: 1},
-      {id: 4, name: 'JavaScript', logo: 'JavaScript', tech_id: 1},
-      {id: 5, name: 'Vue.js', logo: 'Vue.js', tech_id: 1},
-      {id: 6, name: 'Node.js', logo: 'Node.js', tech_id: 2},
-      {id: 7, name: 'PHP', logo: 'PHP', tech_id: 2},
-      {id: 8, name: 'Laravel', logo: 'Laravel', tech_id: 2},
-      {id: 9, name: 'MongoDB', logo: 'Mongodb', tech_id: 3},
-      {id: 10, name: 'Git', logo: 'Git', tech_id: 4},
-      {id: 11, name: 'Npm', logo: 'Npm', tech_id: 4},
-      {id: 12, name: 'Algorithms', logo: 'Algorithm', tech_id: 4},
-      {id: 13, name: 'MySQL', logo: 'mysql', tech_id: 3},
-      {id: 14, name: 'Firebase', logo: 'Firebase', tech_id: 3},
-      {id: 15, name: 'Data Structures', logo: 'Tree-data-structure', tech_id: 4},
-    ] */
     commit("setLanguages", response);
-    //commit('setExpenses', response.data);
   },
 
   async fetchLanguage({ commit }, languageData) {
@@ -71,8 +53,6 @@ const actions = {
       URL + "api/v1/langs/" + languageData._id,
       languageData
     );
-    //commit('setExpense', response.data);
-    //const response = languageData
     commit("setLanguage", response.data);
   },
 

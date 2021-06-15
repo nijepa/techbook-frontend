@@ -13,7 +13,7 @@
       <a class="article-link" v-if="!isEmpty(article)" @click="addArticle(true)"
         ><img :src="getUrl('edit')" alt="" /> Edit</a
       >
-      <a class="article-link" @click="addArticle"
+      <a class="article-link" @click="addArticle(false)"
         ><img :src="getUrl('add')" alt="" /> Add</a
       >
     </div>

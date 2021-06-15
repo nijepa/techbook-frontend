@@ -6,12 +6,14 @@ const URL = process.env.VUE_APP_BACKEND_URL_LOCAL;
 const state = {
   techs: [],
   tech: {},
+  errors: [],
 };
 
 /* -------------------------------------- GETTERS -------------------------------------- */
 const getters = {
   getTechs: (state) => state.techs,
   getTech: (state) => state.tech,
+  getErrors: (state) => state.errors,
 };
 
 /* -------------------------------------- MUTATIONS -------------------------------------- */
@@ -38,6 +40,10 @@ const mutations = {
 
   deleteTech(state, id) {
     state.techs = [...state.techs.filter((item) => item._id !== id)];
+  },
+
+  setErrors(state, errors) {
+    state.errors = errors;
   },
 };
 
@@ -105,6 +111,10 @@ const actions = {
 
   async techClear({ commit }) {
     commit("clearTech");
+  },
+
+  clearErrors({ commit }) {
+    commit('setErrors', []);
   },
 };
 

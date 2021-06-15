@@ -1,16 +1,22 @@
 article {
   display: grid;
-  justify-content: center;
+  justify-items: center;
   margin-top: 1em;
   padding: 1em;
 
   p {
-    background-color: $blue-lighter;
-    border-radius: 5px;
+    /* background-color: $blue-lighter;
+    border-radius: 5px; */
     display: flex;
     text-align: left;
     padding: 1em;
     margin-top: 1em;
+  }
+
+  h3 {
+    background-image: linear-gradient(to bottom, #c8ddf8, white);
+    border-radius: 5px;
+    padding: .2em;
   }
 
   code {
@@ -31,13 +37,17 @@ article {
     li {
       background-color: transparent;
       border: transparent;
-
+      //background-image: linear-gradient(to top, $blue-dark 30%, white);
+      
       a {
         color: $blue-darkest;
+        border-bottom: 2px solid $blue-darkest;
         font-weight: 500;
       }
     }
+    
     li:hover {
+      background-image: none;
       background-color: $blue-darkest;
       a {
         color: $orange-lighter;
