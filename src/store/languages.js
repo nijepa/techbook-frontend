@@ -54,6 +54,7 @@ const actions = {
       languageData
     );
     commit("setLanguage", response.data);
+    console.log(languageData)
   },
 
   async languageAdd({ commit }, languageData) {

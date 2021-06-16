@@ -17,6 +17,13 @@ form {
     background-color: $blue-darkest;
     color: $orange-main;
   }
+  ul{
+    list-style: none;
+    display: flex;
+    li {
+      margin-right: .5em;
+    }
+  }
   input, textarea {
     font-family: $font-stack;
     font-size: 1em;

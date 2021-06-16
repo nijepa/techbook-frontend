@@ -16,7 +16,8 @@ article {
   h3 {
     background-image: linear-gradient(to bottom, #c8ddf8, white);
     border-radius: 5px;
-    padding: .2em;
+    padding-left: .5em;
+    padding-right: .5em;
   }
 
   code {
@@ -34,21 +35,22 @@ article {
   }
 
   ul {
-    li {
+    .links__article {
       background-color: transparent;
       border: transparent;
       //background-image: linear-gradient(to top, $blue-dark 30%, white);
-      
+      border-bottom: 2px solid $blue-darkest;
+
       a {
         color: $blue-darkest;
-        border-bottom: 2px solid $blue-darkest;
         font-weight: 500;
       }
     }
-    
+
     li:hover {
       background-image: none;
       background-color: $blue-darkest;
+      transition: ease .6s background-color;
       a {
         color: $orange-lighter;
       }

@@ -12,6 +12,14 @@
         />
         <label for="name">Title</label>
       </div>
+      <ul v-if="lang.groups.length" >
+        <li v-for="group in lang.groups" :key="group">
+          <a href="" @click.prevent="updateGroup(group)">{{ group.name }}</a>
+<!--           <a @click="removeGroup(group)"
+            ><img :src="getUrl('delete')" alt="" class="links__article-remove"
+          /></a> -->
+        </li>
+      </ul>
       <div>
         <textarea
           v-model="article.description"
@@ -33,7 +41,7 @@
       </div>
       <ul v-if="article.links.length" class="links__article">
         <li v-for="link in article.links" :key="link">
-          <a href="" @click.prevent="updateLink(link)">{{ link }}</a> 
+          <a href="" @click.prevent="updateLink(link)">{{ link }}</a>
           <a @click="removeLink(link)"
             ><img :src="getUrl('delete')" alt="" class="links__article-remove"
           /></a>
@@ -73,6 +81,7 @@ export default {
       user: "609fa93aa271831c12d7f8d0",
       img_url: "",
       links: [],
+      groups: [],
     });
     let link = ref(null);
     let edited = false;
@@ -127,6 +136,7 @@ export default {
     };
 
     return {
+      lang,
       article,
       link,
       saveLink,
