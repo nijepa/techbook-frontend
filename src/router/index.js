@@ -8,15 +8,15 @@ const routes = [
     component: Home
   },
   {
-    path: '/about',
-    name: 'About',
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
+    path: '/main',
+    name: 'Main',
+    component: () => import(/* webpackChunkName: "about" */ '../views/Main.vue'),
     children: [
       {
-        path: '/clients',
-        name: 'Clients',
+        path: '/languages',
+        name: 'Languages',
         component: () =>
-          import(/* webpackChunkName: "client" */ '../views/Article_actions.vue'),
+          import(/* webpackChunkName: "client" */ '../views/Languages.vue'),
       },
     ]
   },

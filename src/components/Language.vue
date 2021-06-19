@@ -3,6 +3,13 @@
     <div class="section-heading" v-if="lang">
       <img :src="getUrl(lang.img_url, 'logos')" alt="" />
       <h1>{{ lang.title }}</h1>
+      <ul v-if="lang.groups.length">
+        <li v-for="group in lang.groups" :key="group" class="links__article">
+          <a href="" @click.prevent="selectGroup(group.name)">{{
+            group.name
+          }}</a>
+        </li>
+      </ul>
     </div>
 
     <ul v-if="!article._id">
@@ -10,6 +17,7 @@
         v-for="article in articles"
         :key="article._id"
         @click="selectArticle(article)"
+        class="articles__list"
       >
         <h3>{{ article.title }}</h3>
       </li>
@@ -24,23 +32,49 @@
 <script>
 import { useStore } from "vuex";
 import Article from "./Article.vue";
-import { computed } from "@vue/reactivity";
+import { computed, ref } from "@vue/reactivity";
 import { getUrl } from "@/helpers/getUrl";
+import { onMounted } from '@vue/runtime-core';
 
 export default {
   name: "Language",
 
-  setup() {
+  props: { art: Array },
+
+  setup(props) {
     const store = useStore();
     const lang = computed(() => store.getters.getOneLanguage);
-    const articles = computed(() => store.getters.getAllArticles);
+    //const arts = computed(() => store.getters.getAllArticles);
     const article = computed(() => store.getters.getOneArticle);
+    const articles = ref(props.art)
 
     const selectArticle = async (article) => {
       await store.dispatch("fetchArticle", article);
     };
 
-    return { lang, articles, article, selectArticle, getUrl };
+    const selectGroup = (group = null) => {
+      
+      // const a = articles.value.map((element) => {
+      //   return {...element, groups: element.groups.filter((subElement) => subElement === group)}
+      // })
+      if (group) {
+        articles.value = props.art.filter(val => {
+          let filteredArticles = val.groups.some(g => g === group)
+          return filteredArticles
+        })  
+      } else {
+        articles.value = props.art.filter(val => {
+          let menu = val.groups.some(g => g !== group)
+          return menu
+        })
+        console.log('ttt',props.art)
+      }
+      //articles = computed(() => store.getters.getAllArticlesByGroups(group));
+    };
+
+    onMounted(() => selectGroup())
+
+    return { lang, articles, article, selectArticle, getUrl, selectGroup };
   },
 
   components: {

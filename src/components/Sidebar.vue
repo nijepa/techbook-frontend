@@ -44,10 +44,11 @@ export default {
 
     const selectLanguage = async (language) => {
       if (language._id) await store.dispatch("fetchLanguage", language)
-      await store.dispatch("articlesClear")
       await store.dispatch("articleClear")
+      await store.dispatch("articlesClear")
       await store.dispatch("fetchArticles", language._id)
-      router.push("/");
+      console.log('88888')
+      await router.push("/");
     }
 
     return { getUrl, isEmpty, selectLanguage, tech, languages, lang }

@@ -2,7 +2,8 @@
   <main>
     <div class="" v-if="!isEmpty(lang)">
       <article-nav />
-      <Language />
+      <Language :art="articles" />
+      <router-view/>
     </div>
     <div class="main-title" v-else>
       <h1>{{ msg }}</h1>
@@ -25,8 +26,9 @@ export default {
   setup() {
     const store = useStore();
     const lang = computed(() => store.getters.getOneLanguage);
+    const articles = computed(() => store.getters.getAllArticles);
 
-    return { lang, isEmpty, getUrl };
+    return { lang, articles, isEmpty, getUrl };
   },
 
   props: {

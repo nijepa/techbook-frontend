@@ -47,13 +47,13 @@ article {
       }
     }
 
-    li:hover {
+    .links__article:hover {
       background-image: none;
       background-color: $blue-darkest;
       transition: ease .6s background-color;
-      a {
+      //a {
         color: $orange-lighter;
-      }
+     // }
     }
   }
 }

@@ -12,14 +12,14 @@
         />
         <label for="name">Title</label>
       </div>
-      <ul v-if="lang.groups.length" >
-        <li v-for="group in lang.groups" :key="group">
-          <a href="" @click.prevent="updateGroup(group)">{{ group.name }}</a>
-<!--           <a @click="removeGroup(group)"
-            ><img :src="getUrl('delete')" alt="" class="links__article-remove"
-          /></a> -->
-        </li>
-      </ul>
+      <div>
+        <!-- <label>Groups</label> -->
+        <ul v-if="lang.groups.length" >
+          <li v-for="group in lang.groups" :key="group" >
+            <a href="" @click.prevent="updateGroup(group.name)" :class="selectedGroup(group.name) ? 'group' : ''">{{ group.name }}</a>
+          </li>
+        </ul>
+      </div>
       <div>
         <textarea
           v-model="article.description"
@@ -94,6 +94,19 @@ export default {
 
     const art = computed(() => store.getters.getOneArticle);
 
+    const selectedGroup = ((group) => {
+      return article.value.groups.includes(group)
+    })
+
+    const updateGroup = (group) => {
+      const groupIdx = article.value.groups.indexOf(group)
+      if (groupIdx >= 0) {
+        article.value.groups.splice(groupIdx, 1)
+      } else {
+        article.value.groups.push(group)
+      }
+    }
+
     if (!isEmpty(art.value)) {
       article.value = art.value;
       edited = true;
@@ -138,6 +151,8 @@ export default {
     return {
       lang,
       article,
+      updateGroup,
+      selectedGroup,
       link,
       saveLink,
       cancelSave,

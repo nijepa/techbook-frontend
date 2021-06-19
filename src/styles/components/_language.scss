@@ -20,7 +20,7 @@ section {
     list-style-type: none;
     margin: .5em;
 
-    li {
+    .articles__list {
       flex-shrink: 0;
       display: inline-block;
       
@@ -33,9 +33,32 @@ section {
       cursor: pointer;
     }
 
-    li:hover {
+    .links__article {
+      background-color: transparent;
+      border: transparent;
+      margin: .2em;
+      border-bottom: 2px solid $blue-darkest;
+      border-radius: 5px;
+
+      a {
+        color: $blue-darkest;
+        font-weight: 500;
+      }
+    }
+
+    .articles__list:hover {
       background-color: $orange-light;
       color: $blue-darker;
+    }
+
+    .links__article:hover {
+      background-image: none;
+      background-color: $blue-darkest;
+      transition: ease .6s background-color;
+
+      a {
+        color: $orange-lighter;
+      }
     }
   }
 }

@@ -11,6 +11,10 @@ const state = {
 /* -------------------------------------- GETTERS -------------------------------------- */
 const getters = {
   getAllArticles: (state) => state.articles,
+  getAllArticlesByGroups: (state) => (group) => state.articles.filter(val => {
+    let menu = val.groups.some(g => g === group)
+    return menu
+  }),
   getOneArticle: (state) => state.article,
 };
 
