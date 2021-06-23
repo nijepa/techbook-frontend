@@ -32,7 +32,7 @@
 <script>
 import { useStore } from "vuex";
 import Article from "./Article.vue";
-import { computed, ref } from "@vue/reactivity";
+import { computed } from "@vue/reactivity";
 import { getUrl } from "@/helpers/getUrl";
 import { onMounted } from '@vue/runtime-core';
 
@@ -41,12 +41,12 @@ export default {
 
   props: { art: Array },
 
-  setup(props) {
+  setup() {
     const store = useStore();
     const lang = computed(() => store.getters.getOneLanguage);
-    //const arts = computed(() => store.getters.getAllArticles);
+    let articles = computed(() => store.getters.getAllArticles);
     const article = computed(() => store.getters.getOneArticle);
-    const articles = ref(props.art)
+    //const articles = ref(props.art)
 
     const selectArticle = async (article) => {
       await store.dispatch("fetchArticle", article);
@@ -57,19 +57,18 @@ export default {
       // const a = articles.value.map((element) => {
       //   return {...element, groups: element.groups.filter((subElement) => subElement === group)}
       // })
-      if (group) {
-        articles.value = props.art.filter(val => {
+/*       if (group) {
+        articles = props.art.filter(val => {
           let filteredArticles = val.groups.some(g => g === group)
           return filteredArticles
         })  
       } else {
-        articles.value = props.art.filter(val => {
+        articles = props.art.filter(val => {
           let menu = val.groups.some(g => g !== group)
           return menu
         })
-        console.log('ttt',props.art)
-      }
-      //articles = computed(() => store.getters.getAllArticlesByGroups(group));
+      } */
+      articles = computed(() => store.getters.getAllArticlesByGroups(group));
     };
 
     onMounted(() => selectGroup())

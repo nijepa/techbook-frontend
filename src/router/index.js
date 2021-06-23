@@ -10,13 +10,13 @@ const routes = [
   {
     path: '/main',
     name: 'Main',
-    component: () => import(/* webpackChunkName: "about" */ '../views/Main.vue'),
+    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
     children: [
       {
         path: '/languages',
         name: 'Languages',
         component: () =>
-          import(/* webpackChunkName: "client" */ '../views/Languages.vue'),
+          import(/* webpackChunkName: "client" */ '../views/Language.vue'),
       },
     ]
   },
