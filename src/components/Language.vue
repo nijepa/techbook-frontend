@@ -32,7 +32,7 @@
 <script>
 import { useStore } from "vuex";
 import Article from "./Article.vue";
-import { computed } from "@vue/reactivity";
+import { computed, ref } from "@vue/reactivity";
 import { getUrl } from "@/helpers/getUrl";
 import { onMounted } from '@vue/runtime-core';
 
@@ -44,9 +44,9 @@ export default {
   setup() {
     const store = useStore();
     const lang = computed(() => store.getters.getOneLanguage);
-    let articles = computed(() => store.getters.getAllArticles);
+    let art = computed(() => store.getters.getAllArticles);
     const article = computed(() => store.getters.getOneArticle);
-    //const articles = ref(props.art)
+    let articles = ref(art)
 
     const selectArticle = async (article) => {
       await store.dispatch("fetchArticle", article);
