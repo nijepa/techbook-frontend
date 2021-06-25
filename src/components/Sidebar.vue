@@ -47,7 +47,6 @@ export default {
       await store.dispatch("articleClear")
       await store.dispatch("articlesClear")
       await store.dispatch("fetchArticles", language._id)
-      console.log('88888')
       await router.push("/");
     }
 
