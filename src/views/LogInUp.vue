@@ -13,8 +13,17 @@
 </template>
 
 <script>
+import { ref } from '@vue/reactivity'
 export default {
+  name: 'LogIn',
 
+  setup() {
+    const login = ref({
+      username: '',
+      password: ''
+    })
+    return { login }
+  }
 }
 </script>
 
