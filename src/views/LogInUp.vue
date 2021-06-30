@@ -1,11 +1,25 @@
 <template>
   <form class="">
     <div>
-      <input id="email" name="email" type="email" required placeholder="email">
+      <input
+        id="email"
+        name="email"
+        type="email"
+        required
+        placeholder="email"
+        v-model="login.password"
+      />
       <label for="email">Your Name</label>
     </div>
     <div>
-      <input id="password" name="password" type="password" required placeholder="password">
+      <input
+        id="password"
+        name="password"
+        type="password"
+        required
+        placeholder="password"
+        v-model="login.username"
+      />
       <label for="password">Your Name</label>
     </div>
     <button type="submit" @click="logIn()">Log In</button>
@@ -13,20 +27,18 @@
 </template>
 
 <script>
-import { ref } from '@vue/reactivity'
+import { ref } from "@vue/reactivity";
 export default {
-  name: 'LogIn',
+  name: "LogIn",
 
   setup() {
     const login = ref({
-      username: '',
-      password: ''
-    })
-    return { login }
-  }
-}
+      username: "",
+      password: "",
+    });
+    return { login };
+  },
+};
 </script>
 
-<style>
-
-</style>
+<style></style>
