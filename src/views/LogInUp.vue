@@ -7,7 +7,7 @@
         type="email"
         required
         placeholder="email"
-        v-model="login.password"
+        v-model="login.email"
       />
       <label for="email">Your Name</label>
     </div>
@@ -18,7 +18,7 @@
         type="password"
         required
         placeholder="password"
-        v-model="login.username"
+        v-model="login.password"
       />
       <label for="password">Your Name</label>
     </div>
@@ -33,7 +33,7 @@ export default {
 
   setup() {
     const login = ref({
-      username: "",
+      email: "",
       password: "",
     });
     return { login };
