@@ -8,8 +8,7 @@
         {{ group }}
       </li>
     </ul>
-    <p>
-      {{ article.description }}
+    <p v-html="article.description">
     </p>
     <code v-if="article.code">
       {{ article.code }}

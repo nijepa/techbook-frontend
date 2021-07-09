@@ -14,20 +14,26 @@
       </div>
       <div>
         <!-- <label>Groups</label> -->
-        <ul v-if="lang.groups.length" >
-          <li v-for="group in lang.groups" :key="group" >
-            <a href="" @click.prevent="updateGroup(group.name)" :class="selectedGroup(group.name) ? 'group' : ''">{{ group.name }}</a>
+        <ul v-if="lang.groups.length">
+          <li v-for="group in lang.groups" :key="group">
+            <a
+              href=""
+              @click.prevent="updateGroup(group.name)"
+              :class="selectedGroup(group.name) ? 'group' : ''"
+              >{{ group.name }}</a
+            >
           </li>
         </ul>
       </div>
       <div>
-        <textarea
+        <ckeditor class="cked" :editor="editor" v-model="article.description" :config="editorConfig"></ckeditor>
+<!--         <textarea
           v-model="article.description"
           id="desc"
           name="desc"
           rows="15"
-        ></textarea>
-        <label for="desc">Description</label>
+        ></textarea> -->
+        <!-- <label for="desc">Description</label> -->
       </div>
       <div>
         <textarea
@@ -66,9 +72,28 @@ import { useRouter } from "vue-router";
 import { useStore } from "vuex";
 import { isEmpty } from "../helpers/isEmptyObject";
 import { getUrl } from "../helpers/getUrl";
+import CKEditor from '@ckeditor/ckeditor5-vue';
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+//import Fonts from "@ckeditor/ckeditor5-font";
 
 export default {
   name: "ArticleActions",
+
+  components: {
+    ckeditor: CKEditor.component
+  },
+
+  data() {
+    return {
+      editor: ClassicEditor,
+      editorConfig: {
+        //plugins: [ Fonts],
+/*         toolbar: [
+            'heading', 'bulletedList', 'numberedList', 'fontSize', 'fontFamily', 'fontColor', 'fontBackgroundColor', 'undo', 'redo'
+        ] */
+      },
+    };
+  },
 
   setup() {
     const router = useRouter();
@@ -94,18 +119,18 @@ export default {
 
     const art = computed(() => store.getters.getOneArticle);
 
-    const selectedGroup = ((group) => {
-      return article.value.groups.includes(group)
-    })
+    const selectedGroup = (group) => {
+      return article.value.groups.includes(group);
+    };
 
     const updateGroup = (group) => {
-      const groupIdx = article.value.groups.indexOf(group)
+      const groupIdx = article.value.groups.indexOf(group);
       if (groupIdx >= 0) {
-        article.value.groups.splice(groupIdx, 1)
+        article.value.groups.splice(groupIdx, 1);
       } else {
-        article.value.groups.push(group)
+        article.value.groups.push(group);
       }
-    }
+    };
 
     if (!isEmpty(art.value)) {
       article.value = art.value;
@@ -165,7 +190,18 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
+.ck-editor {
+  border-radius: .2em !important;
+  border: 2px solid $blue-light !important;
+  -webkit-box-shadow: 0px 0px 5px 3px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 5px 3px rgba(0,0,0,0.75);
+    box-shadow: inset 0px 0px 3px 1px rgba(159, 196, 245,0.75) !important;
+}
+.ck-rounded-corners {
+  
+  
+}
 .links__article {
   list-style: none;
 }
