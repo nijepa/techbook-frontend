@@ -10,11 +10,18 @@ const state = {
 
 /* -------------------------------------- GETTERS -------------------------------------- */
 const getters = {
-  getAllArticles: (state) => state.articles,
-  getAllArticlesByGroups: (state) => (group) => state.articles.filter(val => {
-    let menu = val.groups.some(g => g === group)
-    return menu
-  }),
+  getAllArticles: (state) =>
+    state.articles.sort((a, b) =>
+      a.title.toLowerCase() > b.title.toLowerCase() ? 1 : -1
+    ),
+  getAllArticlesByGroups: (state) => (group) =>
+    state.articles.filter((val) => {
+      let menu = state.articles;
+      if (group) {
+        menu = val.groups.some((g) => g === group);
+      }
+      return menu;
+    }),
   getOneArticle: (state) => state.article,
 };
 

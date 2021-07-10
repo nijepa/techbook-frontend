@@ -12,8 +12,8 @@
         />
         <label for="name">Title</label>
       </div>
-      <div>
-        <!-- <label>Groups</label> -->
+      <div class="lang__groups">
+        <p>Groups</p>
         <ul v-if="lang.groups.length">
           <li v-for="group in lang.groups" :key="group">
             <a
@@ -74,7 +74,7 @@ import { isEmpty } from "../helpers/isEmptyObject";
 import { getUrl } from "../helpers/getUrl";
 import CKEditor from '@ckeditor/ckeditor5-vue';
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
-//import Fonts from "@ckeditor/ckeditor5-font";
+//import Font from "@ckeditor/ckeditor5-font";
 
 export default {
   name: "ArticleActions",
@@ -87,10 +87,10 @@ export default {
     return {
       editor: ClassicEditor,
       editorConfig: {
-        //plugins: [ Fonts],
-/*         toolbar: [
-            'heading', 'bulletedList', 'numberedList', 'fontSize', 'fontFamily', 'fontColor', 'fontBackgroundColor', 'undo', 'redo'
-        ] */
+        // plugins: [ Font],
+        // toolbar: [
+        //     'heading', 'bulletedList', 'numberedList', 'fontSize', 'fontFamily', 'fontColor', 'fontBackgroundColor', 'undo', 'redo'
+        // ] 
       },
     };
   },
@@ -198,10 +198,7 @@ export default {
     -moz-box-shadow: 0px 0px 5px 3px rgba(0,0,0,0.75);
     box-shadow: inset 0px 0px 3px 1px rgba(159, 196, 245,0.75) !important;
 }
-.ck-rounded-corners {
-  
-  
-}
+
 .links__article {
   list-style: none;
 }

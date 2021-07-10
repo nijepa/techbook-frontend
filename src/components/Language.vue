@@ -4,10 +4,12 @@
       <img :src="getUrl(lang.img_url, 'logos')" alt="" />
       <h1>{{ lang.title }}</h1>
       <ul v-if="lang.groups.length">
-        <li v-for="group in lang.groups" :key="group" class="links__article">
-          <a href="" @click.prevent="selectGroup(group.name)">{{
-            group.name
-          }}</a>
+        <li v-for="group in lang.groups" :key="group" class="links__article" id="cont">
+
+          <a href="" @click.prevent="selectGroup(group.name)" id="box">
+            {{ group.name }}
+          </a>
+
         </li>
       </ul>
     </div>
@@ -44,31 +46,19 @@ export default {
   setup() {
     const store = useStore();
     const lang = computed(() => store.getters.getOneLanguage);
-    let art = computed(() => store.getters.getAllArticles);
+    const articles = computed(() => store.getters.getAllArticlesByGroups(gru.value));
     const article = computed(() => store.getters.getOneArticle);
-    let articles = ref(art)
+    let gru = ref('')
 
     const selectArticle = async (article) => {
       await store.dispatch("fetchArticle", article);
     };
 
     const selectGroup = (group = null) => {
-      
-      // const a = articles.value.map((element) => {
-      //   return {...element, groups: element.groups.filter((subElement) => subElement === group)}
-      // })
-/*       if (group) {
-        articles = props.art.filter(val => {
-          let filteredArticles = val.groups.some(g => g === group)
-          return filteredArticles
-        })  
-      } else {
-        articles = props.art.filter(val => {
-          let menu = val.groups.some(g => g !== group)
-          return menu
-        })
-      } */
-      articles = computed(() => store.getters.getAllArticlesByGroups(group));
+      gru.value = group
+      if (!group) {
+        store.dispatch("fetchArticles", lang);
+      }
     };
 
     onMounted(() => selectGroup())
@@ -82,4 +72,6 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+
+</style>
