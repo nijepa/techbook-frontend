@@ -1,8 +1,8 @@
 <template>
   <article>
-    <h3>
+    <h2>
       {{ article.title }}
-    </h3>
+    </h2>
     <ul v-if="article.groups.length">
       <li v-for="group in article.groups" :key="group" class="links__article">
         {{ group }}
