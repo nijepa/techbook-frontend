@@ -1,6 +1,7 @@
 <template>
   <aside id="sidenav">
-    <ul>
+    <Loader v-if="!languages" />
+    <ul v-else>
       <li
         :class="[
           isEmpty(tech) || tech._id === language.tech._id
@@ -27,9 +28,14 @@ import { useRouter } from "vue-router";
 import { useStore } from "vuex";
 import { isEmpty } from '../helpers/isEmptyObject'
 import { getUrl } from '../helpers/getUrl'
+import Loader from './Loader.vue'
 
 export default {
   name: "Sidebar",
+
+  components : {
+    Loader
+  },
 
   setup() {
     const router = useRouter();

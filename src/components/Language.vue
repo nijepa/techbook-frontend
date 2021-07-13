@@ -14,20 +14,27 @@
       </ul>
     </div>
 
+    <Loader v-if="!articles.length" />
+    <transition-group name="component-fade" mode="out-in">
     <ul v-if="!article._id">
+      
       <li
         v-for="article in articles"
         :key="article._id"
         @click="selectArticle(article)"
         class="articles__list"
       >
+      <transition name="component-fade" mode="out-in">
         <h3>{{ article.title }}</h3>
+        </transition>
       </li>
+      
     </ul>
 
     <div class="article" v-else>
       <Article />
     </div>
+    </transition-group>
   </section>
 </template>
 
@@ -37,6 +44,7 @@ import Article from "./Article.vue";
 import { computed, ref } from "@vue/reactivity";
 import { getUrl } from "@/helpers/getUrl";
 import { onMounted } from '@vue/runtime-core';
+import Loader from './Loader.vue'
 
 export default {
   name: "Language",
@@ -67,11 +75,22 @@ export default {
   },
 
   components: {
-    Article,
+    Article, Loader
   },
 };
 </script>
 
 <style>
+.component-fade-enter-active,
+.component-fade-leave-active {
+  transition: opacity 0.6s ease;
+  max-height: 0px;
+}
+
+.component-fade-enter-from,
+.component-fade-leave-to {
+  opacity: 0;
+  max-height: 0px;
+}
 
 </style>

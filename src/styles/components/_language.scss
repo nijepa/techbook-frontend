@@ -18,17 +18,17 @@ section {
     align-items: center;
     justify-content: left;
     list-style-type: none;
-    margin: .5em;
+    margin: .5em 1em;
 
     .articles__list {
       flex-shrink: 0;
       display: inline-block;
       
-      background-color: $blue-lighter;
+      background-color: $blue-lightest;
       color: $blue-darker;
       border: 2px solid $blue-dark;
       border-radius: .5em;
-      margin: .2em;
+      margin: .5em;
       padding: .5em;
       cursor: pointer;
       transform: rotate(-3deg);
