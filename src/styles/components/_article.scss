@@ -28,9 +28,9 @@ article {
     font-family: $font-code;
     font-size: 1.3em;
     font-weight: 600;
-    background-color: $blue-darkest;
-    color: $orange-light;
-    padding: 1em;
+    background-color: $blue-darkest !important;
+    color: $orange-light !important;
+    padding: 1em !important;
     border-radius: 5px;
     margin-top: 1em;
   }

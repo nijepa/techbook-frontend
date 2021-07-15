@@ -10,9 +10,10 @@
     </ul>
     <p v-html="article.description">
     </p>
-    <code v-if="article.code">
+    <pre v-highlightjs><code class="javascript">{{ article.code }}</code></pre>
+<!--     <code v-if="article.code">
       {{ article.code }}
-    </code>
+    </code> -->
     <ul v-if="article.links.length">
       <li v-for="link in article.links" :key="link" class="links__article">
         <a :href="link" target="_blank" >{{ link.replace(/(^\w+:|^)\/\//, '') }}</a> 
@@ -24,14 +25,16 @@
 <script>
 import { useStore } from "vuex";
 import { computed } from "@vue/reactivity";
+import zz from "zz.ts"
 
 export default {
   name: "Article",
 
+
   setup() {
     const store = useStore();
     const article = computed(() => store.getters.getOneArticle);
-
+console.log(zz)
     return { article };
   },
 };
