@@ -26,7 +26,8 @@
         </ul>
       </div>
       <div>
-        <ckeditor class="cked" :editor="editor" v-model="article.description" :config="editorConfig"></ckeditor>
+        <tiptap v-model="article.description" />
+        <!-- <ckeditor class="cked" :editor="editor" v-model="article.description" :config="editorConfig"></ckeditor> -->
 <!--         <textarea
           v-model="article.description"
           id="desc"
@@ -72,20 +73,21 @@ import { useRouter } from "vue-router";
 import { useStore } from "vuex";
 import { isEmpty } from "../helpers/isEmptyObject";
 import { getUrl } from "../helpers/getUrl";
-import CKEditor from '@ckeditor/ckeditor5-vue';
-import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
-//import Font from "@ckeditor/ckeditor5-font";
+// import CKEditor from '@ckeditor/ckeditor5-vue';
+// import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import tiptap from '@/components/Tiptap.vue'
 
 export default {
   name: "ArticleActions",
 
   components: {
-    ckeditor: CKEditor.component
+    tiptap,
+    //ckeditor: CKEditor.component
   },
 
   data() {
     return {
-      editor: ClassicEditor,
+      //editor: ClassicEditor,
       editorConfig: {
         // plugins: [ Font],
         // toolbar: [

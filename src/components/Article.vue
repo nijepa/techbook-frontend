@@ -8,15 +8,19 @@
         {{ group }}
       </li>
     </ul>
-    <p v-html="article.description">
-    </p>
-    <pre v-highlightjs><code class="javascript">{{ article.code }}</code></pre>
-<!--     <code v-if="article.code">
+    <p v-html="article.description"></p>
+    <pre
+      v-highlightjs
+    ><code class="javascript">{{ article.code }}</code></pre>
+    <!--     <code v-if="article.code">
       {{ article.code }}
     </code> -->
     <ul v-if="article.links.length">
       <li v-for="link in article.links" :key="link" class="links__article">
-        <a :href="link" target="_blank" >{{ link.replace(/(^\w+:|^)\/\//, '') }}</a> 
+        <!-- <a :href="link" target="_blank" >{{ link.replace(/(^\w+:|^)\/\//, '') }}</a> -->
+        <a :href="link" target="_blank">{{
+          linkDomain(article.title, link)
+        }}</a>
       </li>
     </ul>
   </article>
@@ -25,17 +29,17 @@
 <script>
 import { useStore } from "vuex";
 import { computed } from "@vue/reactivity";
-import zz from "zz.ts"
 
 export default {
   name: "Article",
 
-
   setup() {
     const store = useStore();
     const article = computed(() => store.getters.getOneArticle);
-console.log(zz)
-    return { article };
+    const linkDomain = (title, link) =>
+      title + " @ " + link.replace(/(^\w+:|^)\/\//, "").split("/")[0];
+
+    return { article, linkDomain };
   },
 };
 </script>

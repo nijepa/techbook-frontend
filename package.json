@@ -11,12 +11,15 @@
   "dependencies": {
     "@ckeditor/ckeditor5-build-classic": "^29.0.0",
     "@ckeditor/ckeditor5-vue": "^2.0.1",
+    "@tiptap/starter-kit": "^2.0.0-beta.82",
+    "@tiptap/vue-3": "^2.0.0-beta.45",
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
     "vue": "^3.0.0",
     "vue-router": "^4.0.0-0",
     "vue3-highlightjs": "^1.0.5",
-    "vuex": "^4.0.0-0"
+    "vuex": "^4.0.0-0",
+    "vuex-persistedstate": "^4.0.0-beta.3"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
