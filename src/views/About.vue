@@ -1,5 +1,18 @@
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
+  <div class="home">
+    <Header />
+    <Sidebar />
+    <router-view/>
   </div>
 </template>
+<script>
+import Header from '@/components/Header.vue'
+import Sidebar from '@/components/Sidebar.vue';
+
+export default {
+  name: 'Main',
+  components: {
+      Sidebar, Header
+    },
+}
+</script>
