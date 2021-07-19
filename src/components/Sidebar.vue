@@ -53,7 +53,7 @@ export default {
       await store.dispatch("articleClear")
       await store.dispatch("articlesClear")
       await store.dispatch("fetchArticles", language._id)
-      router.push("/");
+      router.push("/main");
     }
 
     return { getUrl, isEmpty, selectLanguage, tech, languages, lang }

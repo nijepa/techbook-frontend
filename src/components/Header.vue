@@ -2,7 +2,7 @@
   <header>
     <h1 @click="clearTech()">tech book</h1>
     <nav>
-      <div
+<!--       <div
         class="nav-card"
         v-for="tech in techs.data"
         :key="tech._id"
@@ -11,7 +11,8 @@
       >
         <img :src="getUrl(tech.img)" alt="" />
         <h3>{{ tech.title }}</h3>
-      </div>
+      </div> -->
+      <HeaderLink />
       <!--  <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link> -->
     </nav>
@@ -19,25 +20,30 @@
 </template>
 
 <script>
-import { computed } from "@vue/reactivity";
+//import { computed } from "@vue/reactivity";
 import { useRouter } from "vue-router";
 import { useStore } from "vuex";
 import { getUrl } from "@/helpers/getUrl";
+import HeaderLink from "@/components/header/HeaderLink";
 
 export default {
   name: "Header",
+
+  components: {
+    HeaderLink
+  },
 
   setup() {
     const store = useStore();
     const router = useRouter();
 
-    const techs = computed(() => store.getters.getTechs);
+/*     const techs = computed(() => store.getters.getTechs);
     const techSingle = computed(() => store.getters.getTech);
 
     const selectTech = async (tech) => {
       clearTech();
       await store.dispatch("fetchTech", tech);
-    };
+    }; */
 
     const clearTech = async () => {
       await store.dispatch("articleClear");
@@ -49,7 +55,7 @@ export default {
 
     store.dispatch("fetchTechs");
 
-    return { techs, techSingle, selectTech, clearTech, getUrl };
+    return {  clearTech, getUrl };
   },
 
   /*     computed: {
@@ -88,4 +94,5 @@ export default {
 };
 </script>
 
-<style></style>
+<style lang="scss" scoped>
+</style>

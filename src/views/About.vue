@@ -2,17 +2,19 @@
   <div class="home">
     <Header />
     <Sidebar />
-    <router-view/>
+    <Main msg="Technology book"/>
+
   </div>
 </template>
 <script>
 import Header from '@/components/Header.vue'
 import Sidebar from '@/components/Sidebar.vue';
+import Main from '@/components/Main.vue';
 
 export default {
-  name: 'Main',
+  name: 'abo',
   components: {
-      Sidebar, Header
+      Sidebar, Header, Main
     },
 }
 </script>

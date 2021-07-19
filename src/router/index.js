@@ -16,7 +16,7 @@ const routes = [
         path: '/languages',
         name: 'Languages',
         component: () =>
-          import(/* webpackChunkName: "client" */ '../views/Language.vue'),
+          import(/* webpackChunkName: "client" */ '../views/Front.vue'),
       },
     ]
   },
