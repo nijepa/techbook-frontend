@@ -12,6 +12,14 @@ const state = {
 const getters = {
   getAllLanguages: (state) => state.languages,
   getOneLanguage: (state) => state.language,
+  getAllArticlesByGroups: (state) => (group) =>
+    state.articles.filter((val) => {
+      let menu = state.articles;
+      if (group) {
+        menu = val.groups.some((g) => g === group);
+      }
+      return menu;
+    }),
 };
 
 /* -------------------------------------- MUTATIONS -------------------------------------- */
