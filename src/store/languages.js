@@ -12,13 +12,14 @@ const state = {
 const getters = {
   getAllLanguages: (state) => state.languages,
   getOneLanguage: (state) => state.language,
-  getAllArticlesByGroups: (state) => (group) =>
-    state.articles.filter((val) => {
-      let menu = state.articles;
-      if (group) {
-        menu = val.groups.some((g) => g === group);
+  getLanguagesByTechs: (state) => (tech) =>
+    state.languages.data.filter((val) => {
+      return val.tech._id === tech._id
+/*       let menu = state.languages.data;
+      if (tech) {
+        menu = val.tech.some((g) => g._id === tech._id);
       }
-      return menu;
+      return menu; */
     }),
 };
 

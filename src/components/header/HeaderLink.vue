@@ -22,24 +22,25 @@ export default {
   setup() {
     const store = useStore();
     const router = useRouter();
-
+  
     const techs = computed(() => store.getters.getTechs);
     const techSingle = computed(() => store.getters.getTech);
 
     const selectTech = async (tech) => {
-      clearTech();
+      
       await store.dispatch("fetchTech", tech);
+      clearTech();
     };
 
     const clearTech = async () => {
       await store.dispatch("articleClear");
       await store.dispatch("articlesClear");
       await store.dispatch("languageClear");
-      await store.dispatch("techClear");
-      router.push("/main");
+      //await store.dispatch("techClear");
+      await router.push("/main");
     };
 
-    store.dispatch("fetchTechs");
+    //store.dispatch("fetchTechs");
 
     return { techs, techSingle, selectTech, clearTech, getUrl };
   }

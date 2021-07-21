@@ -17,7 +17,7 @@
       >
         <img :src="getUrl(language.img_url, 'logos')" alt="" />
         <a>{{ language.title }}</a>
-        <div v-if="language.groups.length" class="">
+        <div  class="">
           <li v-for="group in language.groups" :key="group._id">
             {{ group.name }}
           </li>
@@ -46,13 +46,14 @@ export default {
     const router = useRouter();
     const store = useStore();
 
-    store.dispatch("fetchTechs");
-    store.dispatch("fetchLanguages");
+    //store.dispatch("fetchTechs");
+    //store.dispatch("fetchLanguages");
 
     const tech = computed(() => store.getters.getTech);
-    const languages = computed(() => store.getters.getAllLanguages.data);
+    const languages = computed(() => store.getters.getLanguagesByTechs(tech.value));
+    //const languages = computed(() => store.getters.getAllLanguages.data);
     const lang = computed(() => store.getters.getOneLanguage);
-
+console.log('888', languages)
     const selectLanguage = async (language) => {
       if (language._id) await store.dispatch("fetchLanguage", language)
       router.push("/main");

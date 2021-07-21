@@ -181,6 +181,7 @@
 <script>
 // @ is an alias to /src
 import HeaderLink from "@/components/header/HeaderLink.vue";
+import { useStore } from "vuex";
 
 export default {
   name: "Home",
@@ -188,6 +189,20 @@ export default {
   components: {
     HeaderLink,
   },
+
+  setup() {
+    const store = useStore();
+    const techs = store.getters.getTechs;
+    const lang = store.getters.getAllLanguages;
+
+    if (!techs.data.length) {
+      store.dispatch("fetchTechs");
+    }
+    if (!lang.data.length) {
+      store.dispatch("fetchLanguages");
+    }
+    
+  }
 };
 </script>
 

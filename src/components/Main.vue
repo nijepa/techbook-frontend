@@ -25,6 +25,7 @@ export default {
 
   setup() {
     const store = useStore();
+    
     const lang = computed(() => store.getters.getOneLanguage);
     const articles = computed(() => store.getters.getAllArticles);
 

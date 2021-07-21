@@ -63,7 +63,6 @@ export default {
     };
 
     const selectGroup = (group = null) => {
-      console.log(group)
       gru.value = group
       if (!group) {
         store.dispatch("fetchArticles", lang);

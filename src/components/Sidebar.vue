@@ -41,7 +41,7 @@ export default {
     const router = useRouter();
     const store = useStore();
 
-    store.dispatch("fetchTechs");
+    //store.dispatch("fetchTechs");
     store.dispatch("fetchLanguages");
 
     const tech = computed(() => store.getters.getTech);

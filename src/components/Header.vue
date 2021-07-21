@@ -49,11 +49,11 @@ export default {
       await store.dispatch("articleClear");
       await store.dispatch("articlesClear");
       await store.dispatch("languageClear");
-      await store.dispatch("techClear");
+      //await store.dispatch("techClear");
       router.push("/");
     };
 
-    store.dispatch("fetchTechs");
+    //store.dispatch("fetchTechs");
 
     return {  clearTech, getUrl };
   },
