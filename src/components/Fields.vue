@@ -7,7 +7,7 @@
         <li @click="selectLanguage(language)">
           <a>
             <img :src="getUrl(language.img_url, 'logos')" alt="" />
-            {{ language.title }}
+            <h5>{{ language.title }}</h5>
           </a>
           <ul class="">
             <li v-for="group in language.groups" :key="group._id">
@@ -48,9 +48,17 @@ export default {
     );
     //const languages = computed(() => store.getters.getAllLanguages.data);
     const lang = computed(() => store.getters.getOneLanguage);
-    console.log("888", languages);
+    
     const selectLanguage = async (language) => {
-      if (language._id) await store.dispatch("fetchLanguage", language);
+      console.log("666", language);
+      if (language._id) {
+        await store.dispatch("fetchLanguage", language);
+        await store.dispatch("fetchArticles", language);
+        const aaa = computed(() => store.getters.getAllArticles);
+        console.log("777", lang.value);
+        console.log("888", aaa.value);
+      }
+
       router.push("/front");
     };
 
@@ -154,12 +162,19 @@ $reverse: true;
   color: #333;
   position: relative;
   top: $border-width;
+  transition: all .8s ease;
   @if $reverse {
     //transform: rotate(180deg);
   }
 }
+.tree li a h5 {
+  visibility: hidden ;
+}
 
-.tree li a:hover {
+.tree li a:hover h5 {
+  visibility: visible;
+}
+.tree li a:hover  {
   background: $blue-darkest !important;
 }
 .tree li a:hover,

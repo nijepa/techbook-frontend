@@ -35,9 +35,11 @@ export default {
     const router = useRouter();
 
     const article = computed(() => store.getters.getOneArticle);
+    const lang = computed(() => store.getters.getOneLanguage);
 
     const clearArticle = () => {
       store.dispatch("articleClear");
+      store.dispatch("fetchArticles", lang.value);
     };
 
     const addArticle = (isEdit = false) => {

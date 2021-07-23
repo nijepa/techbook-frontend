@@ -13,7 +13,7 @@ const getters = {
   getAllArticles: (state) =>
     state.articles.sort((a, b) =>
       a.title.toLowerCase() > b.title.toLowerCase() ? 1 : -1
-    ),
+    ), 
   getAllArticlesByGroups: (state) => (group) =>
     state.articles.filter((val) => {
       let menu = state.articles;
@@ -60,7 +60,7 @@ const mutations = {
 const actions = {
   async fetchArticles({ commit }, language) {
     const response = await axios.get(URL + "api/v1/articles");
-    const articles = response.data.filter((a) => a.lang._id === language);
+    const articles = response.data.filter((a) => a.lang._id === language._id);
     commit("setArticles", articles);
   },
 

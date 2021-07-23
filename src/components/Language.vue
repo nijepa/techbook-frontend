@@ -65,7 +65,7 @@ export default {
     const selectGroup = (group = null) => {
       gru.value = group
       if (!group) {
-        store.dispatch("fetchArticles", lang);
+        //store.dispatch("fetchArticles", lang);
       }
     };
 
