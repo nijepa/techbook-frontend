@@ -1,7 +1,6 @@
 <template>
   <div class="front">
     <!-- <img alt="Vue logo" src="../assets/logo.png"> -->
-
     <h1>tech book</h1>
     <div class="">
       <svg
@@ -171,9 +170,10 @@
         />
       </svg>
     </div>
-    <router-link to="/main">Home</router-link>
+    <!-- <router-link to="/main">Home</router-link> -->
     <div class="links">
-      <HeaderLink />
+      <Loader v-if="loading" />
+      <HeaderLink @loadin="loading = true" v-else />
     </div>
   </div>
 </template>
@@ -181,27 +181,31 @@
 <script>
 // @ is an alias to /src
 import HeaderLink from "@/components/header/HeaderLink.vue";
+import Loader from "@/components/Loader.vue";
 import { useStore } from "vuex";
+import { ref } from '@vue/reactivity';
 
 export default {
   name: "Home",
 
   components: {
-    HeaderLink,
+    HeaderLink, Loader
   },
 
   setup() {
     const store = useStore();
     const techs = store.getters.getTechs;
-    const lang = store.getters.getAllLanguages;
+    const langs = store.getters.getAllLanguages;
+    let loading = ref(null);
 
     if (!techs.data.length) {
       store.dispatch("fetchTechs");
     }
-    if (!lang.data.length) {
+    if (!langs.data.length) {
       store.dispatch("fetchLanguages");
     }
-    
+
+    return { loading }
   }
 };
 </script>

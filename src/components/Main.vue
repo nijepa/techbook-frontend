@@ -1,8 +1,8 @@
 <template>
   <main>
     <div class="" v-if="!isEmpty(lang)">
-      <article-nav />
       <Language :art="articles" />
+      <!-- <article-nav /> -->
       <router-view/>
     </div>
     <div class="main-title" v-else>
@@ -14,7 +14,7 @@
 
 <script>
 import Language from "@/components/Language.vue";
-import ArticleNav from "@/components/Article_nav.vue";
+//import ArticleNav from "@/components/Article_nav.vue";
 import { useStore } from "vuex";
 import { computed } from "@vue/reactivity";
 import { isEmpty } from "@/helpers/isEmptyObject";
@@ -38,7 +38,7 @@ export default {
 
   components: {
     Language,
-    ArticleNav,
+    //ArticleNav,
   },
 };
 </script>

@@ -1,22 +1,19 @@
 <template>
-  <div id="">
-    <Loader v-if="!languages" />
-    <div v-else class="tree">
-      <ul v-for="language in languages"
-          :key="language._id">
-        <li @click="selectLanguage(language)">
-          <a>
-            <img :src="getUrl(language.img_url, 'logos')" alt="" />
-            <h5>{{ language.title }}</h5>
-          </a>
-          <ul class="">
-            <li v-for="group in language.groups" :key="group._id">
-              <a href="">{{ group.name }}</a>
-            </li>
-          </ul>
-        </li>
-      </ul>
-    </div>
+  <Loader v-if="!languages" />
+  <div v-else class="tree">
+    <ul v-for="language in languages" :key="language._id">
+      <li @click="selectLanguage(language)">
+        <a>
+          <img :src="getUrl(language.img_url, 'logos')" alt="" />
+          <h5>{{ language.title }}</h5>
+        </a>
+        <ul class="">
+          <li v-for="group in language.groups" :key="group._id">
+            <a href="">{{ group.name }}</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
   </div>
 </template>
 
@@ -48,7 +45,7 @@ export default {
     );
     //const languages = computed(() => store.getters.getAllLanguages.data);
     const lang = computed(() => store.getters.getOneLanguage);
-    
+
     const selectLanguage = async (language) => {
       console.log("666", language);
       if (language._id) {
@@ -162,19 +159,19 @@ $reverse: true;
   color: #333;
   position: relative;
   top: $border-width;
-  transition: all .8s ease;
+  transition: all 0.8s ease;
   @if $reverse {
     //transform: rotate(180deg);
   }
 }
 .tree li a h5 {
-  visibility: hidden ;
+  visibility: hidden;
 }
 
 .tree li a:hover h5 {
   visibility: visible;
 }
-.tree li a:hover  {
+.tree li a:hover {
   background: $blue-darkest !important;
 }
 .tree li a:hover,
@@ -189,5 +186,28 @@ $reverse: true;
 .tree li a:hover + ul::before,
 .tree li a:hover + ul ul::before {
   border-color: $blue-darker;
+}
+@media (max-width: 1050px) {
+  .tree ul {
+    display: grid;
+
+    .tree li {
+      &::before,
+      &::after {
+        border-top: none !important;
+      }
+
+      &::after {
+        border-left: none;
+      }
+    }
+  }
+
+  .tree li::after {
+    border-top: none !important;
+  }
+  .tree li::before {
+    border-top: none !important;
+  }
 }
 </style>

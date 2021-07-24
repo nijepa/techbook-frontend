@@ -10,8 +10,8 @@
 import Header from '@/components/Header.vue'
 import Sidebar from '@/components/Sidebar.vue';
 import Main from '@/components/Main.vue';
-import { useStore } from "vuex";
-import { computed } from "@vue/reactivity";
+//import { useStore } from "vuex";
+//import { computed } from "@vue/reactivity";
 /*import { getUrl } from "@/helpers/getUrl";
 import { onMounted } from '@vue/runtime-core'; */
 //import Loader from '@/components/Loader.vue'
@@ -22,13 +22,13 @@ components: {
   Header, Sidebar, Main
 },
 
-  props: { art: Array },
+  //props: { art: Array },
 
   setup() {
-    const store = useStore();
-    const lang = computed(() => store.getters.getOneLanguage);
+    //const store = useStore();
+    //const lang = computed(() => store.getters.getOneLanguage);
     //let gru = ref('')
-    console.log('LLL',lang)
+    //console.log('LLL',lang)
 //store.dispatch("fetchArticles", lang);
     /* const selectGroup = (group = null) => {
       console.log(group)
@@ -40,7 +40,7 @@ components: {
 
     //onMounted(() => selectGroup())
 
-    return { lang }; 
+    //return { //lang }; 
   },
 }
 </script>

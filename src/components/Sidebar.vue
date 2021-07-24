@@ -16,7 +16,7 @@
         @click="selectLanguage(language)"
       >
         <img :src="getUrl(language.img_url, 'logos')" alt="" />
-        <a>{{ language.title }}</a>
+        <!-- <a>{{ language.title }}</a> -->
       </li>
     </ul>
   </aside>

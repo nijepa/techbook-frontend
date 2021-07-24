@@ -1,19 +1,18 @@
 <template>
   <section>
-    <div class="section-heading" v-if="lang">
+    <div class="section-headin" v-if="lang">
       <img :src="getUrl(lang.img_url, 'logos')" alt="" />
       <h1>{{ lang.title }}</h1>
       <ul v-if="lang.groups.length">
         <li v-for="group in lang.groups" :key="group" class="links__article" id="cont">
-
           <a href="" @click.prevent="selectGroup(group.name)" id="box">
             {{ group.name }}
           </a>
-
         </li>
       </ul>
     </div>
 
+    <article-nav />
     <Loader v-if="!articles.length" />
     <transition-group name="component-fade" mode="out-in">
     <ul v-if="!article._id">
@@ -41,6 +40,7 @@
 <script>
 import { useStore } from "vuex";
 import Article from "./Article.vue";
+import ArticleNav from "@/components/Article_nav.vue";
 import { computed, ref } from "@vue/reactivity";
 import { getUrl } from "@/helpers/getUrl";
 import { onMounted } from '@vue/runtime-core';
@@ -75,12 +75,12 @@ export default {
   },
 
   components: {
-    Article, Loader
+    Article, Loader, ArticleNav
   },
 };
 </script>
 
-<style>
+<style lang="scss">
 .component-fade-enter-active,
 .component-fade-leave-active {
   transition: opacity 0.6s ease;
@@ -93,4 +93,65 @@ export default {
   max-height: 0px;
 }
 
+.section-headin {
+  display: flex;
+  align-items: center;
+  margin-left: .3em;
+  background-color: $blue-light;
+  border-bottom: 2px solid $blue-lightest;
+
+  img {
+    width: 25px;
+    height: auto;
+    margin-left: .5em;
+  }
+
+  h1 {
+    font-size: 1em;
+    margin-left: .5em;
+  }
+
+  ul {
+    margin: 0 .5em;
+  }
+
+  ul .links__article {
+    margin: 0 ;
+    border-radius: 1px;
+    position: relative;
+    padding: .2em .5em;
+  }
+
+  ul .links__article:nth-child(odd)::before {
+    content: "";
+    color: $blue-lightest;
+    border-right: 2px solid $blue-lightest;
+    //position: relative;
+    //display: inline-block;
+    //left: -5px;
+    transform: rotate(20deg);
+    display: block;
+    position: absolute;
+    //top: -5px;
+    left: -5px;
+    width: 2px;
+    height: 100%;
+  }
+
+  ul .links__article:nth-child(even)::after {
+    content: "";
+    color: $blue-lightest;
+    border-right: 2px solid $blue-lightest;
+    //position: relative;
+    //display: inline-block;
+    //left: 5px;
+    transform: rotate(-20deg);
+    display: block;
+    position: absolute;
+    top: 1px;
+    left: -5px;
+    width: 2px;
+    height: 100%;
+  }
+}
 </style>

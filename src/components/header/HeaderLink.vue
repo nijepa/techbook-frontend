@@ -17,17 +17,28 @@ import { computed } from "@vue/reactivity";
 import { useRouter } from "vue-router";
 import { useStore } from "vuex";
 import { getUrl } from "@/helpers/getUrl";
+//import { defineEmit } from 'vue'
 export default {
+  
+  emits: ['loadin'],
 
-  setup() {
+  setup(props, {emit}) {
+
     const store = useStore();
     const router = useRouter();
   
     const techs = computed(() => store.getters.getTechs);
     const techSingle = computed(() => store.getters.getTech);
 
+    //const emit = defineEmit(['loadin'])
+    
+    const handleLoading = () => {
+        emit('loadin')
+    }
+
     const selectTech = async (tech) => {
-      
+      handleLoading()
+
       await store.dispatch("fetchTech", tech);
       clearTech();
     };

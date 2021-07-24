@@ -75,32 +75,33 @@ section {
 
     .links__article:hover {
       background-image: none;
-      background-color: $blue-darkest;
+      //background-color: $blue-darkest;
       
 
       a {
-        color: $orange-lighter;
+        //color: $orange-lighter;
+        color: $blue-lightest;
         transition: ease .6s background-color;
       }
       #box {
-        background: $blue-darkest;
+        //background: $blue-darkest;
         transition: ease .6s background-color;
       }
     }
   }
   #cont{
-    background: -webkit-linear-gradient(top left, $blue-darker 0%, $blue-lighter 100%);
+    // background: -webkit-linear-gradient(top left, $blue-darker 0%, $blue-lighter 100%);
   /*   width: 300px;
     height: 300px; */
-    border-radius: 50%;
-    padding: .5em;
+    //border-radius: 50%;
+    //padding: .5em;
   }
   
   #box{
-    background: whitesmoke;
+    //background: whitesmoke;
   /*   width: 290px;
     height: 290px; */
-    border-radius: 50%;
-    padding: .5em;
+    //border-radius: 50%;
+    //padding: .5em;
   }
 }
