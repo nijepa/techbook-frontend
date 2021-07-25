@@ -3,7 +3,7 @@
     <div class="" v-if="!isEmpty(lang)">
       <Language :art="articles" />
       <!-- <article-nav /> -->
-      <router-view/>
+      
     </div>
     <div class="main-title" v-else>
       <h1>{{ msg }}</h1>

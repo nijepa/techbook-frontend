@@ -3,11 +3,14 @@
     <Header />
     <Sidebar /> 
     <Main msg="Technology book"/> 
+    <router-view/>
+    <Footer />
   </div>
 </template>
 
 <script>
 import Header from '@/components/Header.vue'
+import Footer from '@/components/Footer.vue'
 import Sidebar from '@/components/Sidebar.vue';
 import Main from '@/components/Main.vue';
 //import { useStore } from "vuex";
@@ -19,7 +22,7 @@ import { onMounted } from '@vue/runtime-core'; */
 export default {
   name: "Front",
 components: {
-  Header, Sidebar, Main
+  Header, Footer, Sidebar, Main
 },
 
   //props: { art: Array },

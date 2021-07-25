@@ -35,26 +35,35 @@ article {
     margin-top: 1em;
   }
 
-  ul {
-    .links__article {
-      background-color: transparent;
-      border: transparent;
-      //background-image: linear-gradient(to top, $blue-dark 30%, white);
-      border-bottom: 2px solid $blue-darkest;
+  .article__links {
+    display: flex;
+    align-items: center;
 
-      a {
-        color: $blue-darkest;
-        font-weight: 500;
+    ul {
+      display: grid;
+      
+      .links__article {
+        background-color: transparent;
+        border: transparent;
+        //background-image: linear-gradient(to top, $blue-dark 30%, white);
+        border-bottom: 2px solid $blue-darkest;
+
+        a {
+          color: $blue-darkest;
+          font-weight: 500;
+        }
+      }
+
+      .links__article:hover {
+        background-image: none;
+        background-color: $blue-darkest;
+        transition: ease .6s background-color;
+        a {
+          color: $orange-lighter;
+        }
       }
     }
-
-    .links__article:hover {
-      background-image: none;
-      background-color: $blue-darkest;
-      transition: ease .6s background-color;
-      //a {
-        color: $orange-lighter;
-     // }
-    }
   }
+
+  
 }

@@ -18,7 +18,7 @@ const getters = {
     state.articles.filter((val) => {
       let menu = state.articles;
       if (group) {
-        menu = val.groups.some((g) => g === group);
+        menu = val.groups.some((g) => g === group.name);
       }
       return menu;
     }),

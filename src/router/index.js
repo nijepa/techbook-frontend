@@ -10,7 +10,14 @@ const routes = [
   {
     path: '/front',
     name: 'Front',
-    component: () => import(/* webpackChunkName: "article" */ '../views/Front.vue')
+    component: () => import(/* webpackChunkName: "article" */ '../views/Front.vue'),
+    children: [
+      {
+        path: '/article',
+        name: 'Article',
+        component: () => import(/* webpackChunkName: "article" */ '../views/Article_actions.vue')
+      }
+    ]
   },
   {
     path: '/main',
@@ -23,13 +30,10 @@ const routes = [
         component: () =>
           import(/* webpackChunkName: "client" */ '../views/Front.vue'),
       },
+
     ]
   },
-  {
-    path: '/article',
-    name: 'Article',
-    component: () => import(/* webpackChunkName: "article" */ '../views/Article_actions.vue')
-  }
+  
 ]
 
 const router = createRouter({

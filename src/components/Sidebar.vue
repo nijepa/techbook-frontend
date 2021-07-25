@@ -24,7 +24,7 @@
 
 <script>
 import { computed } from "@vue/reactivity";
-import { useRouter } from "vue-router";
+//import { useRouter } from "vue-router";
 import { useStore } from "vuex";
 import { isEmpty } from '../helpers/isEmptyObject'
 import { getUrl } from '../helpers/getUrl'
@@ -38,22 +38,23 @@ export default {
   },
 
   setup() {
-    const router = useRouter();
+    //const router = useRouter();
     const store = useStore();
 
     //store.dispatch("fetchTechs");
     store.dispatch("fetchLanguages");
 
     const tech = computed(() => store.getters.getTech);
-    const languages = computed(() => store.getters.getAllLanguages.data);
+    const languages = computed(() => store.getters.getLanguagesByTechs(tech.value));
+    console.log('000', tech.value)
     const lang = computed(() => store.getters.getOneLanguage);
 
     const selectLanguage = async (language) => {
       if (language._id) await store.dispatch("fetchLanguage", language)
       await store.dispatch("articleClear")
       await store.dispatch("articlesClear")
-      await store.dispatch("fetchArticles", language._id)
-      router.push("/main");
+      await store.dispatch("fetchArticles", language)
+      //router.push("/main");
     }
 
     return { getUrl, isEmpty, selectLanguage, tech, languages, lang }

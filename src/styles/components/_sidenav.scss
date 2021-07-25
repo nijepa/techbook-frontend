@@ -1,8 +1,10 @@
 aside {
   grid-column: auto;
   //margin-top: .2em;
-  padding: 0 .2em;
+  //padding: 0 .3em;
   background-color: $blue-light;
+  height: 100vh;
+  //border-right: 1px solid $blue-main;
 
   ul {
     list-style-type: none;
@@ -11,14 +13,15 @@ aside {
       //display: none;
       align-items: center;
       //background-color: $blue-main;
-      padding: .3em;
-      margin: .5em 0;
-      border: 1px solid $blue-lighter;
+      padding: .7em .5em;
+      //margin: .2em 0;
+      //border: 1px solid $blue-lighter;
       cursor: pointer;
-      border-radius: 5px;
-      -webkit-box-shadow: 0px 0px 1px 0px rgba(200, 221, 248, 0.75);
+      //border-radius: 5px;
+ /*      -webkit-box-shadow: 0px 0px 1px 0px rgba(200, 221, 248, 0.75);
       -moz-box-shadow: 0px 0px 1px 0px rgba(200, 221, 248, 0.75);
-      box-shadow: 0px 0px 1px 0px rgba(200, 221, 248, 0.75);
+      box-shadow: 0px 0px 1px 0px rgba(200, 221, 248, 0.75); */
+      
       transform: rotate(5deg);
       transition: ease-in-out .3s all;
 
@@ -31,8 +34,8 @@ aside {
       }
     
       img {
-        height: 40px;
-        width: 40px;
+        height: 30px;
+        width: 30px;
         border-radius: 5px;
         -webkit-transform: rotate( -5deg);
         -moz-transform: rotate( -5deg);
@@ -43,6 +46,7 @@ aside {
     li:hover {
       background: $blue-lighter;
       transform: rotate(0);
+      //border-bottom: 1px solid transparent;
 
       a {
         color: $blue-darkest;
@@ -63,7 +67,7 @@ aside {
 }
 
 .selected-lang {
-  background: $blue-light;
+  background: $blue-dark;
   transform: rotate(0);
   img {
     transform: rotate( 0deg);
