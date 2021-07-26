@@ -124,8 +124,10 @@ export default {
     cursor: pointer;
     img {
       width: 25px;
+      height: 25px;
       height: auto;
       margin-left: 0.5em;
+      border-radius: 5px;
     }
 
     h1 {

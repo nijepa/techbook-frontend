@@ -1,6 +1,6 @@
 .home {
   display: grid;
-  grid-template-columns: auto 1fr;
+  grid-template-columns: 1fr 7fr;
   grid-template-areas: "header header"
                         "sidenav main"
 
