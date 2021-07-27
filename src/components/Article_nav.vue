@@ -47,12 +47,8 @@
       <!-- <img :src="getUrl('list2')" alt="" /> -->
     </a>
     <div class="article-actions">
-      <a
-        class="article-link"
-        v-if="!isEmpty(article)"
-        @click="deleteArticle(article)"
-      >
-        <span>Delete </span>
+      <a class="article-link" @click="addArticle(false)">
+        <span>Add </span>
         <svg
           width="24px"
           height="24px"
@@ -62,7 +58,15 @@
         >
           <path
             id="Stroke 1"
-            d="M18.8892 9.5542C18.8892 17.5732 20.0435 21.198 12.2797 21.198C4.5149 21.198 5.693 17.5732 5.693 9.5542"
+            d="M12.0368 8.46265V15.6111"
+            stroke="#9fc4f5"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            id="Stroke 2"
+            d="M15.6148 12.0368H8.45898"
             stroke="#9fc4f5"
             stroke-width="1.5"
             stroke-linecap="round"
@@ -70,22 +74,16 @@
           />
           <path
             id="Stroke 3"
-            d="M20.3651 6.47985H4.2146"
-            stroke="#9fc4f5"
-            stroke-width="1.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-          <path
-            id="Stroke 5"
-            d="M15.7148 6.47983C15.7148 6.47983 16.2434 2.71411 12.2891 2.71411C8.33578 2.71411 8.86435 6.47983 8.86435 6.47983"
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M2.30005 12.0369C2.30005 4.73479 4.73479 2.30005 12.0369 2.30005C19.339 2.30005 21.7737 4.73479 21.7737 12.0369C21.7737 19.339 19.339 21.7737 12.0369 21.7737C4.73479 21.7737 2.30005 19.339 2.30005 12.0369Z"
             stroke="#9fc4f5"
             stroke-width="1.5"
             stroke-linecap="round"
             stroke-linejoin="round"
           />
         </svg>
-        <!-- <img :src="getUrl('delete2')" alt="" />-->
+        <!-- <img :src="getUrl('add2')" alt="" /> -->
       </a>
       <a
         class="article-link"
@@ -129,8 +127,12 @@
         </svg>
         <!-- <img :src="getUrl('edit2')" alt="" /> -->
       </a>
-      <a class="article-link" @click="addArticle(false)">
-        <span>Add </span>
+      <a
+        class="article-link"
+        v-if="!isEmpty(article)"
+        @click="deleteArticle(article)"
+      >
+        <span>Delete </span>
         <svg
           width="24px"
           height="24px"
@@ -140,15 +142,7 @@
         >
           <path
             id="Stroke 1"
-            d="M12.0368 8.46265V15.6111"
-            stroke="#9fc4f5"
-            stroke-width="1.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-          <path
-            id="Stroke 2"
-            d="M15.6148 12.0368H8.45898"
+            d="M18.8892 9.5542C18.8892 17.5732 20.0435 21.198 12.2797 21.198C4.5149 21.198 5.693 17.5732 5.693 9.5542"
             stroke="#9fc4f5"
             stroke-width="1.5"
             stroke-linecap="round"
@@ -156,16 +150,22 @@
           />
           <path
             id="Stroke 3"
-            fill-rule="evenodd"
-            clip-rule="evenodd"
-            d="M2.30005 12.0369C2.30005 4.73479 4.73479 2.30005 12.0369 2.30005C19.339 2.30005 21.7737 4.73479 21.7737 12.0369C21.7737 19.339 19.339 21.7737 12.0369 21.7737C4.73479 21.7737 2.30005 19.339 2.30005 12.0369Z"
+            d="M20.3651 6.47985H4.2146"
+            stroke="#9fc4f5"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            id="Stroke 5"
+            d="M15.7148 6.47983C15.7148 6.47983 16.2434 2.71411 12.2891 2.71411C8.33578 2.71411 8.86435 6.47983 8.86435 6.47983"
             stroke="#9fc4f5"
             stroke-width="1.5"
             stroke-linecap="round"
             stroke-linejoin="round"
           />
         </svg>
-        <!-- <img :src="getUrl('add2')" alt="" /> -->
+        <!-- <img :src="getUrl('delete2')" alt="" />-->
       </a>
     </div>
   </div>

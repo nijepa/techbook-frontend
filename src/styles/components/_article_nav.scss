@@ -1,6 +1,7 @@
 .article-nav {
   display: grid;
-  grid-template-columns: repeat(2, auto);
+  grid-template-columns: auto 1fr;
+  grid-column-gap: 1em;
   justify-items: baseline;
   align-items: center;
   background-color: $blue-light;

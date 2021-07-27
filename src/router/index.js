@@ -8,31 +8,28 @@ const routes = [
     component: Home
   },
   {
+    path: '/abo',
+    name: 'About',
+    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
+  },
+  {
     path: '/front',
     name: 'Front',
     component: () => import(/* webpackChunkName: "article" */ '../views/Front.vue'),
     children: [
       {
+        path: '/main',
+        name: 'Main',
+        component: () => import(/* webpackChunkName: "about" */ '../views/Main.vue'),
+      },
+      {
         path: '/article',
         name: 'Article',
-        component: () => import(/* webpackChunkName: "article" */ '../views/Article_actions.vue')
-      }
-    ]
-  },
-  {
-    path: '/main',
-    name: 'Main',
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
-    children: [
-      {
-        path: '/languages',
-        name: 'Languages',
-        component: () =>
-          import(/* webpackChunkName: "client" */ '../views/Front.vue'),
+        component: () => import(/* webpackChunkName: "about" */ '../views/Article_actions.vue'),
       },
-
     ]
   },
+  
   
 ]
 

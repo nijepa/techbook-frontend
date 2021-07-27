@@ -48,7 +48,7 @@ export default {
       await store.dispatch("articlesClear");
       await store.dispatch("languageClear");
       //await store.dispatch("techClear");
-      await router.push("/main");
+      await router.push("/abo");
     };
 
     //store.dispatch("fetchTechs");

@@ -3,19 +3,20 @@ aside {
   //margin-top: .2em;
   //padding: 0 .3em;
   background-color: $blue-light;
-  height: 100vh;
+  height: 100%;
   display: grid;
   justify-content: right;
-  //border-right: 1px solid $blue-main;
+  border-top: 5px solid $blue-lightest;
 
   ul {
     list-style-type: none;
+    width: 150px;
 
     li {
       //display: none;
       align-items: center;
       //background-color: $blue-main;
-      padding: .7em .5em;
+      padding: .7em .5em .7em .3em;
       //margin: .2em 0;
       //border: 1px solid $blue-lighter;
       cursor: pointer;
@@ -46,7 +47,7 @@ aside {
         -webkit-transform: rotate( -5deg);
         -moz-transform: rotate( -5deg);
         transform: rotate( -5deg);
-        margin-right: .5em;
+        margin: 0 .5em;
       }
     }
 
@@ -56,7 +57,7 @@ aside {
       position: absolute;
       top: 0px;
       right: 0px;
-      width: 2px;
+      width: 5px;
       height: 100%;
       border-right: 5px solid transparent;
     }
@@ -85,13 +86,14 @@ aside {
 }
 
 .selected-lang {
-  //background: $blue-dark;
+  background: $blue-lighter;
   transform: rotate(0);
 
   img {
     transform: rotate( 0deg);
   }
   a {
+    font-weight: 600;
     transform: rotate( 0deg);
   }
 }
@@ -104,6 +106,10 @@ aside {
 @media(max-width: 700px) {
   #sidenav {
     width: 50px;
+
+    ul {
+      width: auto;
+    }
     
     a {
       display: none;

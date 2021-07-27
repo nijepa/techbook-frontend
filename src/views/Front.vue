@@ -2,7 +2,7 @@
   <div class="home">
     <Header />
     <Sidebar /> 
-    <Main msg="Technology book"/> 
+    <!-- <Main msg="Technology book"/>  -->
     <router-view/>
     <Footer />
   </div>
@@ -12,7 +12,7 @@
 import Header from '@/components/Header.vue'
 import Footer from '@/components/Footer.vue'
 import Sidebar from '@/components/Sidebar.vue';
-import Main from '@/components/Main.vue';
+//import Main from '@/components/Main.vue';
 //import { useStore } from "vuex";
 //import { computed } from "@vue/reactivity";
 /*import { getUrl } from "@/helpers/getUrl";
@@ -22,7 +22,7 @@ import { onMounted } from '@vue/runtime-core'; */
 export default {
   name: "Front",
 components: {
-  Header, Footer, Sidebar, Main
+  Header, Footer, Sidebar, //Main
 },
 
   //props: { art: Array },

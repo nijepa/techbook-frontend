@@ -1,17 +1,19 @@
 <template>
-  <section>
+  <section class="section-main">
     <div class="section-headin" v-if="lang">
       <div class="heading__lang" @click.prevent="selectGroup()">
         <img :src="getUrl(lang.img_url, 'logos')" alt="" />
         <h1>{{ lang.title }}</h1>
       </div>
-      
+
       <ul v-if="lang.groups.length">
         <li
           v-for="group in lang.groups"
           :key="group"
           class="links__article"
-          :class="isEmpty(gru) ? '' : group._id === gru._id ? 'group__selected' : ''"
+          :class="
+            isEmpty(gru) ? '' : group._id === gru._id ? 'group__selected' : ''
+          "
           id="cont"
         >
           <a href="" @click.prevent="selectGroup(group)" id="box">
@@ -24,18 +26,104 @@
     <article-nav />
     <Loader v-if="!articles.length" />
     <transition-group name="component-fade" mode="out-in">
-      <ul v-if="!article._id">
-        <li
-          v-for="article in articles"
-          :key="article._id"
-          @click="selectArticle(article)"
-          class="articles__list"
-        >
-          <transition name="component-fade" mode="out-in">
-            <h4>{{ article.title }}</h4>
-          </transition>
-        </li>
-      </ul>
+      <div v-if="!article._id" class="content">
+        <ul>
+          <li
+            v-for="article in articlesTruncated"
+            :key="article._id"
+            class="articles__list"
+          >
+            <transition name="component-fade" mode="out-in">
+              <div class="article__short">
+                <svg
+                  width="24px"
+                  height="24px"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M8.44019 12L10.8142 14.373L15.5602 9.62695"
+                    stroke="#130F26"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M2.74976 12C2.74976 18.937 5.06276 21.25 11.9998 21.25C18.9368 21.25 21.2498 18.937 21.2498 12C21.2498 5.063 18.9368 2.75 11.9998 2.75C5.06276 2.75 2.74976 5.063 2.74976 12Z"
+                    stroke="#130F26"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+                <h4 @click="selectArticle(article)">{{ article.title }}</h4>
+                <svg
+                  width="24px"
+                  height="24px"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M12 3C9.96385 3 9.77134 6.54652 8.55911 7.79957C7.34689 9.05263 3.5782 7.61992 3.05459 9.84403C2.53207 12.0693 5.92235 12.8243 6.34036 14.7334C6.76057 16.6426 4.68922 19.3249 6.45916 20.6598C8.22911 21.9936 10.1343 18.9747 12 18.9747C13.8656 18.9747 15.7709 21.9936 17.5408 20.6598C19.3108 19.3249 17.2405 16.6426 17.6596 14.7334C18.0787 12.8243 21.4679 12.0693 20.9454 9.84403C20.4229 7.61992 16.6531 9.05263 15.442 7.79957C14.2297 6.54652 14.0361 3 12 3Z"
+                    stroke="#130F26"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+                <p v-html="article.description" class="article__description"></p>
+                <svg
+                  width="24px"
+                  height="24px"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M8.54248 9.21777H15.3975"
+                    stroke="#130F26"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M11.9702 2.5C5.58324 2.5 4.50424 3.432 4.50424 10.929C4.50424 19.322 4.34724 21.5 5.94324 21.5C7.53824 21.5 10.1432 17.816 11.9702 17.816C13.7972 17.816 16.4022 21.5 17.9972 21.5C19.5932 21.5 19.4362 19.322 19.4362 10.929C19.4362 3.432 18.3572 2.5 11.9702 2.5Z"
+                    stroke="#130F26"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+                <p
+                  v-for="(group, index) in article.groups"
+                  :key="index"
+                  class="article__group"
+                >
+                  {{ group }}
+                </p>
+                <p class="article__date">
+                  ctreated {{ dayjs(article.createdAt).format("DD.MM.YYYY") }} / updated {{ dayjs(article.updatedAt).format("DD.MM.YYYY") }}
+                </p>
+              </div>
+            </transition>
+          </li>
+        </ul>
+        <div class="content-side">
+          <div class="lang-about">
+            <img :src="getUrl(lang.img_url, 'logos')" alt="" />
+            <h1>{{ lang.title }}</h1>
+            <p>{{ lang.description }}</p>
+          </div>
+        </div>
+      </div>
 
       <div class="article" v-else>
         <Article />
@@ -51,8 +139,9 @@ import ArticleNav from "@/components/Article_nav.vue";
 import { computed, ref } from "@vue/reactivity";
 import { getUrl } from "@/helpers/getUrl";
 //import { onMounted } from "@vue/runtime-core";
-import { isEmpty } from '../helpers/isEmptyObject'
+import { isEmpty } from "../helpers/isEmptyObject";
 import Loader from "./Loader.vue";
+import dayjs from "dayjs";
 
 export default {
   name: "Language",
@@ -72,9 +161,21 @@ export default {
       await store.dispatch("fetchArticle", article);
     };
 
+    const articlesTruncated = computed(() => {
+      return articles.value.map((item) => {
+        return {
+          ...item,
+          description:
+            item.description.length < 50
+              ? item.description
+              : item.description.substring(0, 50) + " ...",
+        };
+      });
+    });
+
     const selectGroup = (group = null) => {
       gru.value = group;
-      console.log(gru)
+      console.log(gru);
       if (isEmpty(group)) {
         //store.dispatch("fetchArticles", lang);
       }
@@ -82,7 +183,18 @@ export default {
 
     //onMounted(() => selectGroup());
 
-    return { lang, articles, article, selectArticle, getUrl, selectGroup, isEmpty, gru };
+    return {
+      lang,
+      articles,
+      article,
+      selectArticle,
+      getUrl,
+      selectGroup,
+      isEmpty,
+      gru,
+      articlesTruncated,
+      dayjs,
+    };
   },
 
   components: {
@@ -110,79 +222,81 @@ export default {
   color: $blue-lightest !important;
 }
 
-.section-headin {
-  display: flex;
-  align-items: center;
-  //margin-left: .3em;
-  background-color: $blue-light;
-  border-bottom: 2px solid $blue-lightest;
-  border-left: 2px solid $blue-lightest;
-  border-top: 5px solid $blue-lightest;
+.section-main {
+  display: grid;
 
-  .heading__lang {
+  .section-headin {
     display: flex;
-    cursor: pointer;
-    img {
-      width: 25px;
-      height: 25px;
-      height: auto;
-      margin-left: 0.5em;
-      border-radius: 5px;
+    align-items: center;
+    //margin-left: .3em;
+    background-color: $blue-light;
+    border-bottom: 2px solid $blue-lightest;
+    border-left: 2px solid $blue-lightest;
+    border-top: 5px solid $blue-lightest;
+
+    .heading__lang {
+      display: flex;
+      cursor: pointer;
+      img {
+        width: 25px;
+        height: 25px;
+        height: auto;
+        margin-left: 0.5em;
+        border-radius: 5px;
+      }
+
+      h1 {
+        font-size: 1em;
+        margin: 0 0.5em;
+      }
     }
 
-    h1 {
-      font-size: 1em;
+    .heading__lang:hover {
+      color: $blue-lightest;
+    }
+
+    ul {
       margin: 0 0.5em;
     }
-  }
 
-  .heading__lang:hover {
-    color: $blue-lightest;
-  }
+    ul .links__article {
+      margin: 0;
+      border-radius: 1px;
+      position: relative;
+      padding: 0.3em 0.8em;
+    }
 
-  
+    ul .links__article:nth-child(odd)::before {
+      content: "";
+      color: $blue-lightest;
+      border-right: 2px solid $blue-lightest;
+      //position: relative;
+      //display: inline-block;
+      //left: -5px;
+      transform: rotate(20deg);
+      display: block;
+      position: absolute;
+      top: -2px;
+      left: -5px;
+      width: 2px;
+      height: 110%;
+    }
 
-  ul {
-    margin: 0 0.5em;
-  }
-
-  ul .links__article {
-    margin: 0;
-    border-radius: 1px;
-    position: relative;
-    padding: 0.3em 0.8em;
-  }
-
-  ul .links__article:nth-child(odd)::before {
-    content: "";
-    color: $blue-lightest;
-    border-right: 2px solid $blue-lightest;
-    //position: relative;
-    //display: inline-block;
-    //left: -5px;
-    transform: rotate(20deg);
-    display: block;
-    position: absolute;
-    top: -2px;
-    left: -5px;
-    width: 2px;
-    height: 110%;
-  }
-
-  ul .links__article:nth-child(even)::after {
-    content: "";
-    color: $blue-lightest;
-    border-right: 2px solid $blue-lightest;
-    //position: relative;
-    //display: inline-block;
-    //left: 5px;
-    transform: rotate(-20deg);
-    display: block;
-    position: absolute;
-    top: -2px;
-    left: -5px;
-    width: 2px;
-    height: 110%;
+    ul .links__article:nth-child(even)::after {
+      content: "";
+      color: $blue-lightest;
+      border-right: 2px solid $blue-lightest;
+      //position: relative;
+      //display: inline-block;
+      //left: 5px;
+      transform: rotate(-20deg);
+      display: block;
+      position: absolute;
+      top: -2px;
+      left: -5px;
+      width: 2px;
+      height: 110%;
+    }
   }
 }
 </style>
