@@ -15,7 +15,7 @@ section {
   .content {
     display: flex;
   }
-  .content-side {
+  /* .content-side {
     width: 30%;
 
     .lang-about {
@@ -26,7 +26,7 @@ section {
       box-shadow: 0px 0px 3px 1px #6887aebf;
       background-color: $blue-lighter;
     }
-  }
+  } */
   
 
   ul {
@@ -36,7 +36,7 @@ section {
     justify-content: left;
     list-style-type: none;
     margin: .5em 1em;
-    width: 70%;
+    //width: 70%;
 
     .articles__list {
       flex-shrink: 0;
@@ -63,6 +63,11 @@ section {
         grid-column-gap: .5em;
         grid-row-gap: .2em;
 
+        .article__group-list {
+          margin: 0;
+          width: auto;
+        }
+
         h4 {
           grid-area: 1 / 2 / 2 / 4;
         }
@@ -80,6 +85,7 @@ section {
           padding: .1em .2em;
           font-size: smaller;
           cursor: pointer;
+          margin-right: .5em;
         }
 
         .article__date {

@@ -65,6 +65,7 @@ $border-width: 2px;
 $reverse: true;
 
 .tree {
+  margin-top: 50px;
   @if $reverse {
     //transform: rotate(180deg);
     //transform-origin: 50%;

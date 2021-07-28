@@ -1,8 +1,8 @@
 .home {
   display: grid;
-  grid-template-columns: 1fr 7fr;
-  grid-template-areas: "header header"
-                        "sidenav main"
-                        "footer footer"
+  grid-template-columns: 1fr 5fr 1fr;
+  grid-template-areas: "header header header"
+                        "sidenav main sideright"
+                        "footer footer footer"
 
 }

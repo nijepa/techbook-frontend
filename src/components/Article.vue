@@ -3,7 +3,7 @@
     <h2>
       {{ article.title }}
     </h2>
-    <ul v-if="article.groups.length">
+    <ul v-if="article.groups.length" class="article-groups">
       <li v-for="group in article.groups" :key="group" class="links__article">
         {{ group }}
       </li>

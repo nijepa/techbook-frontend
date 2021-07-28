@@ -102,13 +102,15 @@
                     stroke-linejoin="round"
                   />
                 </svg>
-                <p
-                  v-for="(group, index) in article.groups"
-                  :key="index"
-                  class="article__group"
-                >
-                  {{ group }}
-                </p>
+                <ul class="article__group-list">
+                  <li
+                    v-for="(group, index) in article.groups"
+                    :key="index"
+                    class="article__group"
+                  >
+                    {{ group }}
+                  </li>
+                </ul>
                 <p class="article__date">
                   ctreated {{ dayjs(article.createdAt).format("DD.MM.YYYY") }} / updated {{ dayjs(article.updatedAt).format("DD.MM.YYYY") }}
                 </p>
@@ -116,13 +118,13 @@
             </transition>
           </li>
         </ul>
-        <div class="content-side">
+<!--         <div class="content-side">
           <div class="lang-about">
             <img :src="getUrl(lang.img_url, 'logos')" alt="" />
             <h1>{{ lang.title }}</h1>
             <p>{{ lang.description }}</p>
           </div>
-        </div>
+        </div> -->
       </div>
 
       <div class="article" v-else>

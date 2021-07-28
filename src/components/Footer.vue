@@ -10,8 +10,12 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
   footer {
-    grid-column: span 2;
+    grid-area: footer;
+    grid-column: span 3;
+    background-color: $blue-darkest;
+    color: $blue-lightest;
+    box-shadow: 0px -2px 2px 0px rgba(0, 15, 34, 0.75);
   }
 </style>

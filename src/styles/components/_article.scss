@@ -35,12 +35,18 @@ article {
     margin-top: 1em;
   }
 
+  .article-groups {
+    margin: 0;
+    width: auto;
+  }
+  
+
   .article__links {
     display: flex;
     align-items: center;
 
     ul {
-      display: grid;
+      //display: grid;
       
       .links__article {
         background-color: transparent;

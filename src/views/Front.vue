@@ -4,6 +4,7 @@
     <Sidebar /> 
     <!-- <Main msg="Technology book"/>  -->
     <router-view/>
+    <sidebar-right />
     <Footer />
   </div>
 </template>
@@ -12,6 +13,7 @@
 import Header from '@/components/Header.vue'
 import Footer from '@/components/Footer.vue'
 import Sidebar from '@/components/Sidebar.vue';
+import SidebarRight from '@/components/Sidebar_right.vue';
 //import Main from '@/components/Main.vue';
 //import { useStore } from "vuex";
 //import { computed } from "@vue/reactivity";
@@ -22,7 +24,7 @@ import { onMounted } from '@vue/runtime-core'; */
 export default {
   name: "Front",
 components: {
-  Header, Footer, Sidebar, //Main
+  Header, Footer, Sidebar, SidebarRight //Main
 },
 
   //props: { art: Array },
