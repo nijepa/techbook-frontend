@@ -6,25 +6,82 @@
         <h1>{{ lang.title }}</h1>
       </div>
 
-      <ul v-if="lang.groups.length">
-        <li
-          v-for="group in lang.groups"
-          :key="group"
-          class="links__article"
-          :class="
-            isEmpty(gru) ? '' : group._id === gru._id ? 'group__selected' : ''
-          "
-          id="cont"
-        >
-          <a href="" @click.prevent="selectGroup(group)" id="box">
-            {{ group.name }}
-          </a>
-        </li>
-      </ul>
+      <div v-if="width < 1282">
+        <div v-click-outside="hideFields">
+        <button type="submit" class="article__fields" @click="toggleFields">
+          <svg
+            width="24px"
+            height="24px"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              id="Stroke 1"
+              d="M11.1437 17.8829H4.67114"
+              stroke="#154380"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              id="Stroke 3"
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M15.205 17.8839C15.205 19.9257 15.8859 20.6057 17.9267 20.6057C19.9676 20.6057 20.6485 19.9257 20.6485 17.8839C20.6485 15.8421 19.9676 15.1621 17.9267 15.1621C15.8859 15.1621 15.205 15.8421 15.205 17.8839Z"
+              stroke="#130F26"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              id="Stroke 5"
+              d="M14.1765 7.39439H20.6481"
+              stroke="#154380"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              id="Stroke 7"
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M10.1153 7.39293C10.1153 5.35204 9.43436 4.67114 7.39346 4.67114C5.35167 4.67114 4.67078 5.35204 4.67078 7.39293C4.67078 9.43472 5.35167 10.1147 7.39346 10.1147C9.43436 10.1147 10.1153 9.43472 10.1153 7.39293Z"
+              stroke="#130F26"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+          <span>Fields</span>
+        </button>
+        <lang-fields :groups="lang.groups" v-if="fieldsStatus" @field="selectGroup" />
+        </div>
+      </div>
+    
+      <div v-else>
+        <ul v-if="lang.groups.length">
+          <li
+            v-for="group in lang.groups"
+            :key="group"
+            class="links__article"
+            :class="
+              isEmpty(gru) ? '' : group._id === gru._id ? 'group__selected' : ''
+            "
+            id="cont"
+          >
+            <a href="" @click.prevent="selectGroup(group)" id="box">
+              {{ group.name }}
+            </a>
+          </li>
+        </ul>
+      </div>
     </div>
 
     <article-nav />
+
     <Loader v-if="!articles.length" />
+
     <transition-group name="component-fade" mode="out-in">
       <div v-if="!article._id" class="content">
         <ul>
@@ -77,7 +134,10 @@
                     stroke-linejoin="round"
                   />
                 </svg>
-                <p v-html="article.description" class="article__description"></p>
+                <p
+                  v-html="article.description"
+                  class="article__description"
+                ></p>
                 <svg
                   width="24px"
                   height="24px"
@@ -112,13 +172,14 @@
                   </li>
                 </ul>
                 <p class="article__date">
-                  ctreated {{ dayjs(article.createdAt).format("DD.MM.YYYY") }} / updated {{ dayjs(article.updatedAt).format("DD.MM.YYYY") }}
+                  ctreated {{ dayjs(article.createdAt).format("DD.MM.YYYY") }} /
+                  updated {{ dayjs(article.updatedAt).format("DD.MM.YYYY") }}
                 </p>
               </div>
             </transition>
           </li>
         </ul>
-<!--         <div class="content-side">
+        <!--         <div class="content-side">
           <div class="lang-about">
             <img :src="getUrl(lang.img_url, 'logos')" alt="" />
             <h1>{{ lang.title }}</h1>
@@ -138,12 +199,14 @@
 import { useStore } from "vuex";
 import Article from "./Article.vue";
 import ArticleNav from "@/components/Article_nav.vue";
+import LangFields from "@/components/tech/LangFields.vue";
 import { computed, ref } from "@vue/reactivity";
 import { getUrl } from "@/helpers/getUrl";
 //import { onMounted } from "@vue/runtime-core";
 import { isEmpty } from "../helpers/isEmptyObject";
 import Loader from "./Loader.vue";
 import dayjs from "dayjs";
+import useBreakpoints from "../composables/useBreakpoints";
 
 export default {
   name: "Language",
@@ -175,9 +238,18 @@ export default {
       });
     });
 
+    const { width, type } = useBreakpoints();
+    let fieldsStatus = ref(false);
+    const toggleFields = () => {
+      fieldsStatus.value = !fieldsStatus.value
+    }
+    const hideFields = () => {
+      fieldsStatus.value = false
+    }
     const selectGroup = (group = null) => {
       gru.value = group;
       console.log(gru);
+      hideFields()
       if (isEmpty(group)) {
         //store.dispatch("fetchArticles", lang);
       }
@@ -196,6 +268,11 @@ export default {
       gru,
       articlesTruncated,
       dayjs,
+      width,
+      type,
+      fieldsStatus,
+      toggleFields,
+      hideFields
     };
   },
 
@@ -203,6 +280,7 @@ export default {
     Article,
     Loader,
     ArticleNav,
+    LangFields
   },
 };
 </script>
@@ -239,6 +317,7 @@ export default {
     .heading__lang {
       display: flex;
       cursor: pointer;
+      padding: 0.2em 0;
       img {
         width: 25px;
         height: 25px;
@@ -255,6 +334,29 @@ export default {
 
     .heading__lang:hover {
       color: $blue-lightest;
+    }
+
+    .article__fields {
+      display: flex;
+      border: transparent;
+      align-items: center;
+      padding: 0.3em 0.3em;
+      cursor: pointer;
+      margin-left: 0.5em;
+      transition: all 0.4s ease-in-out;
+
+      span {
+        margin-left: 0.5em;
+        color: $blue-darkest;
+        font-size: 600;
+      }
+    }
+
+    .article__fields:hover {
+      background: $blue-dark;
+      span {
+        color: $blue-lightest;
+      }
     }
 
     ul {
@@ -281,7 +383,7 @@ export default {
       top: -2px;
       left: -5px;
       width: 2px;
-      height: 110%;
+      height: 120%;
     }
 
     ul .links__article:nth-child(even)::after {
@@ -297,7 +399,7 @@ export default {
       top: -2px;
       left: -5px;
       width: 2px;
-      height: 110%;
+      height: 120%;
     }
   }
 }

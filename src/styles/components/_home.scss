@@ -1,6 +1,6 @@
 .home {
   display: grid;
-  grid-template-columns: 1fr 5fr 1fr;
+  grid-template-columns: 1fr minmax(min-content, 3fr) 1fr;
   grid-template-areas: "header header header"
                         "sidenav main sideright"
                         "footer footer footer"

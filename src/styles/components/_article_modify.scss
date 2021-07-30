@@ -167,8 +167,10 @@ form.go-bottom {
   }
 } */
 .profile__wrapper {
-  display: flex;
+  //display: flex;
   padding: 2em;
+  //grid-area: main;
+  width: auto !important;
 }
 
 .art__desc {
@@ -231,7 +233,7 @@ form.go-bottom {
   //border-top: 1px solid var(--blue-grey-darker);
   align-items: flex-start;
   grid-column-gap: .5em;
-  width: 100%;
+  max-width: 100%;
 }
 
 .form__item:hover {
@@ -262,28 +264,25 @@ svg {
   }
 .form__btn {
   background: transparent;
-  border-radius: .2em;
+  border-radius: 2em;
   //border: 2px solid var(--blue-grey-dark);
   border: 2px solid transparent;
   cursor: pointer;
   display: flex;
   align-items: center;
   //margin: 0 auto;
-  padding: .5em;
+  padding: .2em;
   font-variant: small-caps;
   font-weight: 800;
   //color: var(--blue-grey-light);
   color: $blue-dark;
   transition: ease-in-out .4s all;
 
-  
-
   span {
     opacity: 0;
     margin-right: .2em;
-    transition: all .4s ease;
+    transition: all .4s ease-in-out;
   }
-  
 }
 
 .links-item {
@@ -294,8 +293,8 @@ svg {
 
 .form__btn:hover {
   //background: var(--blue-grey-darkest);
-  background: $blue-darkest;
-  border-radius: .4em;
+  background: $blue-dark;
+  
   border: 2px solid $blue-lighter;
   color: $blue-lighter;
   //border: 2px solid var(--blue-grey-lighter);
@@ -315,7 +314,7 @@ form {
     margin: 20px 0 0 0;
     position: relative;
     display: inline-block;
-    width: 80%;
+    width: 75%;
   }
   
   label > span {

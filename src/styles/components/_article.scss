@@ -44,7 +44,7 @@ article {
   .article__links {
     display: flex;
     align-items: center;
-
+    justify-self: baseline;
     ul {
       //display: grid;
       

@@ -1,7 +1,6 @@
 <template>
   <div class="article-nav">
     <a class="article-link" @click="clearArticle">
-      <span>All </span>
       <svg
         width="24px"
         height="24px"
@@ -44,11 +43,11 @@
           stroke-linejoin="round"
         />
       </svg>
+      <span>All </span>
       <!-- <img :src="getUrl('list2')" alt="" /> -->
     </a>
     <div class="article-actions">
       <a class="article-link" @click="addArticle(false)">
-        <span>Add </span>
         <svg
           width="24px"
           height="24px"
@@ -83,6 +82,7 @@
             stroke-linejoin="round"
           />
         </svg>
+        <span>Add </span>
         <!-- <img :src="getUrl('add2')" alt="" /> -->
       </a>
       <a
@@ -90,7 +90,6 @@
         v-if="!isEmpty(article)"
         @click="addArticle(true)"
       >
-        <span>Edit </span>
         <svg
           width="24px"
           height="24px"
@@ -125,6 +124,7 @@
             stroke-linejoin="round"
           />
         </svg>
+        <span>Edit </span>
         <!-- <img :src="getUrl('edit2')" alt="" /> -->
       </a>
       <a
@@ -132,7 +132,6 @@
         v-if="!isEmpty(article)"
         @click="deleteArticle(article)"
       >
-        <span>Delete </span>
         <svg
           width="24px"
           height="24px"
@@ -165,6 +164,7 @@
             stroke-linejoin="round"
           />
         </svg>
+        <span>Delete </span>
         <!-- <img :src="getUrl('delete2')" alt="" />-->
       </a>
     </div>

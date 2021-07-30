@@ -14,8 +14,9 @@ export default {
   footer {
     grid-area: footer;
     grid-column: span 3;
-    background-color: $blue-darkest;
+    background-color: $blue-main;
     color: $blue-lightest;
-    box-shadow: 0px -2px 2px 0px rgba(0, 15, 34, 0.75);
+    box-shadow: 0px 0px 2px 2px rgba(42, 100, 177, 0.75);
+    //border-bottom: 2px solid $blue-lightest;
   }
 </style>
