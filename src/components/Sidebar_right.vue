@@ -2,7 +2,7 @@
   <div class="content-side">
     
     <div class="lang-about">
-      <button type="submit" @click="cancelSave()" class="form__btn svg-back">
+      <button type="submit" @click="editLang()" class="form__btn svg-back">
         <svg
             width="24px"
             height="24px"
@@ -41,7 +41,7 @@
       </button>
       <img :src="getUrl(lang.img_url, 'logos')" alt="" />
       <h1>{{ lang.title }}</h1>
-      <p>{{ lang.description }}</p>
+      <p v-html="lang.description"></p>
     </div>
   </div>
 </template>
@@ -50,6 +50,7 @@
 import { useStore } from "vuex";
 import { computed } from "@vue/reactivity";
 import { getUrl } from "@/helpers/getUrl";
+import { useRouter } from "vue-router";
 
 export default {
   name: 'SidebarRight',
@@ -57,8 +58,13 @@ export default {
   setup() {
     const store = useStore();
     const lang = computed(() => store.getters.getOneLanguage);
+    const router = useRouter();
 
-    return { lang, getUrl }
+    const editLang = () => {
+      router.push("/lang");
+    };
+
+    return { lang, getUrl, editLang }
   }
 }
 </script>

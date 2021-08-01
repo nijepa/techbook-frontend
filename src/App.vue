@@ -54,5 +54,8 @@
   --green: #309209;
   --green-light: #46d10f;
 }
-
+html{
+    min-height:100%;/* make sure it is at least as tall as the viewport */
+    position:relative;
+}
 </style>

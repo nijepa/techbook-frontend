@@ -27,6 +27,11 @@ const routes = [
         name: 'Article',
         component: () => import(/* webpackChunkName: "about" */ '../views/Article_actions.vue'),
       },
+      {
+        path: '/lang',
+        name: 'Lang',
+        component: () => import(/* webpackChunkName: "about" */ '../views/Lang_actions.vue'),
+      },
     ]
   },
   

@@ -1,5 +1,10 @@
 <template>
   <aside id="sidenav">
+    <div class="tech__list">
+      <header-link />
+    </div>
+    
+
     <Loader v-if="!languages" />
     <ul v-else>
       <li
@@ -29,12 +34,13 @@ import { useStore } from "vuex";
 import { isEmpty } from '../helpers/isEmptyObject'
 import { getUrl } from '../helpers/getUrl'
 import Loader from './Loader.vue'
+import HeaderLink from "@/components/header/HeaderLink";
 
 export default {
   name: "Sidebar",
 
   components : {
-    Loader
+    Loader, HeaderLink
   },
 
   setup() {
@@ -114,4 +120,64 @@ export default {
 };
 </script>
 
-<style></style>
+<style lang="scss">
+  .tech__list {
+    display: grid;
+    justify-items: stretch;
+    border-bottom: 2px solid $blue-lighter;
+
+    .nav-card {
+      width: auto;
+      padding: 0;
+      margin: 0;
+      background-image: none;
+      border-radius: 0;
+      box-shadow: none;
+      //transform: rotate(0) scale(1);
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: space-between;
+      padding: .5em;
+      text-align: right;
+      
+      img {
+        width: 30px;
+        height: 30px;
+      }
+
+      h3 {
+        font-size: 1em;
+        color: $blue-dark !important;
+        font-weight: 400;
+      }
+    }
+
+    .nav-card:hover {
+      background: $blue-lighter;
+    }
+  }
+
+  .sel-tech {
+    background: $blue-lighter !important;
+    border-right: 5px solid #dba81a;
+
+    h3 {
+      color: $blue-darkest !important;
+      font-weight: 600 !important;
+    }
+  }
+
+  @media(max-width: 700px) {
+    .tech__list {
+      width: 50px;
+
+      .nav-card {
+        width: 59px;
+      }
+      
+      h3 {
+        display: none;
+      }
+    }
+  }
+</style>

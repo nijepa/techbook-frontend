@@ -466,7 +466,7 @@ import { useStore } from "vuex";
 import { isEmpty } from "../helpers/isEmptyObject";
 import { getUrl } from "../helpers/getUrl";
 //import CKEditor from "@ckeditor/ckeditor5-vue";
-import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+//import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 //import tiptap from '@/components/Tiptap.vue'
 import { QuillEditor } from "@vueup/vue-quill";
 import "@vueup/vue-quill/dist/vue-quill.snow.css";
@@ -479,7 +479,7 @@ export default {
     //ckeditor: CKEditor.component,
   },
 
-  data() {
+/*   data() {
     return {
       editor: ClassicEditor,
       editorConfig: {
@@ -489,7 +489,7 @@ export default {
         // ]
       },
     };
-  },
+  }, */
 
   setup() {
     const router = useRouter();

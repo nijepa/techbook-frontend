@@ -14,7 +14,7 @@
 
 <script>
 import { computed } from "@vue/reactivity";
-import { useRouter } from "vue-router";
+//import { useRouter } from "vue-router";
 import { useStore } from "vuex";
 import { getUrl } from "@/helpers/getUrl";
 //import { defineEmit } from 'vue'
@@ -25,7 +25,7 @@ export default {
   setup(props, {emit}) {
 
     const store = useStore();
-    const router = useRouter();
+    //const router = useRouter();
   
     const techs = computed(() => store.getters.getTechs);
     const techSingle = computed(() => store.getters.getTech);
@@ -48,7 +48,7 @@ export default {
       await store.dispatch("articlesClear");
       await store.dispatch("languageClear");
       //await store.dispatch("techClear");
-      await router.push("/abo");
+      //await router.push("/abo");
     };
 
     //store.dispatch("fetchTechs");

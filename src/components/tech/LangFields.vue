@@ -6,8 +6,9 @@
       :key="group"
       class=""
       id="cont"
+      @click.prevent="selectField(group)"
     >
-      <a href="" @click.prevent="selectField(group)" id="box">
+      <a href="" id="box">
         {{ group.name }}
       </a>
     </li>
@@ -51,17 +52,21 @@ export default {
     position: absolute;
     display: grid;
     max-width: 300px;
-    max-height: 350px; 
+    max-height: 300px; 
     z-index: 999;
     background: $blue-dark;
     //padding: .5em;
     justify-items: flex-start;
     box-shadow: 0 1px 2px 1px rgba(26, 37, 51, 0.75);
+    overflow: auto;
     
     li {
       padding: .5em;
       width: 100%;
       text-align: left;
+      border-bottom: 1px solid $blue-light;
+      box-shadow: 0px 0px 3px 1px #6887aebf;
+      cursor: pointer;
 
       a {
         color: $blue-lightest;

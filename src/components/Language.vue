@@ -8,57 +8,61 @@
 
       <div v-if="width < 1282">
         <div v-click-outside="hideFields">
-        <button type="submit" class="article__fields" @click="toggleFields">
-          <svg
-            width="24px"
-            height="24px"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              id="Stroke 1"
-              d="M11.1437 17.8829H4.67114"
-              stroke="#154380"
-              stroke-width="1.5"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-            <path
-              id="Stroke 3"
-              fill-rule="evenodd"
-              clip-rule="evenodd"
-              d="M15.205 17.8839C15.205 19.9257 15.8859 20.6057 17.9267 20.6057C19.9676 20.6057 20.6485 19.9257 20.6485 17.8839C20.6485 15.8421 19.9676 15.1621 17.9267 15.1621C15.8859 15.1621 15.205 15.8421 15.205 17.8839Z"
-              stroke="#130F26"
-              stroke-width="1.5"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-            <path
-              id="Stroke 5"
-              d="M14.1765 7.39439H20.6481"
-              stroke="#154380"
-              stroke-width="1.5"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-            <path
-              id="Stroke 7"
-              fill-rule="evenodd"
-              clip-rule="evenodd"
-              d="M10.1153 7.39293C10.1153 5.35204 9.43436 4.67114 7.39346 4.67114C5.35167 4.67114 4.67078 5.35204 4.67078 7.39293C4.67078 9.43472 5.35167 10.1147 7.39346 10.1147C9.43436 10.1147 10.1153 9.43472 10.1153 7.39293Z"
-              stroke="#130F26"
-              stroke-width="1.5"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
-          <span>Fields</span>
-        </button>
-        <lang-fields :groups="lang.groups" v-if="fieldsStatus" @field="selectGroup" />
+          <button type="submit" class="article__fields" @click="toggleFields">
+            <svg
+              width="24px"
+              height="24px"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                id="Stroke 1"
+                d="M11.1437 17.8829H4.67114"
+                stroke="#154380"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                id="Stroke 3"
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M15.205 17.8839C15.205 19.9257 15.8859 20.6057 17.9267 20.6057C19.9676 20.6057 20.6485 19.9257 20.6485 17.8839C20.6485 15.8421 19.9676 15.1621 17.9267 15.1621C15.8859 15.1621 15.205 15.8421 15.205 17.8839Z"
+                stroke="#130F26"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                id="Stroke 5"
+                d="M14.1765 7.39439H20.6481"
+                stroke="#154380"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                id="Stroke 7"
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M10.1153 7.39293C10.1153 5.35204 9.43436 4.67114 7.39346 4.67114C5.35167 4.67114 4.67078 5.35204 4.67078 7.39293C4.67078 9.43472 5.35167 10.1147 7.39346 10.1147C9.43436 10.1147 10.1153 9.43472 10.1153 7.39293Z"
+                stroke="#130F26"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            <span>Fields</span>
+          </button>
+          <lang-fields
+            :groups="lang.groups"
+            v-if="fieldsStatus"
+            @field="selectGroup"
+          />
         </div>
       </div>
-    
+
       <div v-else>
         <ul v-if="lang.groups.length">
           <li
@@ -76,40 +80,48 @@
           </li>
         </ul>
       </div>
+
     </div>
 
     <article-nav />
 
-    <Loader v-if="!articles.length" />
+    <Loader v-if="!articles.length || loading" />
 
-    <transition-group name="component-fade" mode="out-in">
+    <transition-group
+      name="component-fade"
+      mode="out-in"
+      v-if="!loading"
+      appear
+    >
       <div v-if="!article._id" class="content">
         <ul>
           <li
-            v-for="article in articlesTruncated"
+            v-for="article in result"
             :key="article._id"
             class="articles__list"
           >
             <transition name="component-fade" mode="out-in">
               <div class="article__short">
                 <svg
+                  @click="toggleArt(article, 'finish')"
                   width="24px"
                   height="24px"
                   viewBox="0 0 24 24"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
+                  :class="article.finish ? 'art-checked' : ''"
                 >
                   <path
-                    d="M8.44019 12L10.8142 14.373L15.5602 9.62695"
+                    d="M2.74976 12C2.74976 18.937 5.06276 21.25 11.9998 21.25C18.9368 21.25 21.2498 18.937 21.2498 12C21.2498 5.063 18.9368 2.75 11.9998 2.75C5.06276 2.75 2.74976 5.063 2.74976 12Z"
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
                     stroke="#130F26"
                     stroke-width="1.5"
                     stroke-linecap="round"
                     stroke-linejoin="round"
                   />
                   <path
-                    fill-rule="evenodd"
-                    clip-rule="evenodd"
-                    d="M2.74976 12C2.74976 18.937 5.06276 21.25 11.9998 21.25C18.9368 21.25 21.2498 18.937 21.2498 12C21.2498 5.063 18.9368 2.75 11.9998 2.75C5.06276 2.75 2.74976 5.063 2.74976 12Z"
+                    d="M8.44019 12L10.8142 14.373L15.5602 9.62695"
                     stroke="#130F26"
                     stroke-width="1.5"
                     stroke-linecap="round"
@@ -118,11 +130,13 @@
                 </svg>
                 <h4 @click="selectArticle(article)">{{ article.title }}</h4>
                 <svg
+                  @click="toggleArt(article, 'favorite')"
                   width="24px"
                   height="24px"
                   viewBox="0 0 24 24"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
+                  :class="article.favorite ? 'art-checked' : ''"
                 >
                   <path
                     fill-rule="evenodd"
@@ -139,23 +153,25 @@
                   class="article__description"
                 ></p>
                 <svg
+                  @click="toggleArt(article, 'bookmark')"
                   width="24px"
                   height="24px"
                   viewBox="0 0 24 24"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
+                  :class="article.bookmark ? 'art-checked' : ''"
                 >
                   <path
-                    d="M8.54248 9.21777H15.3975"
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M11.9702 2.5C5.58324 2.5 4.50424 3.432 4.50424 10.929C4.50424 19.322 4.34724 21.5 5.94324 21.5C7.53824 21.5 10.1432 17.816 11.9702 17.816C13.7972 17.816 16.4022 21.5 17.9972 21.5C19.5932 21.5 19.4362 19.322 19.4362 10.929C19.4362 3.432 18.3572 2.5 11.9702 2.5Z"
                     stroke="#130F26"
                     stroke-width="1.5"
                     stroke-linecap="round"
                     stroke-linejoin="round"
                   />
                   <path
-                    fill-rule="evenodd"
-                    clip-rule="evenodd"
-                    d="M11.9702 2.5C5.58324 2.5 4.50424 3.432 4.50424 10.929C4.50424 19.322 4.34724 21.5 5.94324 21.5C7.53824 21.5 10.1432 17.816 11.9702 17.816C13.7972 17.816 16.4022 21.5 17.9972 21.5C19.5932 21.5 19.4362 19.322 19.4362 10.929C19.4362 3.432 18.3572 2.5 11.9702 2.5Z"
+                    d="M8.54248 9.21777H15.3975"
                     stroke="#130F26"
                     stroke-width="1.5"
                     stroke-linecap="round"
@@ -186,11 +202,50 @@
             <p>{{ lang.description }}</p>
           </div>
         </div> -->
+        <div class="pagination">
+          <p>page {{ currentPage }} of {{ lastPage }}</p>
+          <div class="pagination__btns">
+            <button class="form__btn" @click="first">
+              <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path id="Stroke 1" d="M7.91394 12L16.0859 12" stroke="#130F26" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path id="Stroke 2" d="M11.6782 15.752C11.6782 15.752 7.91422 13.224 7.91422 12C7.91422 10.776 11.6782 8.25195 11.6782 8.25195" stroke="#130F26" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path id="Stroke 4" fill-rule="evenodd" clip-rule="evenodd" d="M11.9999 2.75C5.06288 2.75 2.74988 5.063 2.74988 12C2.74988 18.937 5.06288 21.25 11.9999 21.25C18.9369 21.25 21.2499 18.937 21.2499 12C21.2499 5.063 18.9369 2.75 11.9999 2.75Z" stroke="#130F26" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              first
+            </button>
+            <button class="form__btn" @click="prev">
+              <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path id="Stroke 1" fill-rule="evenodd" clip-rule="evenodd" d="M11.9999 2.75024C5.06288 2.75024 2.74988 5.06324 2.74988 12.0002C2.74988 18.9372 5.06288 21.2502 11.9999 21.2502C18.9369 21.2502 21.2499 18.9372 21.2499 12.0002C21.2499 5.06324 18.9369 2.75024 11.9999 2.75024Z" stroke="#130F26" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path id="Stroke 3" d="M13.4418 8.52856C13.4418 8.52856 9.95577 10.9206 9.95577 12.0006C9.95577 13.0806 13.4418 15.4706 13.4418 15.4706" stroke="#130F26" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              prev
+            </button>
+            <button class="form__btn" @click="next">
+              next
+              <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path id="Stroke 1" fill-rule="evenodd" clip-rule="evenodd" d="M12.0001 21.2498C18.9371 21.2498 21.2501 18.9368 21.2501 11.9998C21.2501 5.06276 18.9371 2.74976 12.0001 2.74976C5.06312 2.74976 2.75012 5.06276 2.75012 11.9998C2.75012 18.9368 5.06312 21.2498 12.0001 21.2498Z" stroke="#130F26" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path id="Stroke 3" d="M10.5582 15.4714C10.5582 15.4714 14.0442 13.0794 14.0442 11.9994C14.0442 10.9194 10.5582 8.52944 10.5582 8.52944" stroke="#130F26" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <button class="form__btn" @click="last">
+              last
+              <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path id="Stroke 1" d="M16.0861 12H7.91406" stroke="#130F26" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path id="Stroke 2" d="M12.3218 8.24805C12.3218 8.24805 16.0858 10.776 16.0858 12C16.0858 13.224 12.3218 15.748 12.3218 15.748" stroke="#130F26" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path id="Stroke 4" fill-rule="evenodd" clip-rule="evenodd" d="M12.0001 21.25C18.9371 21.25 21.2501 18.937 21.2501 12C21.2501 5.063 18.9371 2.75 12.0001 2.75C5.06312 2.75 2.75012 5.063 2.75012 12C2.75012 18.937 5.06312 21.25 12.0001 21.25Z" stroke="#130F26" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+    <!--       <ul>
+            <li v-for="n in result" :key="n">{{ n }}</li>
+          </ul> -->
+        </div>
       </div>
 
       <div class="article" v-else>
         <Article />
       </div>
+      
     </transition-group>
   </section>
 </template>
@@ -207,11 +262,19 @@ import { isEmpty } from "../helpers/isEmptyObject";
 import Loader from "./Loader.vue";
 import dayjs from "dayjs";
 import useBreakpoints from "../composables/useBreakpoints";
+import { usePagination } from "vue-composable";
 
 export default {
   name: "Language",
 
   props: { art: Array },
+
+  components: {
+    Article,
+    Loader,
+    ArticleNav,
+    LangFields,
+  },
 
   setup() {
     const store = useStore();
@@ -221,9 +284,12 @@ export default {
     );
     const article = computed(() => store.getters.getOneArticle);
     let gru = ref(null);
+    let loading = ref(false);
 
     const selectArticle = async (article) => {
+      loading.value = true;
       await store.dispatch("fetchArticle", article);
+      loading.value = false;
     };
 
     const articlesTruncated = computed(() => {
@@ -241,19 +307,49 @@ export default {
     const { width, type } = useBreakpoints();
     let fieldsStatus = ref(false);
     const toggleFields = () => {
-      fieldsStatus.value = !fieldsStatus.value
-    }
+      fieldsStatus.value = !fieldsStatus.value;
+    };
     const hideFields = () => {
-      fieldsStatus.value = false
-    }
+      fieldsStatus.value = false;
+    };
+
     const selectGroup = (group = null) => {
       gru.value = group;
       console.log(gru);
-      hideFields()
+      hideFields();
       if (isEmpty(group)) {
         //store.dispatch("fetchArticles", lang);
       }
     };
+
+    const toggleArt = (art, type) => {
+      art[type] = !art[type];
+      art.user = "609fa93aa271831c12d7f8d0";
+      art.langId = lang.value._id;
+      store.dispatch("articleUpdate", art);
+    };
+
+
+    const {
+      currentPage,
+      lastPage,
+      next,
+      prev,
+      offset,
+      pageSize,
+      first,
+      last
+    } = usePagination({
+      currentPage: 1,
+      pageSize: 10,
+      total: computed(() => articlesTruncated.value.length),
+    });
+
+    const result = computed(() => {
+      const array = articlesTruncated.value;
+      if (!Array.isArray(array)) return [];
+      return array.slice(offset.value, offset.value + pageSize.value);
+    });
 
     //onMounted(() => selectGroup());
 
@@ -272,15 +368,17 @@ export default {
       type,
       fieldsStatus,
       toggleFields,
-      hideFields
+      hideFields,
+      loading,
+      toggleArt,
+      currentPage,
+      lastPage,
+      next,
+      prev,
+      result,
+      first,
+      last
     };
-  },
-
-  components: {
-    Article,
-    Loader,
-    ArticleNav,
-    LangFields
   },
 };
 </script>
@@ -288,7 +386,7 @@ export default {
 <style lang="scss">
 .component-fade-enter-active,
 .component-fade-leave-active {
-  transition: opacity 0.6s ease;
+  transition: opacity 0.6s ease-in-out;
   max-height: 0px;
 }
 
@@ -302,8 +400,79 @@ export default {
   color: $blue-lightest !important;
 }
 
+.art-checked {
+  fill: $blue-dark;
+  path {
+    stroke: $blue-lightest !important;
+  }
+}
+
+.pagination {
+  margin: 1em;
+  display: grid;
+  justify-content: center;
+
+  .pagination__btns {
+    display: flex;
+  }
+}
+
 .section-main {
   display: grid;
+
+  .article-header {
+    display: flex;
+    justify-self: center;
+    //margin: 0.5em 0;
+    //border: 2px solid $blue-lightest;
+    border-radius: 0.5em;
+    align-items: center;
+
+    .article-header_item {
+      display: flex;
+      align-items: center;
+      padding: 0.2em .3em 0.2em .3em;
+      //border-right: 2px solid $blue-lightest;
+      font-size: small;
+      color: $blue-lightest;
+      cursor: pointer;
+      transition: all 0.4s ease;
+
+      p {
+        visibility: hidden;
+      }
+
+      svg {
+        path {
+          stroke: $blue-lightest;
+        }
+      }
+    }
+
+    .article-header_item:nth-last-child(1) {
+      border-right: 2px solid transparent;
+      border-top-right-radius: 0.2em;
+      border-bottom-right-radius: 0.2em;
+    }
+
+    .article-header_item:nth-child(1) {
+      border-top-left-radius: 0.3em;
+      border-bottom-left-radius: 0.3em;
+    }
+
+    .article-header_item:hover {
+      background-color: $blue-lightest;
+      color: $blue-darkest;
+      p {
+        visibility: visible;
+      }
+      svg {
+        path {
+          stroke: $blue-darkest;
+        }
+      }
+    }
+  }
 
   .section-headin {
     display: flex;
