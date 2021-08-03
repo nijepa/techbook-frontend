@@ -1,18 +1,13 @@
 <template>
-
-  <router-view/>
-
+  <router-view />
 </template>
 
 <script>
 // @ is an alias to /src
 
-
-  export default {
-    //name: 'Home',
-    
- 
-  }
+export default {
+  //name: 'Home',
+};
 </script>
 
 <style lang="scss">
@@ -24,12 +19,7 @@
   color: #2c3e50;
 }
 :root {
-/*   --blue-grey-darkest: #6d7a88;
-  --blue-grey-darker: #8a9cad;
-  --blue-grey-dark: #a5b1be;
-  --blue-grey: #c7d4e0;
-  --blue-grey-light: #bad1e7;
-  --blue-grey-lighter: #d1e9ff; */
+
 
   --blue-grey-darkest: #1e242b;
   --blue-grey-darker: #2a3846;
@@ -38,11 +28,8 @@
   --blue-grey-light: #70baff;
   --blue-grey-lighter: #a5d2fd;
 
-
   --blue: #003e81;
 
-  /* --yellow: #ffc600; */
-  /* --blue: #259de2; */
   --blue-darkest: #2c3e50;
   --black: #272727;
   --orange: #ffb515;
@@ -54,8 +41,8 @@
   --green: #309209;
   --green-light: #46d10f;
 }
-html{
-    min-height:100%;/* make sure it is at least as tall as the viewport */
-    position:relative;
+html {
+  min-height: 100%; /* make sure it is at least as tall as the viewport */
+  position: relative;
 }
 </style>

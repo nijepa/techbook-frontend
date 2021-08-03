@@ -12,7 +12,9 @@ const state = {
 /* -------------------------------------- GETTERS -------------------------------------- */
 const getters = {
   getTechs: (state) => state.techs,
+
   getTech: (state) => state.tech,
+
   getErrors: (state) => state.errors,
 };
 
@@ -33,7 +35,10 @@ const mutations = {
   updateTech(state, tech) {
     state.techs = [
       ...state.techs.map((item) =>
-        item._id !== tech._id ? item : { ...item, ...tech }
+        item._id !== tech._id ? item : {
+          ...item,
+          ...tech
+        }
       ),
     ];
   },
@@ -49,12 +54,16 @@ const mutations = {
 
 /* -------------------------------------- ACTIONS -------------------------------------- */
 const actions = {
-  async fetchTechs({ commit }) {
+  async fetchTechs({
+    commit
+  }) {
     const response = await axios.get(URL + "api/v1/techs");
     commit("setTechs", response);
   },
 
-  async fetchTech({ commit }, techData) {
+  async fetchTech({
+    commit
+  }, techData) {
     const response = await axios.get(
       URL + "api/v1/techs/" + techData._id,
       techData
@@ -62,7 +71,9 @@ const actions = {
     commit("setTech", response.data);
   },
 
-  async techAdd({ commit }, techData) {
+  async techAdd({
+    commit
+  }, techData) {
     await axios
       .post(URL + "api/v1/techs", techData)
       .then((response) => {
@@ -78,7 +89,9 @@ const actions = {
       });
   },
 
-  async techUpdate({ commit }, techData) {
+  async techUpdate({
+    commit
+  }, techData) {
     await axios
       .put(URL + "api/v1/techs/" + techData._id, techData)
       .then((response) => {
@@ -94,7 +107,9 @@ const actions = {
       });
   },
 
-  async techDelete({ commit }, techData) {
+  async techDelete({
+    commit
+  }, techData) {
     await axios
       .delete(URL + "api/v1/techs/" + techData._id, techData)
       .then((response) => {
@@ -109,11 +124,15 @@ const actions = {
       });
   },
 
-  async techClear({ commit }) {
+  async techClear({
+    commit
+  }) {
     commit("clearTech");
   },
 
-  clearErrors({ commit }) {
+  clearErrors({
+    commit
+  }) {
     commit('setErrors', []);
   },
 };

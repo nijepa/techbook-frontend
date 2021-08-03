@@ -13,7 +13,7 @@ const getters = {
   getAllArticles: (state) =>
     state.articles.sort((a, b) =>
       a.title.toLowerCase() > b.title.toLowerCase() ? 1 : -1
-    ), 
+    ),
 
   getAllArticlesByGroups: (state) => (group) =>
     state.articles.filter((val) => {
@@ -23,7 +23,7 @@ const getters = {
       }
       return menu;
     }),
-    
+
   getOneArticle: (state) => state.article,
 };
 
@@ -48,7 +48,10 @@ const mutations = {
   updateArticle(state, article) {
     state.articles = [
       ...state.articles.map((item) =>
-        item._id !== article._id ? item : { ...item, ...article }
+        item._id !== article._id ? item : {
+          ...item,
+          ...article
+        }
       ),
     ];
   },
@@ -60,13 +63,17 @@ const mutations = {
 
 /* -------------------------------------- ACTIONS -------------------------------------- */
 const actions = {
-  async fetchArticles({ commit }, language) {
+  async fetchArticles({
+    commit
+  }, language) {
     const response = await axios.get(URL + "api/v1/articles");
     const articles = response.data.filter((a) => a.lang._id === language._id);
     commit("setArticles", articles);
   },
 
-  async fetchArticle({ commit }, articleData) {
+  async fetchArticle({
+    commit
+  }, articleData) {
     const response = await axios.get(
       URL + "api/v1/articles/" + articleData._id,
       articleData
@@ -74,7 +81,9 @@ const actions = {
     commit("setArticle", response.data);
   },
 
-  async articleAdd({ commit }, articleData) {
+  async articleAdd({
+    commit
+  }, articleData) {
     await axios
       .post(URL + "api/v1/articles", articleData)
       .then((response) => {
@@ -90,7 +99,9 @@ const actions = {
       });
   },
 
-  async articleUpdate({ commit }, articleData) {
+  async articleUpdate({
+    commit
+  }, articleData) {
     await axios
       .patch(URL + "api/v1/articles/" + articleData._id, articleData)
       .then((response) => {
@@ -106,7 +117,9 @@ const actions = {
       });
   },
 
-  async articleDelete({ commit }, articleData) {
+  async articleDelete({
+    commit
+  }, articleData) {
     await axios
       .delete(URL + "api/v1/articles/" + articleData._id, articleData)
       .then((response) => {
@@ -121,11 +134,15 @@ const actions = {
       });
   },
 
-  articlesClear({ commit }) {
+  articlesClear({
+    commit
+  }) {
     commit("clearArticles");
   },
 
-  async articleClear({ commit }) {
+  async articleClear({
+    commit
+  }) {
     commit("clearArticle");
   },
 };

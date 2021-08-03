@@ -4,14 +4,17 @@
   <Footer />
 </template>
 <script>
-import Header from '@/components/header/Header.vue'
-import Footer from '@/components/Footer.vue'
-import Fields from '@/components/Fields.vue';
+import Header from "@/components/header/Header.vue";
+import Footer from "@/components/Footer.vue";
+import Fields from "@/components/tech/Fields.vue";
 
 export default {
-  name: 'abo',
+  name: "abo",
+
   components: {
-    Fields, Footer, Header
+    Fields,
+    Footer,
+    Header,
   },
-}
+};
 </script>

@@ -19,12 +19,12 @@
 </template>
 
 <script>
+import Loader from "@/components/Loader.vue";
+import { isEmpty } from "@/helpers/isEmptyObject";
+import { getUrl } from "@/helpers/getUrl";
 import { computed } from "@vue/reactivity";
 import { useRouter } from "vue-router";
 import { useStore } from "vuex";
-import { isEmpty } from "../helpers/isEmptyObject";
-import { getUrl } from "../helpers/getUrl";
-import Loader from "./Loader.vue";
 
 export default {
   name: "Fields",

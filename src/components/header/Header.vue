@@ -102,9 +102,9 @@
 </template>
 
 <script>
+import { getUrl } from "@/helpers/getUrl";
 import { useRouter } from "vue-router";
 import { useStore } from "vuex";
-import { getUrl } from "@/helpers/getUrl";
 
 export default {
   name: "Header",

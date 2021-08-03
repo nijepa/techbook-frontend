@@ -1,58 +1,36 @@
 <template>
   <div class="home">
     <Header />
-    <Sidebar /> 
+    <Sidebar />
     <!-- <Main msg="Technology book"/>  -->
-    <router-view/>
+    <router-view />
     <sidebar-right />
     <Footer />
   </div>
 </template>
 
 <script>
-import Header from '@/components/header/Header.vue'
-import Footer from '@/components/Footer.vue'
-import Sidebar from '@/components/sidebar/Sidebar.vue';
-import SidebarRight from '@/components/sidebar/Sidebar_right.vue';
-//import Main from '@/components/Main.vue';
-//import { useStore } from "vuex";
-//import { computed } from "@vue/reactivity";
-/*import { getUrl } from "@/helpers/getUrl";
-import { onMounted } from '@vue/runtime-core'; */
-//import Loader from '@/components/Loader.vue'
+import Header from "@/components/header/Header.vue";
+import Footer from "@/components/Footer.vue";
+import Sidebar from "@/components/sidebar/Sidebar.vue";
+import SidebarRight from "@/components/sidebar/Sidebar_right.vue";
 
 export default {
   name: "Front",
-components: {
-  Header, Footer, Sidebar, SidebarRight //Main
-},
 
-  //props: { art: Array },
-
-  setup() {
-    //const store = useStore();
-    //const lang = computed(() => store.getters.getOneLanguage);
-    //let gru = ref('')
-    //console.log('LLL',lang)
-//store.dispatch("fetchArticles", lang);
-    /* const selectGroup = (group = null) => {
-      console.log(group)
-      gru.value = group
-      if (!group) {
-        store.dispatch("fetchArticles", lang);
-      }
-    }; */
-
-    //onMounted(() => selectGroup())
-
-    //return { //lang }; 
+  components: {
+    Header,
+    Footer,
+    Sidebar,
+    SidebarRight
   },
-}
+
+  setup() {},
+};
 </script>
 
 <style>
 .div {
-  color:#2F4F4F
+  color: #2f4f4f;
 }
-
 </style>

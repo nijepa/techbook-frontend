@@ -256,11 +256,11 @@
 </template>
 
 <script>
+import { getUrl } from "@/helpers/getUrl";
+import { isEmpty } from "@/helpers/isEmptyObject";
 import { computed, ref } from "@vue/reactivity";
 import { useStore } from "vuex";
 import { useRouter } from "vue-router";
-import { getUrl } from "../../helpers/getUrl";
-import { isEmpty } from "../../helpers/isEmptyObject";
 
 export default {
   name: "ArticleNav",

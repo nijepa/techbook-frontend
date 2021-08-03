@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import Language from "@/components/Language.vue";
+import Language from "@/components/tech/Language.vue";
 //import ArticleNav from "@/components/Article_nav.vue";
 import { useStore } from "vuex";
 import { computed } from "@vue/reactivity";

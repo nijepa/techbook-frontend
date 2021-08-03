@@ -1,6 +1,6 @@
 <template>
   <div class="content-side">
-    <div class="lang-about">
+    <div v-if="!isEmpty(lang)" class="lang-about">
       <button type="submit" @click="editLang()" class="form__btn svg-back">
         <svg
           width="24px"
@@ -46,9 +46,10 @@
 </template>
 
 <script>
+import { getUrl } from "@/helpers/getUrl";
+import { isEmpty } from "@/helpers/isEmptyObject";
 import { useStore } from "vuex";
 import { computed } from "@vue/reactivity";
-import { getUrl } from "@/helpers/getUrl";
 import { useRouter } from "vue-router";
 
 export default {
@@ -58,12 +59,12 @@ export default {
     const store = useStore();
     const lang = computed(() => store.getters.getOneLanguage);
     const router = useRouter();
-
+console.log('ll',lang.value)
     const editLang = () => {
       router.push("/lang");
     };
 
-    return { lang, getUrl, editLang };
+    return { lang, getUrl, editLang, isEmpty };
   },
 };
 </script>

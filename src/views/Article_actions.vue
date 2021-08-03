@@ -97,16 +97,6 @@
           </label>
         </div>
 
-        <!--       <div>
-        <input
-          v-model="article.title"
-          id="name"
-          name="name"
-          type="text"
-          required
-        />
-        <label for="name">Title</label>
-      </div> -->
         <div class="form__item">
           <svg
             width="30px"
@@ -182,32 +172,15 @@
               d="M3,17 L15,17 C15.5522847,17 16,17.4477153 16,18 C16,18.5128358 15.6139598,18.9355072 15.1166211,18.9932723 L15,19 L3,19 C2.44771525,19 2,18.5522847 2,18 C2,17.4871642 2.38604019,17.0644928 2.88337887,17.0067277 L3,17 L15,17 L3,17 Z M3,13 L21,13 C21.5522847,13 22,13.4477153 22,14 C22,14.5128358 21.6139598,14.9355072 21.1166211,14.9932723 L21,15 L3,15 C2.44771525,15 2,14.5522847 2,14 C2,13.4871642 2.38604019,13.0644928 2.88337887,13.0067277 L3,13 L21,13 L3,13 Z M3,9 L21,9 C21.5522847,9 22,9.44771525 22,10 C22,10.5128358 21.6139598,10.9355072 21.1166211,10.9932723 L21,11 L3,11 C2.44771525,11 2,10.5522847 2,10 C2,9.48716416 2.38604019,9.06449284 2.88337887,9.00672773 L3,9 L21,9 L3,9 Z M3,5 L21,5 C21.5522847,5 22,5.44771525 22,6 C22,6.51283584 21.6139598,6.93550716 21.1166211,6.99327227 L21,7 L3,7 C2.44771525,7 2,6.55228475 2,6 C2,5.48716416 2.38604019,5.06449284 2.88337887,5.00672773 L3,5 L21,5 L3,5 Z"
             ></path>
           </svg>
-          
-          <!-- <tiptap v-model="article.description" /> -->
           <div class="art__desc">
             <span class="span__cked">Description</span>
             <QuillEditor
               theme="snow"
               v-model:content="article.description"
-              contentType="html" 
+              contentType="html"
               toolbar="full"
             />
-            <!--           <ckeditor
-            id="cked"
-            class="cked"
-            :editor="editor"
-            v-model="article.description"
-            :config="editorConfig"
-          ></ckeditor> -->
           </div>
-
-          <!--         <textarea
-          v-model="article.description"
-          id="desc"
-          name="desc"
-          rows="15"
-        ></textarea> -->
-          <!-- <label for="desc">Description</label> -->
         </div>
         <div class="form__item">
           <svg
@@ -248,7 +221,6 @@
           <ul v-if="article.links.length" class="links__article">
             <li v-for="link in article.links" :key="link" class="links-item">
               <a href="" @click.prevent="updateLink(link)">{{ link }}</a>
-              <!-- <a @click="removeLink(link)"> -->
               <button @click.prevent="removeLink(link)" class="form__btn">
                 <svg
                   width="24px"
@@ -285,8 +257,6 @@
                 </svg>
                 <span>Remove Link</span>
               </button>
-              <!-- <img :src="getUrl('delete')" alt="" class="links__article-remove" -->
-              <!-- /></a> -->
             </li>
           </ul>
 
@@ -460,36 +430,16 @@
 </template>
 
 <script>
+import { isEmpty } from "@/helpers/isEmptyObject";
+import { getUrl } from "@/helpers/getUrl";
 import { ref, computed } from "@vue/reactivity";
 import { useRouter } from "vue-router";
 import { useStore } from "vuex";
-import { isEmpty } from "../helpers/isEmptyObject";
-import { getUrl } from "../helpers/getUrl";
-//import CKEditor from "@ckeditor/ckeditor5-vue";
-//import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
-//import tiptap from '@/components/Tiptap.vue'
 import { QuillEditor } from "@vueup/vue-quill";
 import "@vueup/vue-quill/dist/vue-quill.snow.css";
 
 export default {
   name: "ArticleActions",
-
-  components: {
-    //tiptap,
-    //ckeditor: CKEditor.component,
-  },
-
-/*   data() {
-    return {
-      editor: ClassicEditor,
-      editorConfig: {
-        // plugins: [ Font],
-        // toolbar: [
-        //     'heading', 'bulletedList', 'numberedList', 'fontSize', 'fontFamily', 'fontColor', 'fontBackgroundColor', 'undo', 'redo'
-        // ]
-      },
-    };
-  }, */
 
   setup() {
     const router = useRouter();
@@ -508,10 +458,6 @@ export default {
     let edited = false;
 
     const lang = computed(() => store.getters.getOneLanguage);
-
-    /*     function isEmpty(obj) {
-      return Object.keys(obj).length === 0;
-    } */
 
     const art = computed(() => store.getters.getOneArticle);
 
@@ -588,15 +534,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
-.ck-editor {
-  border-radius: 0.3em !important;
-  //border: 1px solid $blue-light !important;
-  //-webkit-box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.75);
-  //-moz-box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.75);
-  //box-shadow: inset 0px 0px 2px 1px rgba(159, 196, 245, 0.75) !important;
-}
-
+<style lang="scss" scoped>
 .links__article {
   list-style: none;
 }
@@ -613,11 +551,11 @@ export default {
   grid-template-columns: 1fr auto;
 }
 .ql-toolbar {
-  border-radius: .3em;
+  border-radius: 0.3em;
   border: 1px solid $blue-light !important;
 }
 .ql-editor {
-  border-radius: .3em;
+  border-radius: 0.3em;
   border: 1px solid $blue-light;
   color: $blue-darkest;
 }
@@ -628,6 +566,5 @@ export default {
   background: whitesmoke !important;
   border: 1px solid $blue-dark;
   box-shadow: 0px 0px 2px $blue-main inset;
-
 }
 </style>

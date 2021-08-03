@@ -57,6 +57,7 @@ export default {
       await store.dispatch("articleClear");
       await store.dispatch("articlesClear");
       await store.dispatch("fetchArticles", language);
+      await store.dispatch("changeLoading", false);
     };
 
     return { getUrl, isEmpty, selectLanguage, tech, languages, lang };

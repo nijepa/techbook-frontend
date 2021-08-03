@@ -12,15 +12,21 @@
 </template>
 
 <script>
+import { getUrl } from "@/helpers/getUrl";
 import { computed } from "@vue/reactivity";
 import { useStore } from "vuex";
-import { getUrl } from "@/helpers/getUrl";
+import { useRouter } from 'vue-router';
 
 export default {
+  name: 'HeaderLink',
+
+  props: { front: Boolean},
+
   emits: ["loadin"],
 
   setup(props, { emit }) {
     const store = useStore();
+    const router = useRouter();
 
     const techs = computed(() => store.getters.getTechs);
     const techSingle = computed(() => store.getters.getTech);
@@ -33,7 +39,9 @@ export default {
       handleLoading();
 
       await store.dispatch("fetchTech", tech);
+
       clearTech();
+      if (props.front) router.push("/abo");
     };
 
     const clearTech = async () => {

@@ -294,18 +294,18 @@
 </template>
 
 <script>
-import { useStore } from "vuex";
 import Article from "@/components/article/Article.vue";
 import ArticleNav from "@/components/article/Article_nav.vue";
 import LangFields from "@/components/tech/LangFields.vue";
-import { computed, ref } from "@vue/reactivity";
+import Loader from "@/components/Loader.vue";
 import { getUrl } from "@/helpers/getUrl";
-import { isEmpty } from "../helpers/isEmptyObject";
-import Loader from "./Loader.vue";
-import dayjs from "dayjs";
-import useBreakpoints from "../composables/useBreakpoints";
-import { usePagination } from "vue-composable";
+import { isEmpty } from "@/helpers/isEmptyObject";
+import useBreakpoints from "@/composables/useBreakpoints";
+import { useStore } from "vuex";
+import { computed, ref } from "@vue/reactivity";
 import { watch } from "@vue/runtime-core";
+import { usePagination } from "vue-composable";
+import dayjs from "dayjs";
 //import Pagination from "@/components/Pagination.vue";
 
 export default {
@@ -350,11 +350,15 @@ export default {
       });
     });
 
-    watch(articlesTruncated, (currentValue, oldValue) => {
-      console.log("cur", currentValue);
-      console.log("old", oldValue);
+    watch(articlesTruncated, (currentValue) => {
       res.value = currentValue;
     });
+
+/*     watch(lang, (currentValue, oldValue) => {
+      console.log("curl", currentValue);
+      console.log("oldl", oldValue);
+      res = articlesTruncated.value;
+    }) */
 
     const { width, type } = useBreakpoints();
     let fieldsStatus = ref(false);

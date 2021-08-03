@@ -11,15 +11,17 @@ const state = {
 /* -------------------------------------- GETTERS -------------------------------------- */
 const getters = {
   getAllLanguages: (state) => state.languages,
+
   getOneLanguage: (state) => state.language,
+
   getLanguagesByTechs: (state) => (tech) =>
     state.languages.data.filter((val) => {
       return val.tech._id === tech._id
-/*       let menu = state.languages.data;
-      if (tech) {
-        menu = val.tech.some((g) => g._id === tech._id);
-      }
-      return menu; */
+      /*       let menu = state.languages.data;
+            if (tech) {
+              menu = val.tech.some((g) => g._id === tech._id);
+            }
+            return menu; */
     }),
 };
 
@@ -40,7 +42,10 @@ const mutations = {
   updateLanguage(state, language) {
     state.languages = [
       ...state.languages.map((item) =>
-        item._id !== language._id ? item : { ...item, ...language }
+        item._id !== language._id ? item : {
+          ...item,
+          ...language
+        }
       ),
     ];
   },
@@ -52,12 +57,16 @@ const mutations = {
 
 /* -------------------------------------- ACTIONS -------------------------------------- */
 const actions = {
-  async fetchLanguages({ commit }) {
+  async fetchLanguages({
+    commit
+  }) {
     const response = await axios.get(URL + "api/v1/langs");
     commit("setLanguages", response);
   },
 
-  async fetchLanguage({ commit }, languageData) {
+  async fetchLanguage({
+    commit
+  }, languageData) {
     const response = await axios.get(
       URL + "api/v1/langs/" + languageData._id,
       languageData
@@ -66,7 +75,9 @@ const actions = {
     console.log(languageData)
   },
 
-  async languageAdd({ commit }, languageData) {
+  async languageAdd({
+    commit
+  }, languageData) {
     await axios
       .post(URL + "api/v1/langs", languageData)
       .then((response) => {
@@ -82,7 +93,9 @@ const actions = {
       });
   },
 
-  async languageUpdate({ commit }, languageData) {
+  async languageUpdate({
+    commit
+  }, languageData) {
     await axios
       .patch(URL + "api/v1/langs/" + languageData._id, languageData)
       .then((response) => {
@@ -98,7 +111,9 @@ const actions = {
       });
   },
 
-  async languageDelete({ commit }, languageData) {
+  async languageDelete({
+    commit
+  }, languageData) {
     await axios
       .delete(URL + "api/v1/langs/" + languageData._id, languageData)
       .then((response) => {
@@ -113,7 +128,9 @@ const actions = {
       });
   },
 
-  async languageClear({ commit }) {
+  async languageClear({
+    commit
+  }) {
     commit("clearLanguage");
   },
 };
