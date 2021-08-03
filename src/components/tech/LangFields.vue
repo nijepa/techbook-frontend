@@ -1,19 +1,19 @@
 <template>
-<transition appear name="slide-fade">
-  <ul v-if="groups.length" class="lang__fields">
-    <li
-      v-for="group in groups"
-      :key="group"
-      class=""
-      id="cont"
-      @click.prevent="selectField(group)"
-    >
-      <a href="" id="box">
-        {{ group.name }}
-      </a>
-    </li>
-  </ul>
-</transition>
+  <transition appear name="slide-fade">
+    <ul v-if="groups.length" class="lang__fields">
+      <li
+        v-for="group in groups"
+        :key="group"
+        class=""
+        id="cont"
+        @click.prevent="selectField(group)"
+      >
+        <a href="" id="box">
+          {{ group.name }}
+        </a>
+      </li>
+    </ul>
+  </transition>
 </template>
 
 <script>

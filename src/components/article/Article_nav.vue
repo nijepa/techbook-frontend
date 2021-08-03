@@ -44,7 +44,6 @@
         />
       </svg>
       <span>All </span>
-      <!-- <img :src="getUrl('list2')" alt="" /> -->
     </a>
     <div class="article-actions">
       <a class="article-link" @click="addArticle(false)">
@@ -172,13 +171,13 @@
     <div class="article-header" v-if="!article._id">
       <div class="article-header_item">
         <svg
-          @click="toggleArt(article, 'finish')"
+          @click="filterArt('finish')"
           width="24px"
           height="24px"
           viewBox="0 0 24 24"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          :class="article.finish ? 'art-checked' : ''"
+          :class="selectedType === 'finish' ? 'art-checked' : ''"
         >
           <path
             d="M2.74976 12C2.74976 18.937 5.06276 21.25 11.9998 21.25C18.9368 21.25 21.2498 18.937 21.2498 12C21.2498 5.063 18.9368 2.75 11.9998 2.75C5.06276 2.75 2.74976 5.063 2.74976 12Z"
@@ -197,17 +196,19 @@
             stroke-linejoin="round"
           />
         </svg>
-        <p>Finished</p> 
+        <p :class="selectedType === 'finish' ? 'art-checked' : ''">
+          {{ types[0] }}
+        </p>
       </div>
       <div class="article-header_item">
         <svg
-          @click="toggleArt(article, 'favorite')"
+          @click="filterArt('favorite')"
           width="24px"
           height="24px"
           viewBox="0 0 24 24"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          :class="article.favorite ? 'art-checked' : ''"
+          :class="selectedType === 'favorite' ? 'art-checked' : ''"
         >
           <path
             fill-rule="evenodd"
@@ -219,17 +220,17 @@
             stroke-linejoin="round"
           />
         </svg>
-        <p>Favorites</p>
+        <p>{{ types[1] }}</p>
       </div>
       <div class="article-header_item">
         <svg
-          @click="toggleArt(article, 'bookmark')"
+          @click="filterArt('bookmark')"
           width="24px"
           height="24px"
           viewBox="0 0 24 24"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          :class="article.bookmark ? 'art-checked' : ''"
+          :class="selectedType === 'bookmark' ? 'art-checked' : ''"
         >
           <path
             fill-rule="evenodd"
@@ -248,28 +249,32 @@
             stroke-linejoin="round"
           />
         </svg>
-        <p>Bookmarks</p>
+        <p>{{ types[2] }}</p>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import { computed } from "@vue/reactivity";
+import { computed, ref } from "@vue/reactivity";
 import { useStore } from "vuex";
 import { useRouter } from "vue-router";
-import { getUrl } from "../helpers/getUrl";
-import { isEmpty } from "../helpers/isEmptyObject";
+import { getUrl } from "../../helpers/getUrl";
+import { isEmpty } from "../../helpers/isEmptyObject";
 
 export default {
   name: "ArticleNav",
 
-  setup() {
+  setup(props, context) {
     const store = useStore();
     const router = useRouter();
 
     const article = computed(() => store.getters.getOneArticle);
     const lang = computed(() => store.getters.getOneLanguage);
+
+    const types = ["Finished", "Favorites", "Bookmarks"];
+
+    let selectedType = ref("");
 
     const clearArticle = () => {
       store.dispatch("articleClear");
@@ -286,6 +291,16 @@ export default {
       store.dispatch("articleClear");
     };
 
+    const filterArt = (type) => {
+      if (selectedType.value === type) {
+        selectedType.value = "";
+        type = "";
+      } else {
+        selectedType.value = type;
+      }
+      context.emit("filteredArt", type);
+    };
+
     return {
       addArticle,
       deleteArticle,
@@ -293,6 +308,9 @@ export default {
       article,
       isEmpty,
       getUrl,
+      filterArt,
+      types,
+      selectedType,
     };
   },
 };

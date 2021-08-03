@@ -1,8 +1,10 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import {
+  createRouter,
+  createWebHistory
+} from 'vue-router'
 import Home from '../views/Home.vue'
 
-const routes = [
-  {
+const routes = [{
     path: '/',
     name: 'Home',
     component: Home
@@ -10,32 +12,29 @@ const routes = [
   {
     path: '/abo',
     name: 'About',
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
+    component: () => import( /* webpackChunkName: "about" */ '../views/About.vue'),
   },
   {
     path: '/front',
     name: 'Front',
-    component: () => import(/* webpackChunkName: "article" */ '../views/Front.vue'),
-    children: [
-      {
+    component: () => import( /* webpackChunkName: "article" */ '../views/Front.vue'),
+    children: [{
         path: '/main',
         name: 'Main',
-        component: () => import(/* webpackChunkName: "about" */ '../views/Main.vue'),
+        component: () => import( /* webpackChunkName: "about" */ '../views/Main.vue'),
       },
       {
         path: '/article',
         name: 'Article',
-        component: () => import(/* webpackChunkName: "about" */ '../views/Article_actions.vue'),
+        component: () => import( /* webpackChunkName: "about" */ '../views/Article_actions.vue'),
       },
       {
         path: '/lang',
         name: 'Lang',
-        component: () => import(/* webpackChunkName: "about" */ '../views/Lang_actions.vue'),
+        component: () => import( /* webpackChunkName: "about" */ '../views/Lang_actions.vue'),
       },
     ]
   },
-  
-  
 ]
 
 const router = createRouter({

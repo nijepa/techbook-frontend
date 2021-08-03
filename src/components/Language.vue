@@ -80,10 +80,9 @@
           </li>
         </ul>
       </div>
-
     </div>
 
-    <article-nav />
+    <article-nav @filteredArt="filterArt" />
 
     <Loader v-if="!articles.length || loading" />
 
@@ -203,66 +202,111 @@
           </div>
         </div> -->
         <div class="pagination">
-          <p>page {{ currentPage }} of {{ lastPage }}</p>
-          <div class="pagination__btns">
-            <button class="form__btn" @click="first">
-              <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <div v-if="lastPage > 1" class="pagination__btns">
+            <!-- <p>page {{ currentPage }} of {{ lastPage }} {{ total }}</p> -->
+            <button
+              v-if="currentPage > 1"
+              class="form__btn pagination__btn"
+              @click="first"
+            >
+              <!--               <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path id="Stroke 1" d="M7.91394 12L16.0859 12" stroke="#130F26" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                 <path id="Stroke 2" d="M11.6782 15.752C11.6782 15.752 7.91422 13.224 7.91422 12C7.91422 10.776 11.6782 8.25195 11.6782 8.25195" stroke="#130F26" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                 <path id="Stroke 4" fill-rule="evenodd" clip-rule="evenodd" d="M11.9999 2.75C5.06288 2.75 2.74988 5.063 2.74988 12C2.74988 18.937 5.06288 21.25 11.9999 21.25C18.9369 21.25 21.2499 18.937 21.2499 12C21.2499 5.063 18.9369 2.75 11.9999 2.75Z" stroke="#130F26" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-              first
+              </svg> -->
+              1
             </button>
-            <button class="form__btn" @click="prev">
-              <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <button
+              v-if="currentPage > 1"
+              class="form__btn pagination__btn"
+              @click="prev"
+            >
+              <!--               <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path id="Stroke 1" fill-rule="evenodd" clip-rule="evenodd" d="M11.9999 2.75024C5.06288 2.75024 2.74988 5.06324 2.74988 12.0002C2.74988 18.9372 5.06288 21.2502 11.9999 21.2502C18.9369 21.2502 21.2499 18.9372 21.2499 12.0002C21.2499 5.06324 18.9369 2.75024 11.9999 2.75024Z" stroke="#130F26" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                 <path id="Stroke 3" d="M13.4418 8.52856C13.4418 8.52856 9.95577 10.9206 9.95577 12.0006C9.95577 13.0806 13.4418 15.4706 13.4418 15.4706" stroke="#130F26" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
+              </svg> -->
               prev
             </button>
-            <button class="form__btn" @click="next">
+            <button class="form__btn pagination__btn active_pagesize">
+              {{ currentPage }}
+            </button>
+            <button
+              v-if="currentPage !== lastPage"
+              class="form__btn pagination__btn"
+              @click="next"
+            >
               next
-              <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!--               <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path id="Stroke 1" fill-rule="evenodd" clip-rule="evenodd" d="M12.0001 21.2498C18.9371 21.2498 21.2501 18.9368 21.2501 11.9998C21.2501 5.06276 18.9371 2.74976 12.0001 2.74976C5.06312 2.74976 2.75012 5.06276 2.75012 11.9998C2.75012 18.9368 5.06312 21.2498 12.0001 21.2498Z" stroke="#130F26" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                 <path id="Stroke 3" d="M10.5582 15.4714C10.5582 15.4714 14.0442 13.0794 14.0442 11.9994C14.0442 10.9194 10.5582 8.52944 10.5582 8.52944" stroke="#130F26" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
+              </svg> -->
             </button>
-            <button class="form__btn" @click="last">
-              last
-              <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <button
+              v-if="currentPage !== lastPage"
+              class="form__btn pagination__btn"
+              @click="last"
+            >
+              {{ lastPage }}
+              <!--            <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path id="Stroke 1" d="M16.0861 12H7.91406" stroke="#130F26" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                 <path id="Stroke 2" d="M12.3218 8.24805C12.3218 8.24805 16.0858 10.776 16.0858 12C16.0858 13.224 12.3218 15.748 12.3218 15.748" stroke="#130F26" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                 <path id="Stroke 4" fill-rule="evenodd" clip-rule="evenodd" d="M12.0001 21.25C18.9371 21.25 21.2501 18.937 21.2501 12C21.2501 5.063 18.9371 2.75 12.0001 2.75C5.06312 2.75 2.75012 5.063 2.75012 12C2.75012 18.937 5.06312 21.25 12.0001 21.25Z" stroke="#130F26" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
+              </svg> -->
             </button>
           </div>
-    <!--       <ul>
-            <li v-for="n in result" :key="n">{{ n }}</li>
-          </ul> -->
+
+          <div v-if="total > 10" class="pagination__perpage">
+            <button
+              :class="{ active_pagesize: pageSize === 10 }"
+              class="form__btn pagination__btn"
+              @click="setPageSize(10)"
+            >
+              10
+            </button>
+            <button
+              v-if="total > 10"
+              :class="{ active_pagesize: pageSize === 20 }"
+              class="form__btn pagination__btn"
+              @click="setPageSize(20)"
+            >
+              20
+            </button>
+            <button
+              v-if="total > 20"
+              :class="{ active_pagesize: pageSize === 50 }"
+              class="form__btn pagination__btn"
+              @click="setPageSize(50)"
+            >
+              50
+            </button>
+            per page
+          </div>
         </div>
+
+        <!-- <Pagination :art="articlesTruncated" /> -->
       </div>
 
       <div class="article" v-else>
         <Article />
       </div>
-      
     </transition-group>
   </section>
 </template>
 
 <script>
 import { useStore } from "vuex";
-import Article from "./Article.vue";
-import ArticleNav from "@/components/Article_nav.vue";
+import Article from "@/components/article/Article.vue";
+import ArticleNav from "@/components/article/Article_nav.vue";
 import LangFields from "@/components/tech/LangFields.vue";
 import { computed, ref } from "@vue/reactivity";
 import { getUrl } from "@/helpers/getUrl";
-//import { onMounted } from "@vue/runtime-core";
 import { isEmpty } from "../helpers/isEmptyObject";
 import Loader from "./Loader.vue";
 import dayjs from "dayjs";
 import useBreakpoints from "../composables/useBreakpoints";
 import { usePagination } from "vue-composable";
+import { watch } from "@vue/runtime-core";
+//import Pagination from "@/components/Pagination.vue";
 
 export default {
   name: "Language",
@@ -274,13 +318,15 @@ export default {
     Loader,
     ArticleNav,
     LangFields,
+    //Pagination
   },
 
   setup() {
     const store = useStore();
     const lang = computed(() => store.getters.getOneLanguage);
-    const articles = computed(() =>
-      store.getters.getAllArticlesByGroups(gru.value)
+    const articles = computed(
+      () => store.getters.getAllArticles
+      //store.getters.getAllArticlesByGroups(gru.value)
     );
     const article = computed(() => store.getters.getOneArticle);
     let gru = ref(null);
@@ -292,7 +338,7 @@ export default {
       loading.value = false;
     };
 
-    const articlesTruncated = computed(() => {
+    let articlesTruncated = computed(() => {
       return articles.value.map((item) => {
         return {
           ...item,
@@ -304,6 +350,12 @@ export default {
       });
     });
 
+    watch(articlesTruncated, (currentValue, oldValue) => {
+      console.log("cur", currentValue);
+      console.log("old", oldValue);
+      res.value = currentValue;
+    });
+
     const { width, type } = useBreakpoints();
     let fieldsStatus = ref(false);
     const toggleFields = () => {
@@ -313,12 +365,30 @@ export default {
       fieldsStatus.value = false;
     };
 
+    let res = ref(articlesTruncated.value);
+
     const selectGroup = (group = null) => {
-      gru.value = group;
-      console.log(gru);
+      res.value = articlesTruncated.value;
+      (res.value = res.value.filter((val) => {
+        let menu = res.value;
+        if (group) {
+          menu = val.groups.some((g) => g === group.name);
+        }
+        return menu;
+      })),
+        (gru.value = group);
       hideFields();
       if (isEmpty(group)) {
         //store.dispatch("fetchArticles", lang);
+      }
+    };
+
+    const filterArt = (type) => {
+      res.value = articlesTruncated.value;
+      if (type) {
+        res.value = res.value.filter((a) => {
+          return a[type];
+        });
       }
     };
 
@@ -329,8 +399,7 @@ export default {
       store.dispatch("articleUpdate", art);
     };
 
-
-    const {
+    let {
       currentPage,
       lastPage,
       next,
@@ -338,20 +407,24 @@ export default {
       offset,
       pageSize,
       first,
-      last
+      last,
+      total,
     } = usePagination({
       currentPage: 1,
       pageSize: 10,
-      total: computed(() => articlesTruncated.value.length),
+      total: computed(() => res.value.length),
     });
 
     const result = computed(() => {
-      const array = articlesTruncated.value;
+      const array = res.value;
       if (!Array.isArray(array)) return [];
       return array.slice(offset.value, offset.value + pageSize.value);
     });
 
-    //onMounted(() => selectGroup());
+    const setPageSize = (nr) => {
+      console.log("oooo", pageSize);
+      pageSize.value = nr;
+    };
 
     return {
       lang,
@@ -377,7 +450,11 @@ export default {
       prev,
       result,
       first,
-      last
+      last,
+      total,
+      pageSize,
+      setPageSize,
+      filterArt,
     };
   },
 };
@@ -401,6 +478,7 @@ export default {
 }
 
 .art-checked {
+  visibility: visible !important;
   fill: $blue-dark;
   path {
     stroke: $blue-lightest !important;
@@ -410,11 +488,28 @@ export default {
 .pagination {
   margin: 1em;
   display: grid;
-  justify-content: center;
+  justify-items: left;
+  grid-template-columns: auto auto;
 
   .pagination__btns {
     display: flex;
   }
+
+  .pagination__perpage {
+    display: flex;
+    justify-self: end;
+  }
+}
+.pagination__btn {
+  border: 2px solid $blue-dark !important;
+  margin-right: 0.2em !important;
+  border-radius: 0.3em !important;
+  padding: 0.2em 0.5em !important;
+}
+.active_pagesize {
+  background: $blue-dark !important;
+  color: $blue-lighter !important;
+  border: 2px solid $blue-lighter !important;
 }
 
 .section-main {
@@ -431,7 +526,7 @@ export default {
     .article-header_item {
       display: flex;
       align-items: center;
-      padding: 0.2em .3em 0.2em .3em;
+      padding: 0.2em 0.3em 0.2em 0.3em;
       //border-right: 2px solid $blue-lightest;
       font-size: small;
       color: $blue-lightest;

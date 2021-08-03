@@ -1,5 +1,6 @@
 <template>
   <Loader v-if="!languages" />
+
   <div v-else class="tree">
     <ul v-for="language in languages" :key="language._id">
       <li @click="selectLanguage(language)">
@@ -36,14 +37,10 @@ export default {
     const router = useRouter();
     const store = useStore();
 
-    //store.dispatch("fetchTechs");
-    //store.dispatch("fetchLanguages");
-
     const tech = computed(() => store.getters.getTech);
     const languages = computed(() =>
       store.getters.getLanguagesByTechs(tech.value)
     );
-    //const languages = computed(() => store.getters.getAllLanguages.data);
     const lang = computed(() => store.getters.getOneLanguage);
 
     const selectLanguage = async (language) => {
@@ -60,7 +57,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 $border-width: 2px;
 $reverse: true;
 

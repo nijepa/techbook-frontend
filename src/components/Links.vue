@@ -14,8 +14,8 @@ export default {
   name: "Links",
 
   props: [],
-  
-/*   setup() {
+
+  /*   setup() {
     let link = ref(null);
     let linkIdx = null;
 
@@ -39,10 +39,7 @@ export default {
 
     return { link, saveLink, updateLink, removeLink}
   } */
-
-}
+};
 </script>
 
-<style>
-
-</style>
+<style></style>

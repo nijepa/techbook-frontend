@@ -1,15 +1,24 @@
 <template>
-  <div class="lds-ripple"><div></div><div></div></div>
+  <div class="loader">
+    <div class="lds-ripple">
+      <div></div>
+      <div></div>
+    </div>
+  </div>
 </template>
 
 <script>
-export default {
-
-}
+export default {};
 </script>
 
-<style>
-  .lds-ripple {
+<style lang="scss" scoped>
+.loader {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  margin-top: 2em;
+}
+.lds-ripple {
   display: inline-block;
   position: relative;
   width: 80px;
@@ -17,7 +26,7 @@ export default {
 }
 .lds-ripple div {
   position: absolute;
-  border: 4px solid rgb(25, 79, 197);
+  border: 4px solid $blue-main;
   opacity: 1;
   border-radius: 50%;
   animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
@@ -41,5 +50,4 @@ export default {
     opacity: 0;
   }
 }
-
 </style>

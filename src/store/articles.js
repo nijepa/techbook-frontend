@@ -14,6 +14,7 @@ const getters = {
     state.articles.sort((a, b) =>
       a.title.toLowerCase() > b.title.toLowerCase() ? 1 : -1
     ), 
+
   getAllArticlesByGroups: (state) => (group) =>
     state.articles.filter((val) => {
       let menu = state.articles;
@@ -22,6 +23,7 @@ const getters = {
       }
       return menu;
     }),
+    
   getOneArticle: (state) => state.article,
 };
 

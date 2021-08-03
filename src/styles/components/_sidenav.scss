@@ -12,6 +12,42 @@ aside {
   margin-top: 50px;
   align-content: flex-start;
 
+  .tech__list {
+    display: grid;
+    justify-items: stretch;
+    border-bottom: 2px solid $blue-lighter;
+  
+    .nav-card {
+      width: auto;
+      padding: 0;
+      margin: 0;
+      background-image: none;
+      border-radius: 0;
+      box-shadow: none;
+      //transform: rotate(0) scale(1);
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: space-between;
+      padding: 0.5em;
+      text-align: right;
+  
+      img {
+        width: 30px;
+        height: 30px;
+      }
+  
+      h3 {
+        font-size: 1em;
+        color: $blue-dark !important;
+        font-weight: 400;
+      }
+    }
+  
+    .nav-card:hover {
+      background: $blue-lighter;
+    }
+  }
+
   ul {
     list-style-type: none;
     width: 150px;
@@ -110,6 +146,18 @@ aside {
 @media(max-width: 700px) {
   #sidenav {
     width: 50px;
+
+    .tech__list {
+      width: 50px;
+  
+      .nav-card {
+        width: 59px;
+      }
+  
+      h3 {
+        display: none;
+      }
+    }
 
     ul {
       width: auto;
