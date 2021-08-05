@@ -41,7 +41,8 @@ export default {
       await store.dispatch("fetchTech", tech);
 
       clearTech();
-      if (props.front) router.push("/abo");
+      //if (props.front) router.push("/fields");
+      router.push("/fields");
     };
 
     const clearTech = async () => {
@@ -74,6 +75,7 @@ export default {
   //background-image: radial-gradient($blue-main, $blue-dark);
   color: $blue-darkest;
   transform: rotate(0) scale(1);
+  z-index: 3;
 
   img {
     transform: rotate(0deg) scale(1);
@@ -107,8 +109,8 @@ a:hover {
 }
 
 .sel-tech {
-  background: $blue-lighter !important;
-  border-right: 5px solid #dba81a;
+  background: $blue-lighter;
+  border-right: 5px solid $orange-main;
 
   h3 {
     color: $blue-darkest !important;

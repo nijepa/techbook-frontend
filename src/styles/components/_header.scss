@@ -90,9 +90,9 @@ header {
 }
 
 .sel-tech {
-  //background-image: linear-gradient($blue-main, $blue-main);
-  background-image: radial-gradient($blue-main, $blue-dark);
-  color: $blue-darkest;
+  background-image: linear-gradient($blue-main, $blue-main);
+  //background-image: radial-gradient($blue-darkest, $blue-darker) !important;
+  
   transform: rotate(0) scale(1);
   z-index: 1;
   img {
@@ -100,12 +100,14 @@ header {
   }
 
   h3 {
+    color: $blue-darkest;
     transform: rotate(0deg) scale(1);
   }
 }
 
 .all-tech {
-  background-image: linear-gradient(to right,$blue-darker 60%, $blue-darkest);
+  //background-image: linear-gradient(to right,$blue-darker 60%, $blue-darkest);
+  background-image: radial-gradient($blue-main, $blue-lighter);
   color: $blue-lightest;
   transform: rotate(3deg) scale(.9);
   z-index: 0;

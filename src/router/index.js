@@ -29,6 +29,11 @@ const routes = [{
         component: () => import( /* webpackChunkName: "about" */ '../views/Article_actions.vue'),
       },
       {
+        path: '/fields',
+        name: 'Fields',
+        component: () => import( /* webpackChunkName: "about" */ '../components/tech/Fields.vue'),
+      },
+      {
         path: '/lang',
         name: 'Lang',
         component: () => import( /* webpackChunkName: "about" */ '../views/Lang_actions.vue'),

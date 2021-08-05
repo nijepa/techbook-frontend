@@ -1,6 +1,6 @@
 <template>
-  <div class="content-side">
-    <div v-if="!isEmpty(lang)" class="lang-about">
+  <div v-if="!isEmpty(lang)" class="content-side">
+    <div  class="lang-about">
       <button type="submit" @click="editLang()" class="form__btn svg-back">
         <svg
           width="24px"
@@ -59,7 +59,7 @@ export default {
     const store = useStore();
     const lang = computed(() => store.getters.getOneLanguage);
     const router = useRouter();
-console.log('ll',lang.value)
+
     const editLang = () => {
       router.push("/lang");
     };

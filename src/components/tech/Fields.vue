@@ -62,6 +62,7 @@ $border-width: 2px;
 $reverse: true;
 
 .tree {
+  grid-area: main;
   margin-top: 50px;
   @if $reverse {
     //transform: rotate(180deg);

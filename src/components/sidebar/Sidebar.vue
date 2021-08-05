@@ -32,6 +32,7 @@ import { isEmpty } from "@/helpers/isEmptyObject";
 import { getUrl } from "@/helpers/getUrl";
 import { computed } from "@vue/reactivity";
 import { useStore } from "vuex";
+import { useRouter } from "vue-router";
 
 export default {
   name: "Sidebar",
@@ -43,6 +44,7 @@ export default {
 
   setup() {
     const store = useStore();
+    const router = useRouter();
 
     store.dispatch("fetchLanguages");
 
@@ -58,6 +60,7 @@ export default {
       await store.dispatch("articlesClear");
       await store.dispatch("fetchArticles", language);
       await store.dispatch("changeLoading", false);
+      router.push("/main");
     };
 
     return { getUrl, isEmpty, selectLanguage, tech, languages, lang };
