@@ -354,12 +354,6 @@ export default {
       res.value = currentValue;
     });
 
-/*     watch(lang, (currentValue, oldValue) => {
-      console.log("curl", currentValue);
-      console.log("oldl", oldValue);
-      res = articlesTruncated.value;
-    }) */
-
     const { width, type } = useBreakpoints();
     let fieldsStatus = ref(false);
     const toggleFields = () => {
