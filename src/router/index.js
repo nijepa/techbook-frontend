@@ -10,9 +10,19 @@ const routes = [{
     component: Home
   },
   {
+    path: '/:pathMatch(.*)*',
+    name: 'NotFound',
+    component: () => import( /* webpackChunkName: "about" */ '../views/NotFound.vue'),
+  },
+  {
     path: '/abo',
     name: 'About',
     component: () => import( /* webpackChunkName: "about" */ '../views/About.vue'),
+  },
+  {
+    path: '/test',
+    name: 'Test',
+    component: () => import( /* webpackChunkName: "about" */ '../views/Test.vue'),
   },
   {
     path: '/front',
