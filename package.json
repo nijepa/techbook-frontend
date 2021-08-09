@@ -14,12 +14,14 @@
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
     "dayjs": "^1.10.6",
+    "vee-validate": "^4.4.9",
     "vue": "^3.0.0",
     "vue-composable": "^1.0.0-beta.23",
     "vue-router": "^4.0.0-0",
     "vue3-highlightjs": "^1.0.5",
     "vuex": "^4.0.0-0",
-    "vuex-persistedstate": "^4.0.0-beta.3"
+    "vuex-persistedstate": "^4.0.0-beta.3",
+    "yup": "^0.32.9"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
