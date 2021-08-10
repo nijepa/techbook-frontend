@@ -1,69 +1,41 @@
 <template>
-    <div class="container" id="app">
-        <nav aria-label="Page navigation">
-            <ul class="pagination justify-content-center">
-                <li
-                    class="page-item"
-                    v-bind:class="{ disabled: currentWeekNumber === 32 }"
-                    v-on:click="currentWeekNumber -= 1"
-                >
-                    <a class="page-link" href="">Prev</a>
-                </li>
-                <!--                    change the currPage === 2 with currPage === weeksSize -->
-                <li
-                    class="page-item"
-                    v-bind:class="{ disabled: currentWeekNumber === 35 }"
-                    v-on:click.prevent="currentWeekNumber += 1"
-                >
-                    <a class="page-link" href="">Next {{currentWeekNumber}}</a>
-                </li>
-            </ul>
-        </nav>
-    </div>
+    
+
+
+<tr class="list-content" v-for="(ticket, index) in findTickets(tickets, new Date())" :key="index">
+                <td>{{ ticket.time }}</td>
+                <td>{{ ticket.date }}</td>
+                <td>{{ ticket.name }}</td>
+            </tr>
+
 </template>
 
 <script>
 export default {
     data() {
         return {
-            tickets: [],
-            currentWeekNumber: this.getWeekNumber(new Date()),
+            tickets: [
+                {time: '99', date: '2021-08-08', name: 'aaa'},
+                {time: '99', date: 99, name: 'aaa'},
+                {time: '99', date: '2021-08-10', name: 'aaa'},
+            ],
+            //currentWeekNumber: this.getWeekNumber(new Date()),
         };
     },
-    computed: {
-        weeksSize() {
-            const s = this.getAllWeekNumbers(this.tickets);
-            return s.size;
-        },
-    },
+    
     methods: {
-        getWeekNumber(date) {
-            const temp_date = new Date(date.valueOf());
-            const dayn = (date.getDay() + 6) % 7;
-            temp_date.setDate(temp_date.getDate() - dayn + 3);
-            const firstThursday = temp_date.valueOf();
-            temp_date.setMonth(0, 1);
-            if (temp_date.getDay() !== 4)
-            {
-                temp_date.setMonth(0, 1 + ((4 - temp_date.getDay()) + 7) % 7);
-            }
-            return 1 + Math.ceil((firstThursday - temp_date) / 604800000);
-        },
-        findTicketsWeek(tickets) {
-            return tickets.filter((ticket) => {
-                return (
-                    this.getWeekNumber(ticket.date) === this.currentWeekNumber
-                );
+        findTickets(tickets, date) {
+            return tickets.map((ticket) => {
+                console.log(date)
+                date = 99
+                if (ticket.date !== date) return ticket
+                ticket = {time: '', date: 'not', name: ''}
+                return ticket
             });
         },
     },
-    mounted() {
-   // if back button is pressed
-   console.log('999')
-   window.onpopstate = function(event) {
-     alert("location: " + document.location + ", state: " + JSON.stringify(event.state));
-   };
-}
+
+
 };
 </script>
 

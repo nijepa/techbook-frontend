@@ -23,8 +23,8 @@
         
       />
       <!-- v-model="login.password" -->
-      <label for="password">Your Name</label>
-      <ErrorMessage name="username" class="error-feedback" />
+      <label for="password">Password</label>
+      <ErrorMessage name="password" class="error-feedback" />
     </div>
     <div class="form-group">
           <button class="btn btn-primary btn-block" type="submit" :disabled="loading">
@@ -116,4 +116,9 @@ console.log(loggedIn)
 };
 </script>
 
-<style></style>
+<style lang="scss" scoped>
+  Form  {
+    display: grid;
+    justify-content: center;
+  }
+</style>
