@@ -40,7 +40,7 @@
       transition: all .4s ease;
     }
     svg path {
-      stroke:$blue-lightest;
+      stroke: $blue-lightest;
       transition: all .4s ease;
     }
   }
@@ -50,7 +50,7 @@
     background-image: linear-gradient($blue-lightest, $blue-lightest);
     //transform: scale(1.2);
     svg path {
-      stroke:$blue-darkest;
+      stroke: $blue-darkest;
     }
   }
   a:hover span {
