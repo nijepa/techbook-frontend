@@ -1,5 +1,5 @@
 # Technology book 
-### frontend (go to [backend](https://github.com/nijepa/studio88_backend/))
+### frontend (go to [backend](https://github.com/nijepa/techbook-backend/))
 
 ## Technology book.
 ### (Technology book ...)

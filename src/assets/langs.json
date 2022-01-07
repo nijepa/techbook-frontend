@@ -1,0 +1,279 @@
+[{
+  "_id": {
+    "$oid": "6099287323dff5320c8a3958"
+  },
+  "title": "JavaScript",
+  "createdAt": {
+    "$date": "2021-05-10T12:34:59.220Z"
+  },
+  "updatedAt": {
+    "$date": "2021-05-10T13:12:28.320Z"
+  },
+  "__v": 0,
+  "description": "frontend technology",
+  "user": {
+    "$oid": "60991889d79d8811383a5c91"
+  },
+  "tech": {
+    "$oid": "60991ce88fe3102f245f3e3c"
+  },
+  "img_url": "JavaScript",
+  "groups": [
+    {
+      "_id": {
+        "$oid": "60ca1d0cfe2f5e90669bdfe9"
+      },
+      "name": "Arrays"
+    },
+    {
+      "_id": {
+        "$oid": "60e812e27fdd9d1a52faa66c"
+      },
+      "name": "OOP"
+    },
+    {
+      "_id": {
+        "$oid": "60e813147fdd9d1a52faa66d"
+      },
+      "name": "Basics"
+    },
+    {
+      "_id": {
+        "$oid": "60eb470e72d4d1ac8e8e2d98"
+      },
+      "name": "Data Structures"
+    },
+    {
+      "_id": {
+        "$oid": "60ec00633cf70fe4f9315abc"
+      },
+      "name": "Alogorithms"
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "60992faa098ee5373879b19d"
+  },
+  "title": "Nodejs",
+  "description": "Backend technology",
+  "user": {
+    "$oid": "60991889d79d8811383a5c91"
+  },
+  "tech": {
+    "$oid": "6099193f01643c2db43ffe4c"
+  },
+  "createdAt": {
+    "$date": "2021-05-10T13:05:46.866Z"
+  },
+  "updatedAt": {
+    "$date": "2021-05-10T13:05:46.866Z"
+  },
+  "__v": 0,
+  "img_url": "Node.js",
+  "groups": [
+    {
+      "_id": {
+        "$oid": "60ca1d50fe2f5e90669bdfea"
+      },
+      "name": "Routes"
+    },
+    {
+      "_id": {
+        "$oid": "60e998ac553ea9e80866ab85"
+      },
+      "name": "Basics"
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "609930ed0794a512d0a66106"
+  },
+  "title": "MongoDB",
+  "description": "Databsae technology",
+  "user": {
+    "$oid": "60991889d79d8811383a5c91"
+  },
+  "tech": {
+    "$oid": "6099306e916d192e502db381"
+  },
+  "createdAt": {
+    "$date": "2021-05-10T13:11:09.646Z"
+  },
+  "updatedAt": {
+    "$date": "2021-05-10T13:11:09.646Z"
+  },
+  "__v": 0,
+  "img_url": "Mongodb",
+  "groups": [
+    {
+      "_id": {
+        "$oid": "60ca1dacfe2f5e90669bdfec"
+      },
+      "name": "Models"
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "60b37d3b3f45cf0210bd7282"
+  },
+  "title": "Vue.js",
+  "description": "Vue.js",
+  "user": {
+    "$oid": "609fa93aa271831c12d7f8d0"
+  },
+  "tech": {
+    "$oid": "60991ce88fe3102f245f3e3c"
+  },
+  "createdAt": {
+    "$date": "2021-05-30T11:55:39.795Z"
+  },
+  "updatedAt": {
+    "$date": "2021-05-30T11:55:39.795Z"
+  },
+  "__v": 0,
+  "img_url": "Vue.js",
+  "groups": [
+    {
+      "_id": {
+        "$oid": "60ca1b59fe2f5e90669bdfe0"
+      },
+      "name": "Vuex"
+    },
+    {
+      "_id": {
+        "$oid": "60ca1b90fe2f5e90669bdfe1"
+      },
+      "name": "Vue-router"
+    },
+    {
+      "_id": {
+        "$oid": "60ca1bb7fe2f5e90669bdfe2"
+      },
+      "name": "Reactivity"
+    },
+    {
+      "_id": {
+        "$oid": "60ca1bd9fe2f5e90669bdfe3"
+      },
+      "name": "Components"
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "60b38b5a3f45cf0210bd728c"
+  },
+  "title": "CSS 3",
+  "description": "CSS 3",
+  "user": {
+    "$oid": "609fa93aa271831c12d7f8d0"
+  },
+  "tech": {
+    "$oid": "60991ce88fe3102f245f3e3c"
+  },
+  "createdAt": {
+    "$date": "2021-05-30T12:55:54.808Z"
+  },
+  "updatedAt": {
+    "$date": "2021-05-30T12:55:54.808Z"
+  },
+  "__v": 0,
+  "img_url": "CSS3",
+  "groups": [
+    {
+      "_id": {
+        "$oid": "60ca1c0bfe2f5e90669bdfe4"
+      },
+      "name": "Alaingment"
+    },
+    {
+      "_id": {
+        "$oid": "60ca1c37fe2f5e90669bdfe5"
+      },
+      "name": "Positioning"
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "60b38bc03f45cf0210bd728d"
+  },
+  "title": "HTML 5",
+  "description": "HTML 5",
+  "user": {
+    "$oid": "609fa93aa271831c12d7f8d0"
+  },
+  "tech": {
+    "$oid": "60991ce88fe3102f245f3e3c"
+  },
+  "createdAt": {
+    "$date": "2021-05-30T12:57:36.465Z"
+  },
+  "updatedAt": {
+    "$date": "2021-05-30T12:57:36.465Z"
+  },
+  "__v": 0,
+  "img_url": "HTML5",
+  "groups": [
+    {
+      "_id": {
+        "$oid": "60ca1c6efe2f5e90669bdfe6"
+      },
+      "name": "Elements"
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "60b38c273f45cf0210bd728e"
+  },
+  "title": "PHP 8",
+  "description": "PHP 8",
+  "user": {
+    "$oid": "609fa93aa271831c12d7f8d0"
+  },
+  "tech": {
+    "$oid": "6099193f01643c2db43ffe4c"
+  },
+  "createdAt": {
+    "$date": "2021-05-30T12:59:19.838Z"
+  },
+  "updatedAt": {
+    "$date": "2021-05-30T12:59:19.838Z"
+  },
+  "__v": 0,
+  "img_url": "PHP",
+  "groups": [
+    {
+      "_id": {
+        "$oid": "60ca1caafe2f5e90669bdfe7"
+      },
+      "name": "Syntax"
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "60b38c533f45cf0210bd728f"
+  },
+  "title": "Laravel",
+  "description": "Laravel",
+  "user": {
+    "$oid": "609fa93aa271831c12d7f8d0"
+  },
+  "tech": {
+    "$oid": "6099193f01643c2db43ffe4c"
+  },
+  "createdAt": {
+    "$date": "2021-05-30T13:00:03.506Z"
+  },
+  "updatedAt": {
+    "$date": "2021-05-30T13:00:03.506Z"
+  },
+  "__v": 0,
+  "img_url": "Laravel",
+  "groups": [
+    {
+      "_id": {
+        "$oid": "60ca1cdefe2f5e90669bdfe8"
+      },
+      "name": "Migration"
+    }
+  ]
+}]

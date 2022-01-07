@@ -1,0 +1,866 @@
+[{
+  "_id": {
+    "$oid": "60b37c14b08b052de0b2d155"
+  },
+  "links": [
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce"
+  ],
+  "title": "Reduce",
+  "description": "<p>The reduce() method executes a reducer function (that you provide) on each element of the array, resulting in a single output value.&nbsp;</p><p>The reducer function takes four arguments:&nbsp;</p><blockquote><p>Accumulator</p><p>Current Value</p><p>Current Index</p><p>Source Array</p></blockquote><p>Your reducer function's returned value is assigned to the accumulator, whose value is remembered across each iteration throughout the array, and ultimately becomes the final, single resulting value.</p>",
+  "user": {
+    "$oid": "609fa93aa271831c12d7f8d0"
+  },
+  "lang": {
+    "_id": {
+      "$oid": "6099287323dff5320c8a3958"
+    },
+    "title": "JavaScript",
+    "img_url": "JavaScript"
+  },
+  "createdAt": {
+    "$date": "2021-05-30T11:50:44.388Z"
+  },
+  "updatedAt": {
+    "$date": "2021-07-10T12:19:25.014Z"
+  },
+  "__v": 0,
+  "code": "let total = [ 0, 1, 2, 3 ].reduce(\n  ( accumulator, currentValue ) => accumulator + currentValue,\n  0\n)",
+  "img_url": "",
+  "groups": [
+    "Arrays"
+  ]
+},{
+  "_id": {
+    "$oid": "60be5b3d49582e1e2c334b28"
+  },
+  "links": [
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/concat"
+  ],
+  "title": "Concat",
+  "description": "<p>The concat() method is used to merge two or more arrays.&nbsp;</p><p>This method does not change the existing arrays, but instead returns a new array.</p>",
+  "code": "const array1 = ['a', 'b', 'c'];\nconst array2 = ['d', 'e', 'f'];\nconst array3 = array1.concat(array2);\n\nconst num1 = [1, 2, 3];\nconst num2 = [4, 5, 6];\nconst num3 = [7, 8, 9];\n\nconst numbers = num1.concat(num2, num3);\n\nconsole.log(numbers);",
+  "lang": {
+    "_id": {
+      "$oid": "6099287323dff5320c8a3958"
+    },
+    "title": "JavaScript",
+    "img_url": "JavaScript"
+  },
+  "createdAt": {
+    "$date": "2021-06-07T17:45:33.386Z"
+  },
+  "updatedAt": {
+    "$date": "2021-07-10T12:19:10.381Z"
+  },
+  "__v": 0,
+  "img_url": "",
+  "user": {
+    "$oid": "609fa93aa271831c12d7f8d0"
+  },
+  "groups": [
+    "Arrays"
+  ]
+},{
+  "_id": {
+    "$oid": "60be620749582e1e2c334b7f"
+  },
+  "links": [],
+  "title": "Start server",
+  "description": "Start node server",
+  "code": "import express from \"express\";\n\nconst app = express();\n\napp.listen(process.env.PORT, () =>\n  console.log(`Techbook app listening on port ${process.env.PORT} ...`)\n);",
+  "lang": {
+    "_id": {
+      "$oid": "60992faa098ee5373879b19d"
+    },
+    "title": "Nodejs",
+    "img_url": "Node.js"
+  },
+  "createdAt": {
+    "$date": "2021-06-07T18:14:31.455Z"
+  },
+  "updatedAt": {
+    "$date": "2021-06-15T17:43:08.977Z"
+  },
+  "__v": 0,
+  "img_url": "",
+  "user": {
+    "$oid": "609fa93aa271831c12d7f8d0"
+  },
+  "groups": [
+    "Basics"
+  ]
+},{
+  "_id": {
+    "$oid": "60bf294a5a1dc609b40ce816"
+  },
+  "links": [
+    "https://next.vuex.vuejs.org/guide/composition-api.html"
+  ],
+  "title": "Composition API - Actions",
+  "description": "Import useStore from vuex. Initialize store in setup function. Create function to use vuex action. Dispatch vuex action. Return function.",
+  "code": "import { useStore } from \"vuex\";\n\nsetup() {\n  const store = useStore();\n\n  const saveArticle = () => {\n    store.dispatch(\"articleAdd\", article.value);\n  };\n\n  retturn { saveArticle };\n}",
+  "lang": {
+    "_id": {
+      "$oid": "60b37d3b3f45cf0210bd7282"
+    },
+    "title": "Vue.js",
+    "img_url": "Vue.js"
+  },
+  "createdAt": {
+    "$date": "2021-06-08T08:24:42.760Z"
+  },
+  "updatedAt": {
+    "$date": "2021-06-17T12:30:30.449Z"
+  },
+  "__v": 0,
+  "user": {
+    "$oid": "609fa93aa271831c12d7f8d0"
+  },
+  "img_url": "",
+  "groups": [
+    "Vuex"
+  ]
+},{
+  "_id": {
+    "$oid": "60bf29a25a1dc609b40ce81a"
+  },
+  "links": [
+    "https://next.vuex.vuejs.org/guide/composition-api.html"
+  ],
+  "title": "Composition API - Getters",
+  "description": "Import computed from vue and useStore from vuex. Define store in setup function. Call vuex getter with computed method and store it in constant. Return constant from setup function.",
+  "code": "import { computed } from \"@vue/reactivity\";\nimport { useStore } from \"vuex\";\n\nsetup() {\n  const store = useStore();\n\n  const lang = computed(() => store.getters.getLang);\n\n  return { lang };\n}",
+  "lang": {
+    "_id": {
+      "$oid": "60b37d3b3f45cf0210bd7282"
+    },
+    "title": "Vue.js",
+    "img_url": "Vue.js"
+  },
+  "createdAt": {
+    "$date": "2021-06-08T08:26:10.900Z"
+  },
+  "updatedAt": {
+    "$date": "2021-07-10T12:14:04.501Z"
+  },
+  "__v": 0,
+  "user": {
+    "$oid": "609fa93aa271831c12d7f8d0"
+  },
+  "img_url": "",
+  "groups": [
+    "Vuex"
+  ]
+},{
+  "_id": {
+    "$oid": "60bf2a325a1dc609b40ce81e"
+  },
+  "links": [],
+  "title": "Composition API - router",
+  "description": "Import useRouter from vue-router. Initialize vuer-router. Call routes.",
+  "code": "import { useRouter } from \"vue-router\";\n\nsetup() {\n  const router = useRouter();\n  router.push(\"/\");\n}",
+  "lang": {
+    "_id": {
+      "$oid": "60b37d3b3f45cf0210bd7282"
+    },
+    "title": "Vue.js",
+    "img_url": "Vue.js"
+  },
+  "createdAt": {
+    "$date": "2021-06-08T08:28:34.107Z"
+  },
+  "updatedAt": {
+    "$date": "2021-06-17T12:30:16.918Z"
+  },
+  "__v": 0,
+  "user": {
+    "$oid": "609fa93aa271831c12d7f8d0"
+  },
+  "img_url": "",
+  "groups": [
+    "Vue-router"
+  ]
+},{
+  "_id": {
+    "$oid": "60c75198aa20ef100c22d6ea"
+  },
+  "links": [
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map"
+  ],
+  "title": "Map",
+  "description": "<p>The map() method creates a new array populated with the results of calling a provided function on every element in the calling array.&nbsp;</p><p>When not to use map():</p><blockquote><p>Since map builds a new array, using it when you aren't using the returned array is an anti-pattern; use forEach or for...of instead.&nbsp;</p></blockquote><p>You shouldn't be using map if:</p><blockquote><p>&nbsp;you're not using the array it returns;&nbsp;</p><p>and/or you're not returning a value from the callback</p></blockquote>",
+  "code": "const array1 = [1, 4, 9, 16];\n\n// pass a function to map\nconst map1 = array1.map(x => x * 2);\n",
+  "img_url": "",
+  "user": {
+    "$oid": "609fa93aa271831c12d7f8d0"
+  },
+  "lang": {
+    "_id": {
+      "$oid": "6099287323dff5320c8a3958"
+    },
+    "title": "JavaScript",
+    "img_url": "JavaScript"
+  },
+  "createdAt": {
+    "$date": "2021-06-14T12:54:48.162Z"
+  },
+  "updatedAt": {
+    "$date": "2021-07-10T12:18:54.942Z"
+  },
+  "__v": 0,
+  "groups": [
+    "Arrays"
+  ]
+},{
+  "_id": {
+    "$oid": "60c766a6aa20ef100c22d737"
+  },
+  "links": [
+    "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes"
+  ],
+  "title": "Includes",
+  "description": "The includes() method determines whether an array includes a certain value among its entries, returning true or false as appropriate.",
+  "code": "const array1 = [1, 2, 3];\n\nconsole.log(array1.includes(2));\n// expected output: true",
+  "img_url": "",
+  "user": {
+    "$oid": "609fa93aa271831c12d7f8d0"
+  },
+  "lang": {
+    "_id": {
+      "$oid": "6099287323dff5320c8a3958"
+    },
+    "title": "JavaScript",
+    "img_url": "JavaScript"
+  },
+  "createdAt": {
+    "$date": "2021-06-14T14:24:38.396Z"
+  },
+  "updatedAt": {
+    "$date": "2021-07-10T12:18:39.630Z"
+  },
+  "__v": 0,
+  "groups": [
+    "Arrays"
+  ]
+},{
+  "_id": {
+    "$oid": "60c7a1446225e0182c4993ea"
+  },
+  "links": [
+    "https://www.smashingmagazine.com/2019/07/using-slots-vue-js/"
+  ],
+  "title": "Slots",
+  "description": "<p>Slots are a mechanism for Vue components that allows you to compose your components in a way other than the strict parent-child relationship.&nbsp;</p><p>Slots give you an outlet to place content in new places or make components more generic.</p>",
+  "code": "<!-- my-button.vue -->\n<template>\n  <button class=\"btn btn-primary btn-lg\">\n    <slot>Click Me!</slot>\n  </button>\n</template>\n\n<!-- somewhere else, using my-button.vue -->\n<template>\n  <my-button>\n    <img src=\"/img/awesome-icon.jpg\"> start\n  </my-button>\n</template>",
+  "img_url": "",
+  "user": {
+    "$oid": "609fa93aa271831c12d7f8d0"
+  },
+  "lang": {
+    "_id": {
+      "$oid": "60b37d3b3f45cf0210bd7282"
+    },
+    "title": "Vue.js",
+    "img_url": "Vue.js"
+  },
+  "createdAt": {
+    "$date": "2021-06-14T18:34:44.948Z"
+  },
+  "updatedAt": {
+    "$date": "2021-07-10T13:38:14.513Z"
+  },
+  "__v": 0,
+  "groups": [
+    "Components"
+  ]
+},{
+  "_id": {
+    "$oid": "60c7a4f76225e0182c4993f7"
+  },
+  "links": [],
+  "title": "Vuex CRUD Mutations",
+  "description": "ES5",
+  "code": "addArticle(state, text) {\n  state.articles = [text, ...state.articles];\n},\n\nupdateArticle(state, article) {\n  state.articles = [\n    ...state.articles.map((item) =>\n      item._id !== article._id ? item : { ...item, ...article }\n    ),\n  ];\n},\n\ndeleteArticle(state, id) {\n  state.articles = [\n    ...state.articles.filter((item) => \n      item._id !== id)\n  ];\n},",
+  "img_url": "",
+  "user": {
+    "$oid": "609fa93aa271831c12d7f8d0"
+  },
+  "lang": {
+    "_id": {
+      "$oid": "60b37d3b3f45cf0210bd7282"
+    },
+    "title": "Vue.js",
+    "img_url": "Vue.js"
+  },
+  "createdAt": {
+    "$date": "2021-06-14T18:50:31.398Z"
+  },
+  "updatedAt": {
+    "$date": "2021-07-10T12:12:59.592Z"
+  },
+  "__v": 0,
+  "groups": [
+    "Vuex"
+  ]
+},{
+  "_id": {
+    "$oid": "60c85953c2c9cc3054f0c565"
+  },
+  "links": [],
+  "title": "Class",
+  "description": "ES6 classes syntax",
+  "code": "class Person {\n\n  constructor(name) {\n    this.name = name;\n  }\n\n  introduce() {\n    console.log(`Hello, my name is ${this.name}`);\n  }\n\n}\n\nconst otto = new Person('Otto');\notto.introduce();",
+  "img_url": "",
+  "user": {
+    "$oid": "609fa93aa271831c12d7f8d0"
+  },
+  "lang": {
+    "_id": {
+      "$oid": "6099287323dff5320c8a3958"
+    },
+    "title": "JavaScript",
+    "img_url": "JavaScript"
+  },
+  "createdAt": {
+    "$date": "2021-06-15T07:40:03.251Z"
+  },
+  "updatedAt": {
+    "$date": "2021-07-09T09:15:54.343Z"
+  },
+  "__v": 0,
+  "groups": [
+    "OOP"
+  ]
+},{
+  "_id": {
+    "$oid": "60e7f76a713c70138cb03dff"
+  },
+  "links": [
+    "https://www.digitalocean.com/community/conceptual_articles/s-o-l-i-d-the-first-five-principles-of-object-oriented-design"
+  ],
+  "groups": [
+    "OOP"
+  ],
+  "title": "SOLID",
+  "description": "<p>5 Principles of Object Oriented Design.&nbsp;</p><p>SOLID stands for:&nbsp;</p><h4>S - Single-responsiblity Principle</h4><blockquote><p>A class should have one and only one reason to change, meaning that a class should have only one job.&nbsp;</p></blockquote><h4>O - Open-closed Principle</h4><blockquote><p>Objects or entities should be open for extension but closed for modification.&nbsp;</p></blockquote><h4>L - Liskov Substitution Principle</h4><blockquote><p>Every subclass or derived class should be substitutable for their base or parent class.</p></blockquote><h4>I - Interface Segregation Principle</h4><blockquote><p>A client should never be forced to implement an interface that it doesn’t use, or clients shouldn’t be forced to depend on methods they do not use.&nbsp;</p></blockquote><h4>D - Dependency Inversion Principle</h4><blockquote><p>Entities must depend on abstractions, not on concretions. It states that the high-level module must not depend on the low-level module, but they should depend on abstractions.</p></blockquote>",
+  "code": "class SumCalculatorOutputter\n{\n    protected $calculator;\n\n    public function __constructor(AreaCalculator $calculator)\n    {\n        $this->calculator = $calculator;\n    }\n\n    public function JSON()\n    {\n        $data = [\n          'sum' => $this->calculator->sum(),\n      ];\n\n        return json_encode($data);\n    }\n\n    public function HTML()\n    {\n        return implode('', [\n          '',\n              'Sum of the areas of provided shapes: ',\n              $this->calculator->sum(),\n          '',\n      ]);\n    }\n}",
+  "img_url": "",
+  "user": {
+    "$oid": "609fa93aa271831c12d7f8d0"
+  },
+  "lang": {
+    "_id": {
+      "$oid": "6099287323dff5320c8a3958"
+    },
+    "title": "JavaScript",
+    "img_url": "JavaScript"
+  },
+  "createdAt": {
+    "$date": "2021-07-09T07:14:50.310Z"
+  },
+  "updatedAt": {
+    "$date": "2021-07-09T10:30:01.466Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60e7fa27713c70138cb03e07"
+  },
+  "links": [
+    "https://www.educative.io/edpresso/what-is-an-event-loop-in-javascript"
+  ],
+  "groups": [
+    "Basics"
+  ],
+  "title": "EventLoop",
+  "description": "The event loop is the secret behind JavaScript’s asynchronous programming. JS executes all operations on a single thread, but using a few smart data structures, it gives us the illusion of multi-threading. ",
+  "code": "rdgd",
+  "img_url": "",
+  "user": {
+    "$oid": "609fa93aa271831c12d7f8d0"
+  },
+  "lang": {
+    "_id": {
+      "$oid": "6099287323dff5320c8a3958"
+    },
+    "title": "JavaScript",
+    "img_url": "JavaScript"
+  },
+  "createdAt": {
+    "$date": "2021-07-09T07:26:31.097Z"
+  },
+  "updatedAt": {
+    "$date": "2021-07-09T09:15:23.643Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60e7fa74713c70138cb03e0a"
+  },
+  "links": [
+    "https://www.educative.io/edpresso/what-is-an-event-loop-in-javascript"
+  ],
+  "groups": [
+    "Basics"
+  ],
+  "title": "Call Stack",
+  "description": "The call stack is responsible for keeping track of all the operations in line to be executed. Whenever a function is finished, it is popped from the stack.",
+  "code": "dfgd",
+  "img_url": "",
+  "user": {
+    "$oid": "609fa93aa271831c12d7f8d0"
+  },
+  "lang": {
+    "_id": {
+      "$oid": "6099287323dff5320c8a3958"
+    },
+    "title": "JavaScript",
+    "img_url": "JavaScript"
+  },
+  "createdAt": {
+    "$date": "2021-07-09T07:27:48.808Z"
+  },
+  "updatedAt": {
+    "$date": "2021-07-09T09:15:15.162Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60e7fa98713c70138cb03e0d"
+  },
+  "links": [
+    "https://www.educative.io/edpresso/what-is-an-event-loop-in-javascript"
+  ],
+  "groups": [
+    "Basics"
+  ],
+  "title": "Event Queue",
+  "description": "The event queue is responsible for sending new functions to the track for processing. It follows the queue data structure to maintain the correct sequence in which all operations should be sent for execution.",
+  "code": "dghdfh",
+  "img_url": "",
+  "user": {
+    "$oid": "609fa93aa271831c12d7f8d0"
+  },
+  "lang": {
+    "_id": {
+      "$oid": "6099287323dff5320c8a3958"
+    },
+    "title": "JavaScript",
+    "img_url": "JavaScript"
+  },
+  "createdAt": {
+    "$date": "2021-07-09T07:28:24.276Z"
+  },
+  "updatedAt": {
+    "$date": "2021-07-09T09:15:01.117Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60e7fc9c713c70138cb03e3f"
+  },
+  "links": [
+    "https://www.educative.io/courses/recursion-for-coding-interviews-in-javascript/YVBQgYjKV80"
+  ],
+  "groups": [
+    "Basics"
+  ],
+  "title": "Recursion",
+  "description": "<p>Recursion is when a function calls itself again and again until it reaches a specified stopping condition.&nbsp;</p><p>This is called a recursive function.</p><p>Recursion is the process of describing an action in terms of itself.&nbsp;</p><p>Recursive code is generally shorter and easier to write when compared to an iterative code.&nbsp;</p><p>In general, the recursive code helps us avoid complex nested loops and is most useful for tasks that can be defined in terms of similar subtasks.&nbsp;</p><p>Each recursive function consists of 2 parts:&nbsp;</p><blockquote><p>Base Case: The base case is where further calls to the same function stop, i.e, it does not make any subsequent recursive calls.&nbsp;</p><p>Recursive Case: The recursive case is where the function calls itself again and again until it reaches the base case.&nbsp;</p></blockquote><p>In a recursive program, the solution to the bigger problem is expressed in terms of the smaller problems, until the smallest problem reaches the base case.&nbsp;</p><p>The base case leads to returning values directly, whereas in the recursive case, we call the respective function again.</p>",
+  "code": "function RecursiveFunction() {\n  // Base Case\n  if (<baseCaseCondition>) {\n    return <some value>;\n  }\n\n  // Recursive Case\n  else {\n    return <recursive call and any other task>;\n  }",
+  "img_url": "",
+  "user": {
+    "$oid": "609fa93aa271831c12d7f8d0"
+  },
+  "lang": {
+    "_id": {
+      "$oid": "6099287323dff5320c8a3958"
+    },
+    "title": "JavaScript",
+    "img_url": "JavaScript"
+  },
+  "createdAt": {
+    "$date": "2021-07-09T07:37:00.823Z"
+  },
+  "updatedAt": {
+    "$date": "2021-07-09T10:40:30.675Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60e81427713c70138cb03e6b"
+  },
+  "links": [],
+  "groups": [
+    "Basics"
+  ],
+  "title": "Data Types",
+  "description": "<p>There are a total of 7 basic data types supported by JavaScript.&nbsp;</p><p>Each one of them is briefed up as follows:&nbsp;</p><blockquote><p><strong>Boolean </strong>– Represents true and false values.</p><p><strong>Null </strong>– Represents empty, nothing, and unknown type of values</p><p><strong>Number </strong>– Represents both integer and floating-point values.</p><p><strong>Object </strong>– Used for storing collections of data or more complex entities</p><p><strong>String </strong>– Represents single-character, multi-character, and alphanumeric values.</p><p><strong>Symbol </strong>– Used for creating unique identifiers for objects</p><p><strong>Undefined </strong>– Represents value not assigned. If a variable is only declared and not assigned in JS, it represents the undefined data type.</p></blockquote>",
+  "code": "booo",
+  "img_url": "",
+  "user": {
+    "$oid": "609fa93aa271831c12d7f8d0"
+  },
+  "lang": {
+    "_id": {
+      "$oid": "6099287323dff5320c8a3958"
+    },
+    "title": "JavaScript",
+    "img_url": "JavaScript"
+  },
+  "createdAt": {
+    "$date": "2021-07-09T09:17:27.906Z"
+  },
+  "updatedAt": {
+    "$date": "2021-07-10T12:01:10.198Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60e81487713c70138cb03e6e"
+  },
+  "links": [],
+  "groups": [
+    "Basics"
+  ],
+  "title": "Types of Error Name values",
+  "description": "<p>There are 6 types of Error Name values.&nbsp;</p><p>Each one of them is briefly explained as follows:&nbsp;</p><blockquote><p><strong>Eval Error</strong> – Thrown when coming across an error in eval() (Newer JS releases don’t have it)</p></blockquote><blockquote><p><strong>Range Error</strong> – Generated when a number outside the specified range is used</p></blockquote><blockquote><p><strong>Reference Error</strong> – It comes into play when an undeclared variable is used.</p><p><strong>Syntax Error</strong> – When the incorrect syntax is used, we get this error</p><p><strong>Type Error</strong> – This error is thrown when a value outside the range of data types is tried to be used.</p><p><strong>URI Error</strong> – Generated due to the use of illegal characters</p></blockquote>",
+  "code": "xfgdfh",
+  "img_url": "",
+  "user": {
+    "$oid": "609fa93aa271831c12d7f8d0"
+  },
+  "lang": {
+    "_id": {
+      "$oid": "6099287323dff5320c8a3958"
+    },
+    "title": "JavaScript",
+    "img_url": "JavaScript"
+  },
+  "createdAt": {
+    "$date": "2021-07-09T09:19:03.847Z"
+  },
+  "updatedAt": {
+    "$date": "2021-07-10T12:00:28.188Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60e81523713c70138cb03e71"
+  },
+  "links": [],
+  "groups": [
+    "Basics"
+  ],
+  "title": "Closures",
+  "description": "<p>Closures provide a better, concise, creative, and expressive writing code for JavaScript developers and programmers.&nbsp;</p><p>Technically speaking, closures are a combination of lexical environment and function. In other words, a closure is a locally declared variable that is related to a function and stays in the memory when the related function has returned.&nbsp;</p><p>The closure contains all local variables that were in-scope at the time of the closure creation.</p>",
+  "code": "const greeter = (name, age) => {\n  let message = name + \" says Hey!! He is \" + age + \" years old\";\n  return function greet() {\n    console.log(message);\n  };\n}\n// Generate the closure\n\nconst AkhilGreeter = greeter(\"Akhil\", 26);\n\n// Use the closure\n\nAkhilGreeter();\n",
+  "img_url": "",
+  "user": {
+    "$oid": "609fa93aa271831c12d7f8d0"
+  },
+  "lang": {
+    "_id": {
+      "$oid": "6099287323dff5320c8a3958"
+    },
+    "title": "JavaScript",
+    "img_url": "JavaScript"
+  },
+  "createdAt": {
+    "$date": "2021-07-09T09:21:39.856Z"
+  },
+  "updatedAt": {
+    "$date": "2021-07-12T15:32:00.744Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60eaaeed7dd6002f347b0771"
+  },
+  "links": [],
+  "groups": [
+    "Basics"
+  ],
+  "title": "let Vs var",
+  "description": "<p>Both let and var are used for variable and method declaration in JavaScript. However, the most important difference between the two JS keywords is that while the var keyword is function scoped, the let keyword is block scoped.</p>",
+  "code": "for(let i = 0; i < 10; i++) {\n  alert(i)\n}\n// alert 10 times\n\nfor(var i = 0, i < 10; i++) {\n  alert(i)\n}\n// undefined",
+  "img_url": "",
+  "user": {
+    "$oid": "609fa93aa271831c12d7f8d0"
+  },
+  "lang": {
+    "_id": {
+      "$oid": "6099287323dff5320c8a3958"
+    },
+    "title": "JavaScript",
+    "img_url": "JavaScript"
+  },
+  "createdAt": {
+    "$date": "2021-07-11T08:42:21.124Z"
+  },
+  "updatedAt": {
+    "$date": "2021-07-11T08:42:21.124Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60eaaf6f7dd6002f347b07c3"
+  },
+  "links": [],
+  "groups": [
+    "Basics"
+  ],
+  "title": "Self Invoking Function",
+  "description": "<p>Functions that are automatically invoked are termed as Self Invoking Functions.&nbsp;</p><p>These are also known as Immediately Invoked Function Expressions and Self Executing Anonymous Functions.</p>",
+  "code": "(some_function () {\n  return () \n}) ();",
+  "img_url": "",
+  "user": {
+    "$oid": "609fa93aa271831c12d7f8d0"
+  },
+  "lang": {
+    "_id": {
+      "$oid": "6099287323dff5320c8a3958"
+    },
+    "title": "JavaScript",
+    "img_url": "JavaScript"
+  },
+  "createdAt": {
+    "$date": "2021-07-11T08:44:31.935Z"
+  },
+  "updatedAt": {
+    "$date": "2021-07-11T08:44:31.935Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60eab05e7dd6002f347b0805"
+  },
+  "links": [],
+  "groups": [
+    "Basics"
+  ],
+  "title": "Function Declaration Vs Function Expression",
+  "description": "<ul><li>Definition – A function declared as a separate statement in the main code flow is termed the function declaration. When a function is created inside an expression or another syntax construct, it is called a function expression.</li><li>Strict Mode – When a function declaration is within a code block in the Strict mode, it is visible everywhere inside that block but not outside of it. This isn’t the case for a function expression.</li><li>Time of Use – A function expression is created when the execution reaches it. The function expression is usable only from that moment onwards. A function declaration, on the other hand, can be called before the same is defined.</li><li>When to Use – Function declaration offers better readability and offers more freedom in organizing the code. Function expressions are typically restricted to be used when there is a need for a conditional declaration.</li></ul>",
+  "code": "// DECLARATION\nfunction calcRectArea(width, height) {\n  return width * height;\n}\n\nconsole.log(calcRectArea(5, 6));\n// expected output: 30\n\n// EXPRESSION\nconst getRectArea = function(width, height) {\n  return width * height;\n};\n\nconsole.log(getRectArea(3, 4));\n// expected output: 12",
+  "img_url": "",
+  "user": {
+    "$oid": "609fa93aa271831c12d7f8d0"
+  },
+  "lang": {
+    "_id": {
+      "$oid": "6099287323dff5320c8a3958"
+    },
+    "title": "JavaScript",
+    "img_url": "JavaScript"
+  },
+  "createdAt": {
+    "$date": "2021-07-11T08:48:30.333Z"
+  },
+  "updatedAt": {
+    "$date": "2021-07-11T08:48:30.333Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60eab1137dd6002f347b084a"
+  },
+  "links": [],
+  "groups": [
+    "Basics"
+  ],
+  "title": "Event Bubbling and Event Capturing",
+  "description": "<p>There are two ways for accomplishing event propagation and the order in which an event is received in the HTML DOM API.</p><p>These are Event Bubbling and Event Capturing. The event is directed towards its intended target in the former, whereas the event goes down to the latter element.</p><ul><li><strong>Event Capturing</strong> – Also known as trickling, Event Capturing is rarely used. The process starts with the outermost element capturing the event and then propagating it to the innermost element.</li><li><strong>Event Bubbling</strong> – In this process, the event gets handled by the innermost element first and then propagated to the outermost element.</li></ul>",
+  "code": "SGSSDFG",
+  "img_url": "",
+  "user": {
+    "$oid": "609fa93aa271831c12d7f8d0"
+  },
+  "lang": {
+    "_id": {
+      "$oid": "6099287323dff5320c8a3958"
+    },
+    "title": "JavaScript",
+    "img_url": "JavaScript"
+  },
+  "createdAt": {
+    "$date": "2021-07-11T08:51:31.037Z"
+  },
+  "updatedAt": {
+    "$date": "2021-07-11T08:51:31.037Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60eab1977dd6002f347b087c"
+  },
+  "links": [],
+  "groups": [
+    "Basics"
+  ],
+  "title": "for-in loop",
+  "description": "<p>The for-in loop is meant to be used for looping through the properties of a JavaScript object—every iteration of the loop results in a property of the object getting associated with the variable name.&nbsp;</p><p>The loop continues until all the object properties are exhausted.</p>",
+  "code": "for (variable name in object) {\n  statement or block to execute\n}",
+  "img_url": "",
+  "user": {
+    "$oid": "609fa93aa271831c12d7f8d0"
+  },
+  "lang": {
+    "_id": {
+      "$oid": "6099287323dff5320c8a3958"
+    },
+    "title": "JavaScript",
+    "img_url": "JavaScript"
+  },
+  "createdAt": {
+    "$date": "2021-07-11T08:53:43.769Z"
+  },
+  "updatedAt": {
+    "$date": "2021-07-11T08:53:43.769Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60eb48695908ca0bb468d85f"
+  },
+  "links": [],
+  "groups": [
+    "Data Structures"
+  ],
+  "title": "Linked List",
+  "description": "<p>Head, Tail, Nodes</p><p>Node: value, prev, next</p>",
+  "code": "class LinkedList {\n  constructor() {\n    this.head = null;\n    this.tail = null;\n  }\n  addToHead(value) {\n        let newNode = new Node(value, this.head, null);\n        this.head ? this.head.prev = newNode : this.tail = newNode;\n        this.head = newNode;\n    }\n    addToTail(value) {\n        let newNode = new Node(value, null, this.tail);\n        this.tail ? this.tail.next = newNode : this.head = newNode;\n        this.tail = newNode;\n    }\n    removeHead() {\n        if (!this.head) return null;\n        let val = this.head.value;\n        this.head = this.head.next;\n        this.head ? this.head.prev = null : this.tail = null;\n        return val;\n    }\n    removeTail() {\n        if (!this.tail) return null;\n        let val = this.tail.value;\n        this.tail = this.tail.prev;\n        this.tail ? this.tail.next = null : this.head = null;\n        return val;\n    }\n    search(searchValue) {\n        let currentNode = this.head;\n        while (currentNode) {\n            if (currentNode.value === searchValue) return currentNode.value;\n            currentNode = currentNode.next\n        }\n        return null;\n    }\n    indexOf = function(value) {\n        let indexes = [];\n        let currentIndex = 0;\n        let currentNode = this.head\n        while (currentNode) {\n            if (currentNode.value === value) indexes.push(currentIndex);\n            currentNode = currentNode.next;\n            currentIndex++;\n        }\n        return indexes;\n    }\n}\n\nclass Node {\n  constructor(value, next, prev) {\n    this.value = value;\n    this.next = next;\n    this.prev = prev;\n  }\n}",
+  "img_url": "",
+  "user": {
+    "$oid": "609fa93aa271831c12d7f8d0"
+  },
+  "lang": {
+    "_id": {
+      "$oid": "6099287323dff5320c8a3958"
+    },
+    "title": "JavaScript",
+    "img_url": "JavaScript"
+  },
+  "createdAt": {
+    "$date": "2021-07-11T19:37:13.973Z"
+  },
+  "updatedAt": {
+    "$date": "2021-07-11T20:06:31.654Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60ebe6b34abf7e28cc4f4bbc"
+  },
+  "links": [],
+  "groups": [
+    "Data Structures"
+  ],
+  "title": "Binary Search Tree",
+  "description": "<p>BST: value, left , right</p>",
+  "code": "class BST {\n  constructor(value) {\n    this.value = value;\n    this.left = null;\n    this.right = null;\n  }\n  insert(value) {\n    if (value <= this.value) {\n      !this.left ? this.left = new BST(value) : this.left.insert(value);\n    else {\n      if (value > this.value) {\n        !this.right ? this.right = new BST(value) : this.right.insert(value);\n     }\n  }\n  contains(value) {\n    if (value === this.value) return true;\n    if (value < this.value) {\n      if (!this.left) return false;\n      else return this.left.contains(value);\n    else {\n      if (!this.right) return false;\n      else return this.right.contains(value);\n    }\n  }\n  depthFirstTraversal\n}",
+  "img_url": "",
+  "user": {
+    "$oid": "609fa93aa271831c12d7f8d0"
+  },
+  "lang": {
+    "_id": {
+      "$oid": "6099287323dff5320c8a3958"
+    },
+    "title": "JavaScript",
+    "img_url": "JavaScript"
+  },
+  "createdAt": {
+    "$date": "2021-07-12T06:52:35.468Z"
+  },
+  "updatedAt": {
+    "$date": "2021-07-12T08:40:51.074Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60ec3cc34abf7e28cc4f4c7c"
+  },
+  "links": [],
+  "groups": [
+    "Data Structures"
+  ],
+  "title": "Hash Tables",
+  "description": "<p>Array of Objects(Buckets) with key and value.</p><p>Runtime:</p><p>Lookup = O(1)</p><p>Insertion = O(1)</p><p>&nbsp;</p>",
+  "code": "class HashTable {\n constructor(size) {\n    this.buckets = Array(size);\n    this.numBuckets = this.buckets.length;\n  }\n  hash(key) {\n    key.split('').reduce((acu, tot) => acu + tot.charCodeAt(0), 0) % this.numBuckets\n  }\n  let index = this.hash(key);\n    if (!this.buckets[index]) {\n      this.buckets[index] = new HashNode(key, value);\n    } else if (this.buckets[index].key === key) {\n      this.buckets[index].value = value;\n    } else {\n      let currentNode = this.buckets[index];\n      while (currentNode.next) {\n        if (currentNode.next.key === key) {\n          currentNode.next.value = value;\n          return;\n        }\n        currentNode = currentNode.next;\n      }\n      currentNode.next = new HashNode(key, value);\n    }\n}\nclass HashNode {\n  constructor(key, value, next = null) {\n    this.key = key;\n    this.value = value;\n    this.next = next;\n  }\n}\n",
+  "img_url": "",
+  "user": {
+    "$oid": "609fa93aa271831c12d7f8d0"
+  },
+  "lang": {
+    "_id": {
+      "$oid": "6099287323dff5320c8a3958"
+    },
+    "title": "JavaScript",
+    "img_url": "JavaScript"
+  },
+  "createdAt": {
+    "$date": "2021-07-12T12:59:47.600Z"
+  },
+  "updatedAt": {
+    "$date": "2021-07-12T13:29:02.446Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60ec48fe4abf7e28cc4f4d5f"
+  },
+  "links": [],
+  "groups": [
+    "Basics"
+  ],
+  "title": "Currying",
+  "description": "<p>Currying is a process in functional programming in which we can transform a function with multiple arguments into a sequence of nesting functions. It returns a new function that expects the next argument inline.</p>",
+  "code": "const trippleAdd = (num1, num2, num3) => {\n  return num1 + num2 + num3;\n}\nconsole.log(trippleAdd(10, 23, 74))\n\n// with currying\nconst trippleAdd = (num1) => {\n  return (num2) => {\n    return (num3) => {\n      return num1 + num2 + num3\n    }\n  }\n}\nconsole.log(trippleAdd(10)(23)(74))",
+  "img_url": "",
+  "user": {
+    "$oid": "609fa93aa271831c12d7f8d0"
+  },
+  "lang": {
+    "_id": {
+      "$oid": "6099287323dff5320c8a3958"
+    },
+    "title": "JavaScript",
+    "img_url": "JavaScript"
+  },
+  "createdAt": {
+    "$date": "2021-07-12T13:51:58.485Z"
+  },
+  "updatedAt": {
+    "$date": "2021-07-12T13:51:58.485Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60ec49ed4abf7e28cc4f4db6"
+  },
+  "links": [],
+  "groups": [
+    "Basics"
+  ],
+  "title": "IIFE (Immediately Invoked Function Expression)",
+  "description": "<p>It is a&nbsp;<a href=\"https://developer.mozilla.org/en-US/docs/Glossary/JavaScript\">JavaScript</a> <a href=\"https://developer.mozilla.org/en-US/docs/Glossary/Function\">function</a> that runs as soon as it is defined. Variables will be discarded after the function is executed.</p>",
+  "code": "(function () {\n  // some initiation code\n  let firstVariable;\n  let secondVariable;\n})();",
+  "img_url": "",
+  "user": {
+    "$oid": "609fa93aa271831c12d7f8d0"
+  },
+  "lang": {
+    "_id": {
+      "$oid": "6099287323dff5320c8a3958"
+    },
+    "title": "JavaScript",
+    "img_url": "JavaScript"
+  },
+  "createdAt": {
+    "$date": "2021-07-12T13:55:57.453Z"
+  },
+  "updatedAt": {
+    "$date": "2021-07-12T13:56:21.807Z"
+  },
+  "__v": 0
+}]

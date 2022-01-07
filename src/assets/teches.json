@@ -1,0 +1,52 @@
+[{
+  "_id": {
+    "$oid": "6099193f01643c2db43ffe4c"
+  },
+  "title": "Backend",
+  "description": "Backend technology",
+  "user": {
+    "$oid": "60991889d79d8811383a5c91"
+  },
+  "createdAt": {
+    "$date": "2021-05-10T11:30:07.696Z"
+  },
+  "updatedAt": {
+    "$date": "2021-05-10T12:17:28.916Z"
+  },
+  "__v": 0,
+  "img": "back-end"
+},{
+  "_id": {
+    "$oid": "60991ce88fe3102f245f3e3c"
+  },
+  "title": "Frontend",
+  "description": "Frontend technology",
+  "user": {
+    "$oid": "60991889d79d8811383a5c91"
+  },
+  "createdAt": {
+    "$date": "2021-05-10T11:45:44.096Z"
+  },
+  "updatedAt": {
+    "$date": "2021-05-10T12:54:53.570Z"
+  },
+  "__v": 0,
+  "img": "front-end"
+},{
+  "_id": {
+    "$oid": "6099306e916d192e502db381"
+  },
+  "title": "Databases",
+  "description": "Database technology",
+  "user": {
+    "$oid": "60991889d79d8811383a5c91"
+  },
+  "createdAt": {
+    "$date": "2021-05-10T13:09:02.546Z"
+  },
+  "updatedAt": {
+    "$date": "2021-05-10T13:09:02.546Z"
+  },
+  "__v": 0,
+  "img": "databases"
+}]
