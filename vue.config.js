@@ -1,5 +1,5 @@
 module.exports = {
-  publicPath: process.env.NODE_ENV === 'production' ? '/techbook-frontend/' : '/',
+  //publicPath: process.env.NODE_ENV === 'production' ? '/techbook-frontend/' : '/',
   css: {
     loaderOptions: {
       sass: {

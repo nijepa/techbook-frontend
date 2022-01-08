@@ -198,10 +198,10 @@ export default {
     const langs = store.getters.getAllLanguages;
     let loading = ref(null);
 
-    if (!techs?.data.length) {
+    if (!techs?.data?.length) {
       store.dispatch("fetchTechs");
     }
-    if (!langs?.data.length) {
+    if (!langs?.data?.length) {
       store.dispatch("fetchLanguages");
     }
 
