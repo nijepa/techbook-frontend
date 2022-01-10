@@ -97,7 +97,7 @@ const actions = {
     commit
   }, languageData) {
     await axios
-      .patch(URL + "api/v1/langs/" + languageData._id, languageData)
+      .put(URL + "api/v1/langs/" + languageData._id, languageData)
       .then((response) => {
         commit("updateLanguage", response.data);
         //router.push("/dashboard");

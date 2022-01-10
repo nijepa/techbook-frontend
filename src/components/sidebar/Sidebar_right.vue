@@ -41,6 +41,11 @@
       <img :src="getUrl(lang.img_url, 'logos')" alt="" />
       <h1>{{ lang.title }}</h1>
       <p v-html="lang.description"></p>
+      <ul v-if="lang.links.length" class="links__article">
+        <li v-for="link in lang.links" :key="link" class="links-item">
+          <a href="" @click.prevent="updateLink(link)">{{ link }}</a>
+        </li>
+      </ul>
     </div>
   </div>
 </template>

@@ -73,8 +73,9 @@
               isEmpty(gru) ? '' : group._id === gru._id ? 'group__selected' : ''
             "
             id="cont"
+            @click.prevent="selectGroup(group)"
           >
-            <a href="" @click.prevent="selectGroup(group)" id="box">
+            <a href="" id="box">
               {{ group.name }}
             </a>
           </li>
@@ -475,7 +476,8 @@ export default {
   color: $blue-dark !important;
 }
 
-.group__selected:after, .group__selected:before {
+.group__selected:after,
+.group__selected:before {
   background: $blue-lightest !important;
 }
 
