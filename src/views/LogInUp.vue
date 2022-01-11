@@ -1,4 +1,5 @@
 <template>
+  <h1>tech book</h1>
   <Form class="" @submit="handleLogin" :validation-schema="schema">
     <div>
       <Field
@@ -120,5 +121,19 @@ console.log(loggedIn)
   Form  {
     display: grid;
     justify-content: center;
+    margin-top: 1em;
+  }
+   h1 {
+    font-size: 1.5em;
+    text-transform: uppercase ;
+    text-shadow: 0 0 3px $orange-main, 0 0 5px $orange-light;
+    color: $blue-light;
+    //margin: 0 .5em;
+    padding: .3em;
+    cursor: pointer;
+  }
+
+  h1:hover {
+    //background-color: $blue-dark;
   }
 </style>
