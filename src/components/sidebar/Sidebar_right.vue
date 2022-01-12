@@ -104,4 +104,10 @@ export default {
     }
   }
 }
+
+@media(max-width: 1024px) {
+  .content-side {
+    margin-top: 100px;
+  }
+}
 </style>
