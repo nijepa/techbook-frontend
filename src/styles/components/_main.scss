@@ -15,8 +15,23 @@ main {
     width: 70px;
   }
 }
+
+
+
+@media(max-width: 1281px) {
+  .home {
+    grid-template-columns: 1fr minmax(min-content, 3fr);
+  }
+}
+
 @media(max-width: 1024px) {
   main {
     margin-top: 100px;
+  }
+}
+
+@media(max-width: 700px) {
+  .home {
+    grid-template-columns: 1fr;
   }
 }

@@ -4,7 +4,7 @@
     <Sidebar />
     <!-- <Main msg="Technology book"/>  -->
     <router-view />
-    <sidebar-right />
+    <sidebar-right v-if="width > 1282" />
     <Footer />
   </div>
 </template>
@@ -14,6 +14,7 @@ import Header from "@/components/header/Header.vue";
 import Footer from "@/components/Footer.vue";
 import Sidebar from "@/components/sidebar/Sidebar.vue";
 import SidebarRight from "@/components/sidebar/Sidebar_right.vue";
+import useBreakpoints from "@/composables/useBreakpoints";
 
 export default {
   name: "Front",
@@ -25,11 +26,19 @@ export default {
     SidebarRight
   },
 
-  setup() {},
+  setup() {
+    const { width, type } = useBreakpoints();
+
+    return {
+      width,
+      type
+    }
+  },
 };
 </script>
 
 <style>
+
 .div {
   color: #2f4f4f;
 }

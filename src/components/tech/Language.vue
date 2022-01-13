@@ -6,7 +6,7 @@
         <h1>{{ lang.title }}</h1>
       </div>
 
-      <div v-if="width < 1282">
+      <div v-if="width < 1282" class="fields__nav-small">
         <div v-click-outside="hideFields">
           <button type="submit" class="article__fields" @click="toggleFields">
             <svg
@@ -61,6 +61,7 @@
             @field="selectGroup"
           />
         </div>
+        <a class="" @click="editLang()">{{ lang.title }}</a>
       </div>
 
       <div v-else>
@@ -303,6 +304,7 @@ import { getUrl } from "@/helpers/getUrl";
 import { isEmpty } from "@/helpers/isEmptyObject";
 import useBreakpoints from "@/composables/useBreakpoints";
 import { useStore } from "vuex";
+import { useRouter } from "vue-router";
 import { computed, ref } from "@vue/reactivity";
 import { watch } from "@vue/runtime-core";
 import { usePagination } from "vue-composable";
@@ -324,6 +326,7 @@ export default {
 
   setup() {
     const store = useStore();
+    const router = useRouter();
     const lang = computed(() => store.getters.getOneLanguage);
     const articles = computed(
       () => store.getters.getAllArticles
@@ -398,6 +401,10 @@ export default {
       store.dispatch("articleUpdate", art);
     };
 
+    const editLang = () => {
+      router.push("/lang");
+    };
+
     let {
       currentPage,
       lastPage,
@@ -454,12 +461,21 @@ export default {
       pageSize,
       setPageSize,
       filterArt,
+      editLang
     };
   },
 };
 </script>
 
 <style lang="scss">
+.fields__nav-small {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding-right: .5em;
+}
+
 .component-fade-enter-active,
 .component-fade-leave-active {
   transition: opacity 0.6s ease-in-out;

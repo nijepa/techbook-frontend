@@ -83,7 +83,7 @@
             C320.899,231.234,290.872,261.262,253.963,261.262z"
             />
           </svg>
-          <label>
+          <label for="title">
             <input
               @focus="clearErrors"
               v-model="language.title"
@@ -225,7 +225,7 @@
             </li>
           </ul>
 
-          <div class=" form__item">
+          <div class="form__item form__item-links">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               x="0px"
