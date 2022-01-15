@@ -36,6 +36,7 @@
     ul {
       list-style: none;
       display: flex;
+      flex-wrap: wrap;
       margin: .5em 0;
 
       li {
@@ -190,12 +191,12 @@ form.go-bottom {
 }
 .profile__heading {
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns:auto 1fr;
   justify-content: center;
   align-items: center;
 
   .profile__title {
-    justify-self: baseline;
+    justify-self: center;
     //background: var(--blue-grey-darker);
     //background: $blue-light;
     //padding: .5em;
@@ -290,9 +291,11 @@ svg {
   transition: ease-in-out .4s all;
 
   span {
-    opacity: 0;
+    //opacity: 0;
     margin-right: .2em;
     transition: all .4s ease-in-out;
+    font-size: 1em;
+    color: lighten($color: $blue-dark, $amount: 35%);
   }
 }
 
@@ -317,6 +320,7 @@ svg {
   }
   span {
     opacity: 1;
+    //font-size: 1.1em;
   }
 }
 

@@ -61,7 +61,7 @@
             @field="selectGroup"
           />
         </div>
-        <a class="" @click="editLang()">{{ lang.title }}</a>
+        <a href="#" class="heading__lang" @click="editLang()">{{ lang.title }}</a>
       </div>
 
       <div v-else>
@@ -742,4 +742,20 @@ export default {
     }
   }
 }
+
+@media(max-width: 700px) {
+  .article-header {
+    .article-header_item {
+      p {
+        width: 0;
+      }
+    }
+  }
+  .article-header_item:hover {
+    p {
+      transform: translateX(-20px) translateY(-25px);
+    }
+  }
+}
+
 </style>
