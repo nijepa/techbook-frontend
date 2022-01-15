@@ -3,14 +3,14 @@
 
   <div v-else class="tree">
     <ul v-for="language in languages" :key="language._id">
-      <li @click="selectLanguage(language)">
-        <a>
+      <li>
+        <a @click="selectLanguage(language)">
           <img :src="getUrl(language.img_url, 'logos')" alt="" />
           <h5>{{ language.title }}</h5>
         </a>
         <ul class="">
           <li v-for="group in language.groups" :key="group._id">
-            <a href="">{{ group.name }}</a>
+            <a href="#" @click="selectLanguageGroup(language, group)">{{ group.name }}</a>
           </li>
         </ul>
       </li>
@@ -49,10 +49,19 @@ export default {
         await store.dispatch("fetchArticles", language);
       }
 
-      router.push("/main");
+      router.push('/main');
     };
 
-    return { getUrl, isEmpty, selectLanguage, tech, languages, lang };
+    const selectLanguageGroup = async (language, group) => {
+      if (language._id) {
+        await store.dispatch("fetchLanguage", language);
+        await store.dispatch("fetchArticles", language);
+      }
+
+      router.push({name: 'Main', params: group});
+    };
+
+    return { getUrl, isEmpty, selectLanguage, selectLanguageGroup, tech, languages, lang };
   },
 };
 </script>

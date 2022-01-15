@@ -96,11 +96,16 @@ export default {
     box-shadow: 0px 0px 3px 1px #6887aebf;
     background-color: $blue-lighter;
     min-width: 150px;
+    max-width: 350px;
 
     img {
       width: 50px;
       height: 50px;
       margin-top: 0.5em;
+    }
+
+    p {
+      text-align: left;
     }
   }
 }

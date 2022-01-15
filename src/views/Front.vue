@@ -4,7 +4,7 @@
     <Sidebar />
     <!-- <Main msg="Technology book"/>  -->
     <router-view />
-    <sidebar-right v-if="width > 1282" />
+    <sidebar-right v-if="width > 1279" />
     <Footer />
   </div>
 </template>
