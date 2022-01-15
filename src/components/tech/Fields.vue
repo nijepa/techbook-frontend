@@ -214,4 +214,10 @@ $reverse: true;
     border-top: none !important;
   }
 }
+
+@media (max-width: 1279px) {
+  .tree {
+    margin-top: 100px;
+  }
+}
 </style>

@@ -6,7 +6,7 @@
         <h1>{{ lang.title }}</h1>
       </div>
 
-      <div v-if="width < 1282" class="fields__nav-small">
+      <div v-if="width < 1280" class="fields__nav-small">
         <div v-click-outside="hideFields">
           <button type="submit" class="article__fields" @click="toggleFields">
             <svg

@@ -18,7 +18,7 @@ main {
 
 
 
-@media(max-width: 1281px) {
+@media(max-width: 1279px) {
   .home {
     grid-template-columns: 1fr minmax(min-content, 3fr);
   }
@@ -32,6 +32,6 @@ main {
 
 @media(max-width: 700px) {
   .home {
-    grid-template-columns: 1fr;
+    grid-template-columns: auto 1fr;
   }
 }

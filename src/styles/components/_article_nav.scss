@@ -14,6 +14,7 @@
   //margin: 0 0 0 .3em;
   position: relative;
   z-index: 0;
+  overflow: hidden;
 
   .article-link:nth-child(1) {
     justify-self: left;
