@@ -19,8 +19,6 @@ export default {
   color: #2c3e50;
 }
 :root {
-
-
   --blue-grey-darkest: #1e242b;
   --blue-grey-darker: #2a3846;
   --blue-grey-dark: #4b6077;

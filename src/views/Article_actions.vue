@@ -532,7 +532,7 @@ export default {
       saveArticle,
       getUrl,
       edited,
-      QuillEditor,
+      QuillEditor
     };
   },
 };
@@ -571,11 +571,10 @@ export default {
   border: 1px solid $blue-dark;
   box-shadow: 0px 0px 2px $blue-main inset;
 }
-@media(max-width: 700px) {
+@media (max-width: 700px) {
   .input__svg {
     width: 20px;
     height: 20px;
   }
 }
-
 </style>

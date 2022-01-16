@@ -177,6 +177,10 @@ form.go-bottom {
 @media(max-width: 700px) {
   .profile__wrapper {
     padding: .5em;
+
+    .links-item {
+      margin-left: .5em;
+    }
   }
 }
 

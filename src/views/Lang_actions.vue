@@ -490,7 +490,7 @@ export default {
       saveArticle,
       getUrl,
       edited,
-      QuillEditor,
+      QuillEditor
     };
   },
 };

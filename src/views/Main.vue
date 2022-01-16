@@ -3,7 +3,7 @@
     <div class="" v-if="!isEmpty(lang)">
       <Language :art="articles" />
     </div>
-<!--     <div class="main-title" v-else>
+    <!--     <div class="main-title" v-else>
       <h1>{{ msg }}</h1>
       <img :src="getUrl('coding')" alt="" />
     </div> -->
@@ -22,7 +22,7 @@ export default {
 
   setup() {
     const store = useStore();
-    
+
     const lang = computed(() => store.getters.getOneLanguage);
     const articles = computed(() => store.getters.getAllArticles);
 

@@ -15,12 +15,12 @@
 import { getUrl } from "@/helpers/getUrl";
 import { computed } from "@vue/reactivity";
 import { useStore } from "vuex";
-import { useRouter } from 'vue-router';
+import { useRouter } from "vue-router";
 
 export default {
-  name: 'HeaderLink',
+  name: "HeaderLink",
 
-  props: { front: Boolean},
+  props: { front: Boolean },
 
   emits: ["loadin"],
 

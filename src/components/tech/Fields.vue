@@ -10,7 +10,9 @@
         </a>
         <ul class="">
           <li v-for="group in language.groups" :key="group._id">
-            <a href="#" @click="selectLanguageGroup(language, group)">{{ group.name }}</a>
+            <a href="#" @click="selectLanguageGroup(language, group)">
+              {{ group.name }}
+            </a>
           </li>
         </ul>
       </li>
@@ -48,8 +50,7 @@ export default {
         await store.dispatch("fetchLanguage", language);
         await store.dispatch("fetchArticles", language);
       }
-
-      router.push('/main');
+      router.push("/main");
     };
 
     const selectLanguageGroup = async (language, group) => {
@@ -57,11 +58,18 @@ export default {
         await store.dispatch("fetchLanguage", language);
         await store.dispatch("fetchArticles", language);
       }
-
-      router.push({name: 'Main', params: group});
+      router.push({ name: "Main", params: group });
     };
 
-    return { getUrl, isEmpty, selectLanguage, selectLanguageGroup, tech, languages, lang };
+    return {
+      getUrl,
+      isEmpty,
+      selectLanguage,
+      selectLanguageGroup,
+      tech,
+      languages,
+      lang
+    };
   },
 };
 </script>

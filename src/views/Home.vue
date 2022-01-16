@@ -193,7 +193,7 @@ export default {
 
   setup() {
     const store = useStore();
-    
+
     const techs = store.getters.getTechs;
     const langs = store.getters.getAllLanguages;
     let loading = ref(null);

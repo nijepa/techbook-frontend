@@ -299,34 +299,34 @@
         </g>
       </svg>
     </div>
-    
+
     <a @click="$router.go(-1)" to="/">
       <svg
-            width="30px"
-            height="30px"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            class="svg-back"
-          >
-            <path
-              id="Stroke 1"
-              d="M11.2999 11.8938L20.2499 11.8938"
-              stroke="#154380"
-              stroke-width="1.5"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-            <path
-              id="Stroke 3"
-              fill-rule="evenodd"
-              clip-rule="evenodd"
-              d="M3.64613 11.8998C3.64613 13.1558 10.0101 17.1708 10.7321 16.4488C11.4541 15.7268 11.5231 8.14181 10.7321 7.35081C9.94014 6.55981 3.64613 10.6448 3.64613 11.8998Z"
-              stroke="#154380"
-              stroke-width="1.5"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
+        width="30px"
+        height="30px"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        class="svg-back"
+      >
+        <path
+          id="Stroke 1"
+          d="M11.2999 11.8938L20.2499 11.8938"
+          stroke="#154380"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <path
+          id="Stroke 3"
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+          d="M3.64613 11.8998C3.64613 13.1558 10.0101 17.1708 10.7321 16.4488C11.4541 15.7268 11.5231 8.14181 10.7321 7.35081C9.94014 6.55981 3.64613 10.6448 3.64613 11.8998Z"
+          stroke="#154380"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
       </svg>
       Go Back
     </a>
@@ -349,10 +349,10 @@ export default {};
     justify-content: center;
     border: 2px solid transparent;
     border-radius: 1em;
-    padding: .5em;
+    padding: 0.5em;
     font-weight: 600;
     cursor: pointer;
-    transition: all .4s ease;
+    transition: all 0.4s ease;
 
     svg {
       fill: $blue-light !important;
@@ -367,8 +367,7 @@ export default {};
     border: 2px solid $blue-main;
     background-color: $blue-light;
     color: $blue-darkest;
-    transform: scale(.95);
+    transform: scale(0.95);
   }
-
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div v-if="!isEmpty(lang)" class="content-side">
-    <div  class="lang-about">
+    <div class="lang-about">
       <button type="submit" @click="editLang()" class="form__btn svg-back">
         <svg
           width="24px"
@@ -110,7 +110,7 @@ export default {
   }
 }
 
-@media(max-width: 1024px) {
+@media (max-width: 1024px) {
   .content-side {
     margin-top: 100px;
   }

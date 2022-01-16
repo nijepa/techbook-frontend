@@ -23,7 +23,7 @@ export default {
     Header,
     Footer,
     Sidebar,
-    SidebarRight
+    SidebarRight,
   },
 
   setup() {
@@ -31,14 +31,13 @@ export default {
 
     return {
       width,
-      type
-    }
+      type,
+    };
   },
 };
 </script>
 
 <style>
-
 .div {
   color: #2f4f4f;
 }

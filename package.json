@@ -6,7 +6,7 @@
     "type": "git",
     "url": "https://github.com/nijepa/techbook-frontend"
   },
-  "version": "0.1.78",
+  "version": "0.1.82",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
