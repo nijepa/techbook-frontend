@@ -169,9 +169,8 @@
     </div>
 
     <div class="article-header" v-if="!article._id">
-      <div class="article-header_item">
+      <div class="article-header_item" @click="filterArt('finish')">
         <svg
-          @click="filterArt('finish')"
           width="24px"
           height="24px"
           viewBox="0 0 24 24"
@@ -200,9 +199,8 @@
           {{ types[0] }}
         </p>
       </div>
-      <div class="article-header_item">
+      <div class="article-header_item" @click="filterArt('favorite')">
         <svg
-          @click="filterArt('favorite')"
           width="24px"
           height="24px"
           viewBox="0 0 24 24"
@@ -222,9 +220,8 @@
         </svg>
         <p>{{ types[1] }}</p>
       </div>
-      <div class="article-header_item">
+      <div class="article-header_item" @click="filterArt('bookmark')">
         <svg
-          @click="filterArt('bookmark')"
           width="24px"
           height="24px"
           viewBox="0 0 24 24"

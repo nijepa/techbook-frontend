@@ -232,4 +232,10 @@ h1 {
   justify-self: center;
   padding: 1em;
 }
+
+@media(max-width: 700px) {
+  .links {
+    margin-left: 1em;
+  }
+}
 </style>

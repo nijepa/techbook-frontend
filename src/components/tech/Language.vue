@@ -309,6 +309,7 @@ import { computed, ref } from "@vue/reactivity";
 import { watch } from "@vue/runtime-core";
 import { usePagination } from "vue-composable";
 import dayjs from "dayjs";
+import { onMounted } from "vue";
 //import Pagination from "@/components/Pagination.vue";
 
 export default {
@@ -432,6 +433,11 @@ export default {
       pageSize.value = nr;
     };
 
+    onMounted(() => {
+      const group = router.currentRoute.value.params
+      if (group) selectGroup(group)
+    })
+
     return {
       lang,
       articles,
@@ -498,7 +504,7 @@ export default {
 }
 
 .art-checked {
-  visibility: visible !important;
+  visibility: visible;
   fill: $blue-dark;
   path {
     stroke: $blue-lightest !important;
@@ -752,8 +758,10 @@ export default {
     }
   }
   .article-header_item:hover {
+    z-index: 444;
     p {
-      transform: translateX(-20px) translateY(-25px);
+      transform: translateX(-30px) translateY(20px);
+      position: relative;
     }
   }
 }
