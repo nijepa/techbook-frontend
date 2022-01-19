@@ -434,8 +434,9 @@ export default {
     };
 
     onMounted(() => {
-      const group = router.currentRoute.value.params
-      if (group) selectGroup(group)
+      let group = router.currentRoute.value.params
+      if (group && Object.keys(group).length === 0) group = null
+      selectGroup(group)
     })
 
     return {

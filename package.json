@@ -1,12 +1,12 @@
 {
-  "name": "edu_front",
+  "name": "tech-book",
   "description": "Front-end for Technology Book",
   "author": "Nikola Pavicevic <nijepa@gmail.com>",
   "repository": {
     "type": "git",
     "url": "https://github.com/nijepa/techbook-frontend"
   },
-  "version": "0.1.82",
+  "version": "0.1.84",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
