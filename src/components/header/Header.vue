@@ -9,7 +9,7 @@
     </nav>
     <div class="nav__profile">
       <ul>
-        <li>
+        <router-link tag="li" to="/login">
           <svg
             width="24px"
             height="24px"
@@ -39,7 +39,7 @@
             />
           </svg>
           <p>Demo Test</p>
-        </li>
+        </router-link>
         <li>
           <svg
             width="24px"
@@ -188,7 +188,7 @@ nav {
     list-style: none;
     height: 100%;
 
-    li {
+    li, a {
       display: flex;
       align-items: center;
       height: 100%;
@@ -212,7 +212,7 @@ nav {
         }
       } */
     }
-    li:hover {
+    li:hover, a:hover {
       background: $blue-dark;
     }
   }
