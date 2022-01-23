@@ -68,7 +68,7 @@
             />
           </svg>
         </li>
-        <li>
+        <router-link tag="li" to="/about">
           <svg
             width="24px"
             height="24px"
@@ -95,7 +95,7 @@
               stroke-linejoin="round"
             />
           </svg>
-        </li>
+        </router-link>
       </ul>
     </div>
   </header>

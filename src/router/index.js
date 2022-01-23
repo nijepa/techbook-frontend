@@ -4,7 +4,8 @@ import {
 } from 'vue-router'
 import Home from '../views/Home.vue'
 
-const routes = [{
+const routes = [
+  {
     path: '/',
     name: 'Home',
     component: Home
@@ -20,7 +21,7 @@ const routes = [{
     component: () => import( /* webpackChunkName: "about" */ '../views/LogInUp.vue'),
   },
   {
-    path: '/abo',
+    path: '/about',
     name: 'About',
     component: () => import( /* webpackChunkName: "about" */ '../views/About.vue'),
   },
