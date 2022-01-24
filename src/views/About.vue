@@ -5,7 +5,7 @@
     <h1>About</h1>
     <h3>Technology book</h3>
     <h5>tandara mandara broc</h5>
-    <def-btn :title="'back'" :svg="'back'" />
+    <DefBtn :title="'back'" :svg="'back'" :type="'secondary'" />
   </div>
   
   <Footer />
@@ -13,7 +13,7 @@
 <script>
 import Header from "@/components/header/Header.vue";
 import Footer from "@/components/Footer.vue";
-import defBtn from '@/components/elements/Default_button.vue'
+import DefBtn from '@/components/elements/Default_button.vue'
 //import Fields from "@/components/tech/Fields.vue";
 
 export default {
@@ -23,7 +23,7 @@ export default {
     //Fields,
     Footer,
     Header,
-    defBtn
+    DefBtn
   },
 };
 </script>
