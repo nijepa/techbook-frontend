@@ -2,7 +2,13 @@
   <main class="profile__wrapper">
     <div class="">
       <div class="profile__heading">
-        <button type="submit" @click="cancelSave()" class="form__btn svg-back">
+        <DefBtn 
+          :title="'back'"
+          :svg="'back'"
+          :type="'primary'"
+          @clicked="cancelSave"
+        />
+        <!-- <button type="submit" @click="cancelSave()" class="form__btn svg-back">
           <svg
             width="30px"
             height="30px"
@@ -31,7 +37,7 @@
             />
           </svg>
           <span>Back</span>
-        </button>
+        </button> -->
         <h1 class="profile__title">{{ edited ? "Edit" : "Add" }}</h1>
       </div>
 
@@ -441,10 +447,11 @@ import { useRouter } from "vue-router";
 import { useStore } from "vuex";
 import { QuillEditor } from "@vueup/vue-quill";
 import "@vueup/vue-quill/dist/vue-quill.snow.css";
+import DefBtn from '@/components/elements/Default_button.vue'
 
 export default {
   name: "ArticleActions",
-  components: { QuillEditor },
+  components: { QuillEditor, DefBtn },
 
   setup() {
     const router = useRouter();
