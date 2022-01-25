@@ -1,7 +1,13 @@
 <template>
   <div v-if="!isEmpty(lang)" class="content-side">
     <div class="lang-about">
-      <button type="submit" @click="editLang()" class="form__btn svg-back">
+      <DefBtn
+        :title="'edit'"
+        :svg="'edit'"
+        :type="'primary'"
+        @clicked="editLang"
+      />
+      <!-- <button type="submit" @click="editLang()" class="form__btn svg-back">
         <svg
           width="24px"
           height="24px"
@@ -37,7 +43,7 @@
           />
         </svg>
         <span>edit</span>
-      </button>
+      </button> -->
       <img :src="getUrl(lang.img_url, 'logos')" alt="" />
       <h1>{{ lang.title }}</h1>
       <p v-html="lang.description"></p>
@@ -56,9 +62,13 @@ import { isEmpty } from "@/helpers/isEmptyObject";
 import { useStore } from "vuex";
 import { computed } from "@vue/reactivity";
 import { useRouter } from "vue-router";
+import DefBtn from "../elements/Default_button.vue";
 
 export default {
   name: "SidebarRight",
+  components: {
+    DefBtn,
+  },
 
   setup() {
     const store = useStore();

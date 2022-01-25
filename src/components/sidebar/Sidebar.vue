@@ -55,12 +55,14 @@ export default {
     const lang = computed(() => store.getters.getOneLanguage);
 
     const selectLanguage = async (language) => {
+      store.dispatch("changeLoading", true)
       if (language._id) await store.dispatch("fetchLanguage", language);
       await store.dispatch("articleClear");
       await store.dispatch("articlesClear");
       await store.dispatch("fetchArticles", language);
       await store.dispatch("changeLoading", false);
       router.push("/main");
+      store.dispatch("changeLoading", false)
     };
 
     return { getUrl, isEmpty, selectLanguage, tech, languages, lang };

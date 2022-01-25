@@ -1,6 +1,11 @@
 <template>
   <div class="article-nav">
-    <a class="article-link" @click="clearArticle">
+    <DefBtn 
+      :title="'all'"
+      :svg="'list'"
+      :type="'nav'"
+      @clicked="clearArticle" />
+    <!-- <a class="article-link" @click="clearArticle">
       <svg
         width="24px"
         height="24px"
@@ -44,9 +49,14 @@
         />
       </svg>
       <span>All </span>
-    </a>
+    </a> -->
     <div class="article-actions">
-      <a class="article-link" @click="addArticle(false)">
+      <DefBtn 
+        :title="'add'"
+        :svg="'add'"
+        :type="'nav'"
+        @clicked="addArticle(false)" />
+      <!-- <a class="article-link" @click="addArticle(false)">
         <svg
           width="24px"
           height="24px"
@@ -82,9 +92,14 @@
           />
         </svg>
         <span>Add </span>
-        <!-- <img :src="getUrl('add2')" alt="" /> -->
-      </a>
-      <a
+      </a> -->
+      <DefBtn 
+        :title="'edit'"
+        :svg="'edit'"
+        :type="'nav'"
+        @clicked="addArticle(true)"
+        v-if="!isEmpty(article)" />
+      <!-- <a
         class="article-link"
         v-if="!isEmpty(article)"
         @click="addArticle(true)"
@@ -124,9 +139,14 @@
           />
         </svg>
         <span>Edit </span>
-        <!-- <img :src="getUrl('edit2')" alt="" /> -->
-      </a>
-      <a
+      </a> -->
+      <DefBtn 
+        :title="'delete'"
+        :svg="'delete'"
+        :type="'nav'"
+        @clicked="deleteArticle(article)"
+        v-if="!isEmpty(article)" />
+      <!-- <a
         class="article-link"
         v-if="!isEmpty(article)"
         @click="deleteArticle(article)"
@@ -164,8 +184,7 @@
           />
         </svg>
         <span>Delete </span>
-        <!-- <img :src="getUrl('delete2')" alt="" />-->
-      </a>
+      </a> -->
     </div>
 
     <div class="article-header" v-if="!article._id">
@@ -258,9 +277,11 @@ import { isEmpty } from "@/helpers/isEmptyObject";
 import { computed, ref } from "@vue/reactivity";
 import { useStore } from "vuex";
 import { useRouter } from "vue-router";
+import DefBtn from '../elements/Default_button.vue'
 
 export default {
   name: "ArticleNav",
+  components: { DefBtn },
 
   setup(props, context) {
     const store = useStore();

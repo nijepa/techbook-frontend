@@ -27,8 +27,8 @@ export default {
   },
   methods: {
     handleClick() {
-      //this.$emit('clicked')
-      this.$router.go(-1)
+      this.$emit('clicked')
+      //this.$router.go(-1)
     }
   }
 }
@@ -45,7 +45,7 @@ export default {
   padding: .2em;
   font-variant: small-caps;
   font-weight: 800;
-  color: $blue-dark;
+  //color: $blue-dark;
   transition: ease-in-out .4s all;
 
   span {
@@ -55,6 +55,32 @@ export default {
   }
 }
 
+.btn-nav {
+  //border: 1px solid $blue-light;
+  background-color: $blue-light;
+  span {
+    opacity: 0.2;
+    //color: $blue-dark;
+  }
+  svg {
+    path {
+      stroke: $blue-lightest;
+    }
+  }
+}
+.btn-nav:hover {
+  background: $blue-lightest;
+  border: 2px solid lighten($color: $blue-dark, $amount: 45%);
+  span {
+    color: $blue-darkest;
+    opacity: 1;
+  }
+  svg {
+    path {
+      stroke: $blue-darkest;
+    }
+  }
+}
 .btn-primary {
   span {
     color: lighten($color: $blue-dark, $amount: 35%);

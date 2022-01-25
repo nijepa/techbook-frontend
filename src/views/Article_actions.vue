@@ -444,6 +444,7 @@ import "@vueup/vue-quill/dist/vue-quill.snow.css";
 
 export default {
   name: "ArticleActions",
+  components: { QuillEditor },
 
   setup() {
     const router = useRouter();
@@ -532,7 +533,7 @@ export default {
       saveArticle,
       getUrl,
       edited,
-      QuillEditor
+      
     };
   },
 };
