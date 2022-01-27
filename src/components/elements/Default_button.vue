@@ -81,6 +81,32 @@ export default {
     }
   }
 }
+.btn-action {
+  padding: .2em !important;
+  background-color: transparent;
+  span {
+   // opacity: 0.2;
+    color: lighten($color: $blue-dark, $amount: 35%);
+  }
+  svg {
+    path {
+      stroke: $blue-darker;
+    }
+  }
+}
+.btn-action:hover {
+  background: $blue-dark;
+  border: 2px solid lighten($color: $blue-dark, $amount: 45%);
+  span {
+    color: $blue-lighter;
+    opacity: 1;
+  }
+  svg {
+    path {
+      stroke: $blue-lighter;
+    }
+  }
+}
 .btn-primary {
   span {
     color: lighten($color: $blue-dark, $amount: 35%);

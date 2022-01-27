@@ -326,7 +326,13 @@
           </div>
         </div>
         <div class="frm__btn">
-          <button type="submit" @click="saveArticle()" class="form__btn">
+          <DefBtn 
+            :title="'save'"
+            :svg="'save'"
+            :type="'action'"
+            @clicked="saveArticle"
+          />
+          <!-- <button type="submit" @click="saveArticle()" class="form__btn">
             <svg
               class="btn-svg"
               width="30px"
@@ -355,8 +361,14 @@
               />
             </svg>
             <span>Save</span>
-          </button>
-          <button type="submit" @click="cancelSave()" class="form__btn">
+          </button> -->
+          <DefBtn 
+            :title="'cancel'"
+            :svg="'cancel'"
+            :type="'action'"
+            @clicked="cancelSave"
+          />
+          <!-- <button type="submit" @click="cancelSave()" class="form__btn">
             <svg
               class="btn-svg"
               width="30px"
@@ -393,7 +405,7 @@
               />
             </svg>
             <span>Cancel</span>
-          </button>
+          </button> -->
         </div>
       </form>
     </div>
