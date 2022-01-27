@@ -6,6 +6,7 @@ import store from "./store";
 import VueHighlightJS from "vue3-highlightjs";
 import "highlight.js/styles/atom-one-dark.css";
 import ClickOutside from "./composables/useClickOutside.js";
+import DefIcon from './components/elements/Default_icon.vue'
 //import { getSvg } from './helpers/getSvg'
 
 const app = createApp(App)
@@ -13,6 +14,7 @@ app.use(store)
 app.use(router)
 app.use(VueHighlightJS)
 app.directive("click-outside", ClickOutside)
+app.component('icon', DefIcon)
 //app.config.globalProperties.$svg = getSvg
 app.mount('#app')
 // createApp(App)
