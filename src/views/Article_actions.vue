@@ -230,7 +230,13 @@
           <ul v-if="article.links.length" class="links__article">
             <li v-for="link in article.links" :key="link" class="links-item">
               <a href="" @click.prevent="updateLink(link)">{{ link }}</a>
-              <button @click.prevent="removeLink(link)" class="form__btn">
+              <DefBtn 
+                :title="'remove link'"
+                :svg="'link-del'"
+                :type="'action'"
+                @clicked.prevent="removeLink(link)"
+              />
+              <!-- <button @click.prevent="removeLink(link)" class="form__btn">
                 <svg
                   width="24px"
                   height="24px"
@@ -265,7 +271,7 @@
                   />
                 </svg>
                 <span>Remove Link</span>
-              </button>
+              </button> -->
             </li>
           </ul>
 
