@@ -234,7 +234,7 @@
                 :title="'remove link'"
                 :svg="'link-del'"
                 :type="'action'"
-                @clicked.prevent="removeLink(link)"
+                @clicked="removeLink(link)"
               />
               <!-- <button @click.prevent="removeLink(link)" class="form__btn">
                 <svg
