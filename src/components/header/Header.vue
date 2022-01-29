@@ -10,7 +10,8 @@
     <div class="nav__profile">
       <ul>
         <router-link tag="li" to="/login">
-          <svg
+          <icon :icon="'profile'" />
+          <!-- <svg
             width="24px"
             height="24px"
             viewBox="0 0 24 24"
@@ -37,11 +38,12 @@
               stroke-linecap="round"
               stroke-linejoin="round"
             />
-          </svg>
+          </svg> -->
           <p>Demo Test</p>
         </router-link>
         <li>
-          <svg
+          <icon :icon="'message'" />
+          <!-- <svg
             width="24px"
             height="24px"
             viewBox="0 0 24 24"
@@ -66,10 +68,11 @@
               stroke-linecap="round"
               stroke-linejoin="round"
             />
-          </svg>
+          </svg> -->
         </li>
         <router-link tag="li" to="/about">
-          <svg
+          <icon :icon="'alert'" />
+          <!-- <svg
             width="24px"
             height="24px"
             viewBox="0 0 24 24"
@@ -94,7 +97,7 @@
               stroke-linecap="round"
               stroke-linejoin="round"
             />
-          </svg>
+          </svg> -->
         </router-link>
       </ul>
     </div>

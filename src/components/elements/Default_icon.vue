@@ -23,5 +23,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  svg {
+    margin: 0 0.5em;
 
+    path {
+      stroke: $blue-lightest;
+    }
+  }
 </style>
