@@ -2,7 +2,8 @@
   <div class="not-found">
     <h1>Not Found</h1>
     <div class="not-found__image">
-      <svg
+      <icon :icon="'not-found'" />
+      <!-- <svg
         xmlns:svg="http://www.w3.org/2000/svg"
         xmlns="http://www.w3.org/2000/svg"
         version="1.1"
@@ -297,10 +298,15 @@
             />
           </g>
         </g>
-      </svg>
+      </svg> -->
     </div>
-
-    <a @click="$router.go(-1)" to="/">
+    <DefBtn
+      :title="'back'"
+      :svg="'back'"
+      :type="'primary'"
+      @clicked="goBack"
+    />
+    <!-- <a @click="$router.go(-1)" to="/">
       <svg
         width="30px"
         height="30px"
@@ -329,12 +335,21 @@
         />
       </svg>
       Go Back
-    </a>
+    </a> -->
   </div>
 </template>
 
 <script>
-export default {};
+import DefBtn from '@/components/elements/Default_button.vue'
+export default {
+  name: 'Not Found',
+  components: { DefBtn },
+  methods: {
+    goBack() {
+      this.$router.push('/')
+    }
+  }
+};
 </script>
 
 <style lang="scss" scoped>
@@ -343,31 +358,42 @@ export default {};
   justify-items: center;
   color: $blue-darker;
 
-  a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 2px solid transparent;
-    border-radius: 1em;
-    padding: 0.5em;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.4s ease;
+  // a {
+  //   display: flex;
+  //   align-items: center;
+  //   justify-content: center;
+  //   border: 2px solid transparent;
+  //   border-radius: 1em;
+  //   padding: 0.5em;
+  //   font-weight: 600;
+  //   cursor: pointer;
+  //   transition: all 0.4s ease;
 
-    svg {
-      fill: $blue-light !important;
+  //   svg {
+  //     fill: $blue-light !important;
 
-      path {
-        fill: $blue-main;
-      }
-    }
+  //     path {
+  //       fill: $blue-main;
+  //     }
+  //   }
+  // }
+
+  // a:hover {
+  //   border: 2px solid $blue-main;
+  //   background-color: $blue-light;
+  //   color: $blue-darkest;
+  //   transform: scale(0.95);
+  // }
+}
+
+@media(max-width: 576px) {
+  svg {
+    width: 400px;
   }
-
-  a:hover {
-    border: 2px solid $blue-main;
-    background-color: $blue-light;
-    color: $blue-darkest;
-    transform: scale(0.95);
+}
+@media(max-width: 400px) {
+  svg {
+    width: 300px;
   }
 }
 </style>

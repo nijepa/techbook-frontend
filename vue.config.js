@@ -1,6 +1,7 @@
 const Components = require("unplugin-vue-components/webpack");
 module.exports = {
   //publicPath: process.env.NODE_ENV === 'production' ? '/techbook-frontend/' : '/',
+  // runtimeCompiler: true,
   configureWebpack: {
     plugins: [
       Components({
@@ -15,4 +16,16 @@ module.exports = {
       },
     },
   },
+  // chainWebpack: config => {
+  //   config.module
+  //     .rule('vue')
+  //     .use('vue-loader')
+  //     .tap(options => {
+  //       options.compilerOptions = {
+  //         ...options.compilerOptions,
+  //         isCustomElement: tag => tag.startsWith('Def')
+  //       }
+  //       return options
+  //     })
+  // }
 };
