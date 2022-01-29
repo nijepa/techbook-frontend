@@ -1,5 +1,5 @@
 <template>
-  <component :is="svg" />
+  <component :is="svg" @click="handleClick" />
 </template>
 
 <script>
@@ -12,6 +12,11 @@ export default {
   computed: {
     svg() {
       return require(`@/assets/svgs/${this.icon}.svg?inline`).default
+    }
+  },
+  methods: {
+    handleClick() {
+      this.$emit('clicked')
     }
   }
 }

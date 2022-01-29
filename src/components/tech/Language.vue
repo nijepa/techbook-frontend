@@ -9,7 +9,8 @@
       <div v-if="width < 1280" class="fields__nav-small">
         <div v-click-outside="hideFields">
           <button type="submit" class="article__fields" @click="toggleFields">
-            <svg
+            <icon :icon="'fields'" />
+            <!-- <svg
               width="24px"
               height="24px"
               viewBox="0 0 24 24"
@@ -52,7 +53,7 @@
                 stroke-linecap="round"
                 stroke-linejoin="round"
               />
-            </svg>
+            </svg> -->
             <span>Fields</span>
           </button>
           <lang-fields
@@ -103,7 +104,8 @@
           >
             <transition name="component-fade" mode="out-in">
               <div class="article__short">
-                <svg
+                <icon :icon="'finish'" @clicked="toggleArt(article, 'finish')" :class="article.finish ? 'art-checked' : ''" />
+                <!-- <svg
                   @click="toggleArt(article, 'finish')"
                   width="24px"
                   height="24px"
@@ -128,9 +130,10 @@
                     stroke-linecap="round"
                     stroke-linejoin="round"
                   />
-                </svg>
+                </svg> -->
                 <h4 @click="selectArticle(article)">{{ article.title }}</h4>
-                <svg
+                <icon :icon="'favorite'" @clicked="toggleArt(article, 'favorite')" :class="article.favorite ? 'art-checked' : ''" />
+                <!-- <svg
                   @click="toggleArt(article, 'favorite')"
                   width="24px"
                   height="24px"
@@ -148,12 +151,13 @@
                     stroke-linecap="round"
                     stroke-linejoin="round"
                   />
-                </svg>
+                </svg> -->
                 <p
                   v-html="article.description"
                   class="article__description"
                 ></p>
-                <svg
+                <icon :icon="'bookmark'" @clicked="toggleArt(article, 'bookmark')" :class="article.bookmark ? 'art-checked' : ''" />
+                <!-- <svg
                   @click="toggleArt(article, 'bookmark')"
                   width="24px"
                   height="24px"
@@ -178,7 +182,7 @@
                     stroke-linecap="round"
                     stroke-linejoin="round"
                   />
-                </svg>
+                </svg> -->
                 <ul class="article__group-list">
                   <li
                     v-for="(group, index) in article.groups"
