@@ -189,7 +189,8 @@
 
     <div class="article-header" v-if="!article._id">
       <div class="article-header_item" @click="filterArt('finish')">
-        <svg
+        <icon :icon="'finish'" :class="selectedType === 'finish' ? 'art-checked' : ''" />
+        <!-- <svg
           width="24px"
           height="24px"
           viewBox="0 0 24 24"
@@ -213,13 +214,14 @@
             stroke-linecap="round"
             stroke-linejoin="round"
           />
-        </svg>
+        </svg> -->
         <p :class="selectedType === 'finish' ? 'art-checked' : ''">
           {{ types[0] }}
         </p>
       </div>
       <div class="article-header_item" @click="filterArt('favorite')">
-        <svg
+        <icon :icon="'favorite'" :class="selectedType === 'favorite' ? 'art-checked' : ''" />
+        <!-- <svg
           width="24px"
           height="24px"
           viewBox="0 0 24 24"
@@ -236,11 +238,12 @@
             stroke-linecap="round"
             stroke-linejoin="round"
           />
-        </svg>
+        </svg> -->
         <p>{{ types[1] }}</p>
       </div>
       <div class="article-header_item" @click="filterArt('bookmark')">
-        <svg
+        <icon :icon="'bookmark'" :class="selectedType === 'bookmark' ? 'art-checked' : ''" />
+        <!-- <svg
           width="24px"
           height="24px"
           viewBox="0 0 24 24"
@@ -264,7 +267,7 @@
             stroke-linecap="round"
             stroke-linejoin="round"
           />
-        </svg>
+        </svg> -->
         <p>{{ types[2] }}</p>
       </div>
     </div>
