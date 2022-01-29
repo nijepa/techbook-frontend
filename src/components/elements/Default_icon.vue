@@ -1,11 +1,14 @@
 <template>
-  <component :is="svg" @click="handleClick" />
+  <component :is="svg" @click="handleClick" :class="{'svg-color': stroke} " />
 </template>
 
 <script>
 export default {
   props: {
     icon: {
+      type: String
+    },
+    stroke: {
       type: String
     }
   },
@@ -23,11 +26,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  svg {
-    margin: 0 0.5em;
+.svg-color {
+  //svg {
+   // margin: 0 0.5em;
 
     path {
       stroke: $blue-lightest;
     }
-  }
+  //}
+}
 </style>

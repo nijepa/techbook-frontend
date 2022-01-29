@@ -6,7 +6,7 @@
     :class="tech._id === techSingle._id ? 'sel-tech' : 'all-tech'"
     @click="selectTech(tech)"
   >
-    <img :src="getUrl(tech.img)" alt="" />
+    <img :src="getUrl(tech.img)" alt="" class="lang-logo" />
     <h3>{{ tech.title }}</h3>
   </div>
 </template>
@@ -77,6 +77,9 @@ export default {
   transform: rotate(0) scale(1);
   z-index: 3;
 
+  .lang-logo {
+    transform: rotateY(180deg);
+  }
   img {
     transform: rotate(0deg) scale(1);
   }

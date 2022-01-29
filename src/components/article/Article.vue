@@ -19,7 +19,8 @@
     </pre>
 
     <div class="article__links" v-if="article.links.length">
-      <svg
+      <icon :icon="'links'" />
+      <!-- <svg
         xmlns="http://www.w3.org/2000/svg"
         width="30px"
         height="30px"
@@ -60,7 +61,7 @@
           c-2.2-0.2-3.4-0.7-4.8-1c-2.7-0.5-6-1.7-9-2.7c-14.7-5.4-26.8-16.6-33.3-30.2c-3.3-6.8-5.2-14.1-5.8-21.4
           c-0.6-7.1,0.4-15.8,2.4-21.8C44.1,218.05,53.5,206.05,65.7,198.45z"
         />
-      </svg>
+      </svg> -->
       <!--       <svg  xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" x="0px" y="0px"
         viewBox="0 0 482.8 482.8" style="enable-background:new 0 0 482.8 482.8;" xml:space="preserve">
         <path d="M255.2,209.3c-5.3,5.3-5.3,13.8,0,19.1c21.9,21.9,21.9,57.5,0,79.4l-115,115c-21.9,21.9-57.5,21.9-79.4,0l-17.3-17.3
@@ -75,9 +76,9 @@
       <ul>
         <li v-for="link in article.links" :key="link" class="links__article">
           <!-- <a :href="link" target="_blank" >{{ link.replace(/(^\w+:|^)\/\//, '') }}</a> -->
-          <a :href="link" target="_blank">{{
-            linkDomain(article.title, link)
-          }}</a>
+          <a :href="link" target="_blank">
+            {{ linkDomain(article.title, link) }}
+          </a>
         </li>
       </ul>
     </div>

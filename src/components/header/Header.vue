@@ -10,7 +10,7 @@
     <div class="nav__profile">
       <ul>
         <router-link tag="li" to="/login">
-          <icon :icon="'profile'" />
+          <icon :icon="'profile'" stroke="true" />
           <!-- <svg
             width="24px"
             height="24px"
@@ -42,7 +42,7 @@
           <p>Demo Test</p>
         </router-link>
         <li>
-          <icon :icon="'message'" />
+          <icon :icon="'message'" stroke="true" />
           <!-- <svg
             width="24px"
             height="24px"
@@ -71,7 +71,7 @@
           </svg> -->
         </li>
         <router-link tag="li" to="/about">
-          <icon :icon="'alert'" />
+          <icon :icon="'alert'" stroke="true" />
           <!-- <svg
             width="24px"
             height="24px"
@@ -191,7 +191,8 @@ nav {
     list-style: none;
     height: 100%;
 
-    li, a {
+    li,
+    a {
       display: flex;
       align-items: center;
       height: 100%;
@@ -215,7 +216,8 @@ nav {
         }
       } */
     }
-    li:hover, a:hover {
+    li:hover,
+    a:hover {
       background: $blue-dark;
     }
   }

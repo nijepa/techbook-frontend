@@ -2,7 +2,7 @@
   <section class="section-main">
     <div class="section-headin" v-if="lang">
       <div class="heading__lang" @click.prevent="selectGroup()">
-        <img :src="getUrl(lang.img_url, 'logos')" alt="" />
+        <img :src="getUrl(lang.img_url, 'logos')" alt="" class="lang-logo" />
         <h1>{{ lang.title }}</h1>
       </div>
 
@@ -629,6 +629,12 @@ export default {
 
     .heading__lang:hover {
       color: $blue-lightest;
+
+      .lang-logo {
+        //transform-origin: center;
+        transform: rotateZ(360deg);
+        transition: all .4s ease;
+      }
     }
 
     .article__fields {

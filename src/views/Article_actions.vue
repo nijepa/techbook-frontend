@@ -43,7 +43,8 @@
 
       <form class="go-bottom user_form" action="">
         <div class="form__item">
-          <svg
+          <icon :icon="'title'" class="input__svg" />
+          <!-- <svg
             xmlns="http://www.w3.org/2000/svg"
             x="0px"
             y="0px"
@@ -89,7 +90,7 @@
             c-36.909,0-66.936-30.028-66.936-66.936c0-36.909,30.028-66.936,66.936-66.936c36.909,0,66.936,30.028,66.936,66.936
             C320.899,231.234,290.872,261.262,253.963,261.262z"
             />
-          </svg>
+          </svg> -->
           <label>
             <input
               @focus="clearErrors"
@@ -105,7 +106,8 @@
         </div>
 
         <div class="form__item">
-          <svg
+          <icon :icon="'groups'" class="input__svg" />
+          <!-- <svg
             width="30px"
             height="30px"
             viewBox="0 0 24 24"
@@ -153,7 +155,7 @@
               stroke-linecap="round"
               stroke-linejoin="round"
             />
-          </svg>
+          </svg> -->
           <div class="lang__groups">
             <span class="span__group">Groups</span>
             <ul v-if="lang.groups.length">
@@ -169,7 +171,8 @@
           </div>
         </div>
         <div class="form__item">
-          <svg
+          <icon :icon="'desc'" class="input__svg" />
+          <!-- <svg
             width="30px"
             height="30px"
             viewBox="0 0 24 24"
@@ -179,7 +182,7 @@
             <path
               d="M3,17 L15,17 C15.5522847,17 16,17.4477153 16,18 C16,18.5128358 15.6139598,18.9355072 15.1166211,18.9932723 L15,19 L3,19 C2.44771525,19 2,18.5522847 2,18 C2,17.4871642 2.38604019,17.0644928 2.88337887,17.0067277 L3,17 L15,17 L3,17 Z M3,13 L21,13 C21.5522847,13 22,13.4477153 22,14 C22,14.5128358 21.6139598,14.9355072 21.1166211,14.9932723 L21,15 L3,15 C2.44771525,15 2,14.5522847 2,14 C2,13.4871642 2.38604019,13.0644928 2.88337887,13.0067277 L3,13 L21,13 L3,13 Z M3,9 L21,9 C21.5522847,9 22,9.44771525 22,10 C22,10.5128358 21.6139598,10.9355072 21.1166211,10.9932723 L21,11 L3,11 C2.44771525,11 2,10.5522847 2,10 C2,9.48716416 2.38604019,9.06449284 2.88337887,9.00672773 L3,9 L21,9 L3,9 Z M3,5 L21,5 C21.5522847,5 22,5.44771525 22,6 C22,6.51283584 21.6139598,6.93550716 21.1166211,6.99327227 L21,7 L3,7 C2.44771525,7 2,6.55228475 2,6 C2,5.48716416 2.38604019,5.06449284 2.88337887,5.00672773 L3,5 L21,5 L3,5 Z"
             ></path>
-          </svg>
+          </svg> -->
           <div class="art__desc">
             <span class="span__cked">Description</span>
             <QuillEditor
@@ -191,7 +194,8 @@
           </div>
         </div>
         <div class="form__item">
-          <svg
+          <icon :icon="'code'" class="input__svg" />
+          <!-- <svg
             xmlns="http://www.w3.org/2000/svg"
             x="0px"
             y="0px"
@@ -213,7 +217,7 @@
             c-0.272,1.07,0.373,2.16,1.442,2.434c0.167,0.043,0.334,0.063,0.497,0.063c0.894,0,1.706-0.603,1.937-1.505l6-23.498
             C22.727,5.193,22.081,4.104,21.012,3.831z"
             />
-          </svg>
+          </svg> -->
           <label for="code">
             <textarea
               v-model="article.code"
@@ -231,8 +235,8 @@
             <li v-for="link in article.links" :key="link" class="links-item">
               <a href="" @click.prevent="updateLink(link)">{{ link }}</a>
               <DefBtn 
-                :title="'remove link'"
-                :svg="'link-del'"
+                :title="'remove'"
+                :svg="'minus'"
                 :type="'action'"
                 @clicked="removeLink(link)"
               />
@@ -276,7 +280,8 @@
           </ul>
 
           <div class="form__item form__item-links">
-            <svg
+            <icon :icon="'links'" class="input__svg" />
+            <!-- <svg
               xmlns="http://www.w3.org/2000/svg"
               x="0px"
               y="0px"
@@ -318,7 +323,7 @@
               c-2.2-0.2-3.4-0.7-4.8-1c-2.7-0.5-6-1.7-9-2.7c-14.7-5.4-26.8-16.6-33.3-30.2c-3.3-6.8-5.2-14.1-5.8-21.4
               c-0.6-7.1,0.4-15.8,2.4-21.8C44.1,218.05,53.5,206.05,65.7,198.45z"
               />
-            </svg>
+            </svg> -->
             <label>
               <input
                 v-model="link"
@@ -331,7 +336,7 @@
               <span>Link</span>
             </label>
             <DefBtn 
-              :title="'add link'"
+              :title="'add'"
               :svg="'link'"
               :type="'action'"
               @clicked="saveLink(link)"
@@ -563,8 +568,7 @@ export default {
       removeLink,
       saveArticle,
       getUrl,
-      edited,
-      
+      edited
     };
   },
 };
